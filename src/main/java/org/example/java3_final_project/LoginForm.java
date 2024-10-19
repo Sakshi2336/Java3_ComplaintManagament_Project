@@ -40,9 +40,19 @@ public class LoginForm extends Application {
             System.out.println("Button is working!");
         });
 
-        //Get text from fields and write it into credential file
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
-        bufferedWriter.write("Username : " + username_textfield.getText());
+        Button try_button = new Button("try button");
+        try_button.setOnAction(e->{
+            //Get text from fields and write it into credential file
+            try {
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
+                bufferedWriter.write("Username : " + username_textfield.getText());
+                bufferedWriter.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+
 
         //HBox for putting labels and text field side by side
         HBox username_hBox = new HBox(42,username_label,username_textfield);
@@ -56,14 +66,14 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button);
+        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,try_button);
         vBox.setAlignment(Pos.CENTER);
 
         //root pane
         BorderPane root = new BorderPane();
         root.setCenter(vBox);
 
-        Scene scene = new Scene(root, 320, 240);
+        Scene scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
