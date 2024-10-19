@@ -35,6 +35,10 @@ javafx {
 }
 
 dependencies {
+
+  //JDBC is the library that i need to pull in
+  implementation 'com.mysql:mysql-connector-j:9.0.0'
+
   implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
     exclude(group: 'org.openjfx')
   }
