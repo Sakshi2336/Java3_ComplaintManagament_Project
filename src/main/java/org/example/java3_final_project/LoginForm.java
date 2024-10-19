@@ -40,10 +40,9 @@ public class LoginForm extends Application {
             System.out.println("Button is working!");
 
             //Checking that user fill every fields
-            if(username_textfield.getText() == null){
-                System.out.println("User name field is empty.");
+            if(username_textfield.getText().isEmpty() && passwordField.getText().isEmpty() && server_textfield.getText().isEmpty() && database_textfield.getText().isEmpty()){
+                System.out.println("Please fill out necessary information");
             }
-
 
             try {
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
