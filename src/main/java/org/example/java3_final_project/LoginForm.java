@@ -5,7 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,8 +24,27 @@ public class LoginForm extends Application {
         Label server_label = new Label("Server Location:");
         Label database_label = new Label("Database Name:");
 
+
+        //Text fields for inputs
+        TextField username_textfield = new TextField("Username");
+        PasswordField passwordField = new PasswordField();
+        TextField server_textfield = new TextField("Enter Server Location");
+        TextField database_textfield = new TextField("Enter Database Name");
+
+
+        //HBox for putting labels and text field side by side
+        HBox username_hBox = new HBox(42,username_label,username_textfield);
+        HBox password_hBox = new HBox(43,password_label,passwordField);
+        HBox server_hbox = new HBox(12,server_label,server_textfield);
+        HBox database_hbox = new HBox(10,database_label,database_textfield);
+        username_hBox.setAlignment(Pos.CENTER);
+        password_hBox.setAlignment(Pos.CENTER);
+        server_hbox.setAlignment(Pos.CENTER);
+        database_hbox.setAlignment(Pos.CENTER);
+
+
         //sub layout vbox
-        VBox vBox = new VBox(username_label,password_label,server_label,database_label);
+        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox);
         vBox.setAlignment(Pos.CENTER);
 
         //root pane
