@@ -48,10 +48,10 @@ public class LoginForm extends Application {
             }else{
                 try {
                     BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
-                    bufferedWriter.write("Username : " + username_textfield.getText() + "\n");
-                    bufferedWriter.write("Password : " + passwordField.getText() + "\n");
-                    bufferedWriter.write("Server Location : " + server_textfield.getText() + "\n");
-                    bufferedWriter.write("Database Name : " + database_textfield.getText() + "\n");
+                    bufferedWriter.write(username_textfield.getText() + "\n");
+                    bufferedWriter.write(passwordField.getText() + "\n");
+                    bufferedWriter.write(server_textfield.getText() + "\n");
+                    bufferedWriter.write(database_textfield.getText() + "\n");
                     bufferedWriter.close();
                     message_text.setText("Everything is Done!");
                 } catch (IOException ex) {
