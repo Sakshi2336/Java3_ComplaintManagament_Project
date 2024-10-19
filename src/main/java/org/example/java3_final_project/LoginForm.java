@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
@@ -33,6 +34,8 @@ public class LoginForm extends Application {
         TextField server_textfield = new TextField();
         TextField database_textfield = new TextField();
 
+        //Text node for showing message that input field is empty
+        Text message_text = new Text();
 
         //connection button
         Button connection_button = new Button("Test Connection");
@@ -41,7 +44,7 @@ public class LoginForm extends Application {
 
             //Checking that user fill every fields
             if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()){
-                System.out.println("Please fill out necessary information");
+                message_text.setText("Please fill out necessary information");
             }else{
                 try {
                     BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
@@ -50,6 +53,7 @@ public class LoginForm extends Application {
                     bufferedWriter.write("Server Location : " + server_textfield.getText() + "\n");
                     bufferedWriter.write("Database Name : " + database_textfield.getText() + "\n");
                     bufferedWriter.close();
+                    message_text.setText("Everything is Done!");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -69,7 +73,7 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button);
+        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
         vBox.setAlignment(Pos.CENTER);
 
         //root pane
