@@ -27,22 +27,17 @@ public class LoginForm extends Application {
         Label server_label = new Label("Server Location:");
         Label database_label = new Label("Database Name:");
 
-
         //Text fields for inputs
         TextField username_textfield = new TextField("Username");
         PasswordField passwordField = new PasswordField();
         TextField server_textfield = new TextField("Enter Server Location");
         TextField database_textfield = new TextField("Enter Database Name");
+        
 
         //connection button
         Button connection_button = new Button("Test Connection");
         connection_button.setOnAction(e->{
             System.out.println("Button is working!");
-        });
-
-        Button try_button = new Button("try button");
-        try_button.setOnAction(e->{
-            //Get text from fields and write it into credential file
             try {
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
                 bufferedWriter.write("Username : " + username_textfield.getText() + "\n");
@@ -54,7 +49,6 @@ public class LoginForm extends Application {
                 ex.printStackTrace();
             }
         });
-
 
 
         //HBox for putting labels and text field side by side
@@ -69,7 +63,7 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,try_button);
+        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button);
         vBox.setAlignment(Pos.CENTER);
 
         //root pane
