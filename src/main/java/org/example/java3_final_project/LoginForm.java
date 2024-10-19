@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -31,6 +32,12 @@ public class LoginForm extends Application {
         TextField server_textfield = new TextField("Enter Server Location");
         TextField database_textfield = new TextField("Enter Database Name");
 
+        //connection button
+        Button connection_button = new Button("Test Connection");
+        connection_button.setOnAction(e->{
+            System.out.println("Button is working!");
+        });
+
 
         //HBox for putting labels and text field side by side
         HBox username_hBox = new HBox(42,username_label,username_textfield);
@@ -44,7 +51,7 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox);
+        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button);
         vBox.setAlignment(Pos.CENTER);
 
         //root pane
