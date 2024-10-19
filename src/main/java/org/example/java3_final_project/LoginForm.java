@@ -13,6 +13,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class LoginForm extends Application {
@@ -38,6 +40,9 @@ public class LoginForm extends Application {
             System.out.println("Button is working!");
         });
 
+        //Get text from fields and write it into credential file
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
+        bufferedWriter.write("Username : " + username_textfield.getText());
 
         //HBox for putting labels and text field side by side
         HBox username_hBox = new HBox(42,username_label,username_textfield);
