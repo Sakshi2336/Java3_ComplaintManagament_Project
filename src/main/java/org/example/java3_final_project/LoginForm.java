@@ -42,17 +42,17 @@ public class LoginForm extends Application {
             //Checking that user fill every fields
             if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()){
                 System.out.println("Please fill out necessary information");
-            }
-
-            try {
-                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
-                bufferedWriter.write("Username : " + username_textfield.getText() + "\n");
-                bufferedWriter.write("Password : " + passwordField.getText() + "\n");
-                bufferedWriter.write("Server Location : " + server_textfield.getText() + "\n");
-                bufferedWriter.write("Database Name : " + database_textfield.getText() + "\n");
-                bufferedWriter.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            }else{
+                try {
+                    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
+                    bufferedWriter.write("Username : " + username_textfield.getText() + "\n");
+                    bufferedWriter.write("Password : " + passwordField.getText() + "\n");
+                    bufferedWriter.write("Server Location : " + server_textfield.getText() + "\n");
+                    bufferedWriter.write("Database Name : " + database_textfield.getText() + "\n");
+                    bufferedWriter.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
