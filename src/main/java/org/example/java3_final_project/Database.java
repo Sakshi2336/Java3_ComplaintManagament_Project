@@ -3,6 +3,8 @@ package org.example.java3_final_project;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import static org.example.java3_final_project.CredentialReader.getDbUser;
+
 public class Database {
 
     private static Database instance;
@@ -32,9 +34,8 @@ public class Database {
     }
 
     public static void main(String[] args) {
-        System.out.println(CredentialReader.getDbUser());
-        System.out.println(CredentialReader.getDbName());
-        System.out.println(CredentialReader.getSERVER());
-        System.out.println(CredentialReader.getDbPass());
+
+        //problem it is still being null
+        System.out.println(getDbUser());
     }
 }
