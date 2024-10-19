@@ -28,16 +28,23 @@ public class LoginForm extends Application {
         Label database_label = new Label("Database Name:");
 
         //Text fields for inputs
-        TextField username_textfield = new TextField("Username");
+        TextField username_textfield = new TextField();
         PasswordField passwordField = new PasswordField();
-        TextField server_textfield = new TextField("Enter Server Location");
-        TextField database_textfield = new TextField("Enter Database Name");
-        
+        TextField server_textfield = new TextField();
+        TextField database_textfield = new TextField();
+
 
         //connection button
         Button connection_button = new Button("Test Connection");
         connection_button.setOnAction(e->{
             System.out.println("Button is working!");
+
+            //Checking that user fill every fields
+            if(username_textfield.getText() == null){
+                System.out.println("User name field is empty.");
+            }
+
+
             try {
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
                 bufferedWriter.write("Username : " + username_textfield.getText() + "\n");
