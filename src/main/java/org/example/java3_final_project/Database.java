@@ -30,4 +30,11 @@ public class Database {
         }
         return instance;
     }
+
+    public static void main(String[] args) {
+        System.out.println(CredentialReader.getDbUser());
+        System.out.println(CredentialReader.getDbName());
+        System.out.println(CredentialReader.getSERVER());
+        System.out.println(CredentialReader.getDbPass());
+    }
 }
