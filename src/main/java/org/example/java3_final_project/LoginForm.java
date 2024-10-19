@@ -45,10 +45,10 @@ public class LoginForm extends Application {
             //Get text from fields and write it into credential file
             try {
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
-                bufferedWriter.write("Username : " + username_textfield.getText());
-                bufferedWriter.write("Password : " + passwordField.getText());
-                bufferedWriter.write("Server Location : " + server_textfield.getText());
-                bufferedWriter.write("Database Name : " + database_textfield.getText());
+                bufferedWriter.write("Username : " + username_textfield.getText() + "\n");
+                bufferedWriter.write("Password : " + passwordField.getText() + "\n");
+                bufferedWriter.write("Server Location : " + server_textfield.getText() + "\n");
+                bufferedWriter.write("Database Name : " + database_textfield.getText() + "\n");
                 bufferedWriter.close();
             } catch (IOException ex) {
                 ex.printStackTrace();
