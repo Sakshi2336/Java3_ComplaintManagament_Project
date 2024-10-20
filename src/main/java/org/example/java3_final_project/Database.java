@@ -39,6 +39,6 @@ public class Database {
     public static void main(String[] args) {
 
         //problem it is still being null
-        System.out.println(getDbUser());
+        System.out.println(CredentialReader.getSERVER());
     }
 }
