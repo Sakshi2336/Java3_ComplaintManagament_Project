@@ -14,6 +14,9 @@ public class Database {
     //as this constructor private i cannot create object in other class
     private Database(){
         try{
+            //calling method from Credentialreader class that will read from file and
+            //set the variables value
+            CredentialReader.readCredential();
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.
                     getConnection("jdbc:mysql://"+CredentialReader.getSERVER()+"/" + CredentialReader.getDbName() +
