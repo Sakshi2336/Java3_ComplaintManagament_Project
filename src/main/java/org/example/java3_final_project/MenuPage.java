@@ -1,12 +1,12 @@
 package org.example.java3_final_project;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -23,7 +23,7 @@ public class MenuPage extends Application {
 
         TabPane tabpane = new TabPane();
 
-        Tab viewComp = new Tab("View All Complaints");
+        Tab ViewComplaintTab = new ViewComplaintTab();
 //        viewComp.setOnAction(e-> System.out.println("view complaint"));
 
         Tab addComp = new Tab("Add New Complaints");
@@ -34,14 +34,36 @@ public class MenuPage extends Application {
 
         tabpane.getTabs().addAll(viewComp, addComp, viewStat);
 
-        VBox organise = new VBox(15);
-        organise.getChildren().setAll(label,tabpane);
-        organise.setAlignment(Pos.CENTER);
+        HBox hbox = new HBox(label);
+        VBox vbox = new VBox(label, tabpane);
+        BorderPane organise = new BorderPane();
+        organise.getChildren().setAll(hbox, vbox);
 
         Scene scene = new Scene(organise, 500, 500);
         stage.setTitle("Menu Page");
         stage.setScene(scene);
         stage.show();
 
+    }
+}
+
+public class viewComplaintTab extends Tab{
+
+    public ViewComplaintTab(){
+        this.setText("View Complaint");
+    }
+}
+
+public class AddComplaintTab extends Tab{
+
+    public AddComplaintTab(){
+        this.setText("Add complaint");
+    }
+}
+
+public class ViewStatisticsTab extends Tab{
+
+    public ViewStatisticsTab(){
+        this.setText("View Statistics");
     }
 }
