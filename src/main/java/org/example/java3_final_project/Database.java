@@ -11,7 +11,7 @@ public class Database {
     private Connection connection = null; //I have not created getters yet that is why it is showing that it is never used
 
 
-    //as this constructor private i cannot create object in other class
+    //as this constructor private I cannot create object in other class
     private Database(){
         try{
             //calling method from Credentialreader class that will read from file and
@@ -36,9 +36,12 @@ public class Database {
         return instance;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        //problem it is still being null
+        CredentialReader.readCredential();
+        //problem it is still being null without method call
         System.out.println(CredentialReader.getSERVER());
+
+        ///after calling method now this is showing values
     }
 }
