@@ -3,6 +3,8 @@ package org.example.java3_final_project;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -25,7 +27,7 @@ public class addComplaintForm extends Application {
          * Buttons
          */
 
-        BorderPane pane = new BorderPane();
+        BorderPane root = new BorderPane();
 
         GridPane tenantPane = new GridPane();
 
@@ -72,7 +74,7 @@ public class addComplaintForm extends Application {
                         "Cooling Issue",
                         "Internet Service",
                         "Electricity Issue");
-        ComboBox categoriesComboBox = new ComboBox(categories);
+        ComboBox<String> categoriesComboBox = new ComboBox<>(categories);
         complaintPane.add(categoriesComboBox, 1, 1);
 
 
@@ -84,21 +86,37 @@ public class addComplaintForm extends Application {
         Label status = new Label("Status:");
         complaintPane.add(status, 0, 3);
         TextField statusInput = new TextField("Open");
-        complaintPane.add(contactInfoInput, 1, 3);
+        complaintPane.add(statusInput, 1, 3);
 
         Label assignedManager = new Label("Assigned Manager:");
-        complaintPane.add(status, 0, 4);
+        complaintPane.add(assignedManager, 0, 4);
         ObservableList<String> managers = FXCollections.observableArrayList(
                 "Manager 1",
                      "Manager 2");
-        ComboBox managerComboBox = new ComboBox(managers);
+        ComboBox<String> managerComboBox = new ComboBox<>(managers);
         complaintPane.add(managerComboBox, 1, 4);
 
         HBox buttons = new HBox();
 
         Button submitButton = new Button("Submit");
+//        submitButton.setOnAction(e -> {
+//            Text text = new Text("Form Successfully Submitted!");
+//        });
         Button cancelButton = new Button("Cancel");
-        
+        buttons.getChildren().addAll(submitButton, cancelButton);
+
+        root.setTop(tenantPane);
+        root.setCenter(complaintPane);
+        root.setBottom(buttons);
+        buttons.setAlignment(Pos.BOTTOM_CENTER);
+
+        Scene scene = new Scene(root, 500, 500);
+        stage.setTitle("Form!");
+        stage.setScene(scene);
+        stage.show();
+
+
+
 
 
 
