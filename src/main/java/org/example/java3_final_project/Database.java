@@ -14,7 +14,7 @@ public class Database {
     //as this constructor private I cannot create object in other class
     private Database(){
         try{
-            //calling method from Credentialreader class that will read from file and
+            //calling method from Credential reader class that will read from file and
             //set the variables value
             CredentialReader.readCredential();
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,7 +29,7 @@ public class Database {
         }
     }
 
-    private static Database getInstance(){
+    public static Database getInstance(){
         if(instance == null){
             instance = new Database(); //here we can create bcz private has class access
         }
@@ -38,10 +38,9 @@ public class Database {
 
     public static void main(String[] args) throws Exception {
 
-        CredentialReader.readCredential();
+        //CredentialReader.readCredential();
         //problem it is still being null without method call
-        System.out.println(CredentialReader.getSERVER());
-
-        ///after calling method now this is showing values
+        //System.out.println(CredentialReader.getSERVER());
+        //after calling method now this is showing values
     }
 }

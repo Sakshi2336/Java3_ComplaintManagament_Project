@@ -38,8 +38,8 @@ public class LoginForm extends Application {
         Text message_text = new Text();
 
         //connection button
-        Button connection_button = new Button("Test Connection");
-        connection_button.setOnAction(e->{
+        Button save_button = new Button("Save");
+        save_button.setOnAction(e->{
             System.out.println("Button is working!");
 
             //Checking that user fill every fields
@@ -60,6 +60,11 @@ public class LoginForm extends Application {
             }
         });
 
+        Button connection_button = new Button("Test Connection");
+        connection_button.setOnAction(e->{
+            Database db = Database.getInstance();
+        });
+
 
         //HBox for putting labels and text field side by side
         HBox username_hBox = new HBox(42,username_label,username_textfield);
@@ -73,8 +78,9 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
+        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,save_button,connection_button,message_text);
         vBox.setAlignment(Pos.CENTER);
+
 
         //root pane
         BorderPane root = new BorderPane();
