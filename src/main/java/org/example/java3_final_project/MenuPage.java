@@ -23,23 +23,25 @@ public class MenuPage extends Application {
 
         TabPane tabpane = new TabPane();
 
-        Tab ViewComplaintTab = new ViewComplaintTab();
+        Tab viewComp = new ViewComplaintTab();
 //        viewComp.setOnAction(e-> System.out.println("view complaint"));
 
-        Tab addComp = new Tab("Add New Complaints");
+        Tab addComp = new AddComplaintTab();
 //        addComp.setOnAction(e-> System.out.println("add complaint"));
 
-        Tab viewStat = new Tab("View Statistics");
+        Tab viewStat = new ViewStatisticsTab();
 //        viewStat.setOnAction(e-> System.out.println("view statistics"));
 
         tabpane.getTabs().addAll(viewComp, addComp, viewStat);
+        tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         HBox hbox = new HBox(label);
         VBox vbox = new VBox(label, tabpane);
-        BorderPane organise = new BorderPane();
-        organise.getChildren().setAll(hbox, vbox);
 
-        Scene scene = new Scene(organise, 500, 500);
+        BorderPane bp = new BorderPane();
+        bp.setCenter(vbox);
+
+        Scene scene = new Scene(bp, 500, 500);
         stage.setTitle("Menu Page");
         stage.setScene(scene);
         stage.show();
@@ -47,23 +49,3 @@ public class MenuPage extends Application {
     }
 }
 
-public class viewComplaintTab extends Tab{
-
-    public ViewComplaintTab(){
-        this.setText("View Complaint");
-    }
-}
-
-public class AddComplaintTab extends Tab{
-
-    public AddComplaintTab(){
-        this.setText("Add complaint");
-    }
-}
-
-public class ViewStatisticsTab extends Tab{
-
-    public ViewStatisticsTab(){
-        this.setText("View Statistics");
-    }
-}
