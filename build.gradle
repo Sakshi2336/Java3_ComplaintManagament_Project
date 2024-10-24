@@ -17,8 +17,8 @@ ext {
   junitVersion = '5.10.0'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
+sourceCompatibility = '19'
+targetCompatibility = '19'
 
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
@@ -26,11 +26,11 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'org.example.java3_final_project'
-  mainClass = 'org.example.java3_final_project.HelloApplication'
+  mainClass = 'org.example.java3_final_project.UpdateForm'
 }
 
 javafx {
-  version = '17.0.6'
+  version = '19.0.2'
   modules = ['javafx.controls', 'javafx.fxml']
 }
 
