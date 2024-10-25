@@ -36,7 +36,7 @@ public class MenuPage extends Application {
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         HBox hbox = new HBox(label);
-        VBox vbox = new VBox(label, tabpane);
+        VBox vbox = new VBox(hbox, tabpane);
 
         BorderPane bp = new BorderPane();
         bp.setCenter(vbox);
