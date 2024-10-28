@@ -40,7 +40,6 @@ public class LoginForm extends Application {
         //connection button
         Button save_button = new Button("Save");
         save_button.setOnAction(e->{
-            System.out.println("Button is working!");
 
             //Checking that user fill every fields
             if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()){
@@ -62,7 +61,12 @@ public class LoginForm extends Application {
 
         Button connection_button = new Button("Test Connection");
         connection_button.setOnAction(e->{
-            Database db = Database.getInstance();
+            if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()) {
+                message_text.setText("Please fill out necessary information");
+            }else{
+                Database db = Database.getInstance();
+            }
+
         });
 
 

@@ -10,12 +10,8 @@ public class Database {
     private static Database instance;
     private Connection connection = null; //I have not created getters yet that is why it is showing that it is never used
 
-
-    //as this constructor private I cannot create object in other class
     private Database(){
         try{
-            //calling method from Credential reader class that will read from file and
-            //set the variables value
             CredentialReader.readCredential();
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.
@@ -36,11 +32,4 @@ public class Database {
         return instance;
     }
 
-    public static void main(String[] args) throws Exception {
-
-        //CredentialReader.readCredential();
-        //problem it is still being null without method call
-        //System.out.println(CredentialReader.getSERVER());
-        //after calling method now this is showing values
-    }
 }
