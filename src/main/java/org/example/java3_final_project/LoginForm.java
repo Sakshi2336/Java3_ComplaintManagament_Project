@@ -19,6 +19,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class LoginForm extends Application {
+
+    //adding another scene to navigate to when connection created
+    Scene scene,scene1;
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -65,6 +68,11 @@ public class LoginForm extends Application {
                 message_text.setText("Please fill out necessary information");
             }else{
                 Database db = Database.getInstance();
+                if(Database.isConnection){
+                    stage.setScene(scene1);
+                }else{
+                    message_text.setText("Failed to create the connection to the Database!");
+                }
             }
 
         });
@@ -86,11 +94,18 @@ public class LoginForm extends Application {
         vBox.setAlignment(Pos.CENTER);
 
 
-        //root pane
+        //root pane for main scene
         BorderPane root = new BorderPane();
         root.setCenter(vBox);
 
-        Scene scene = new Scene(root, 500, 500);
+        //text for scene 1
+        //root pane for scene 1
+        Text text = new Text("Scene 1 is working!");
+        BorderPane root_scene1 = new BorderPane();
+        root_scene1.setCenter(text);
+        scene1 = new Scene(root_scene1,600,600);
+
+        scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

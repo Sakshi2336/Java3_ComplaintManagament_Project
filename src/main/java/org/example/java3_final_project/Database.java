@@ -1,11 +1,15 @@
 package org.example.java3_final_project;
 
+import javafx.scene.Scene;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 import static org.example.java3_final_project.CredentialReader.getDbUser;
 
 public class Database {
+
+    public static boolean isConnection = false;
 
     private static Database instance;
     private Connection connection = null; //I have not created getters yet that is why it is showing that it is never used
@@ -20,6 +24,7 @@ public class Database {
                             CredentialReader.getDbUser(),
                             CredentialReader.getDbPass());
             System.out.println("Created connection!");
+            isConnection = true;
         }catch(Exception e){
             e.printStackTrace();
         }
