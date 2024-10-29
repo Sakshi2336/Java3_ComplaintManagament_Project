@@ -67,6 +67,10 @@ public class LoginForm extends Application {
             if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()) {
                 message_text.setText("Please fill out necessary information");
             }else{
+                //need to check if my text file already contains credentials or not
+                if(CredentialReader.getDbUser() != null){
+                    message_text.setText("it is working");
+                }
                 Database db = Database.getInstance();
                 if(Database.isConnection){
                     stage.setScene(scene1);
