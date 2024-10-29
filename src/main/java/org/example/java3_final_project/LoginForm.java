@@ -29,25 +29,12 @@ public class LoginForm extends Application {
         //Text node for showing message that input field is empty
         Text message_text = new Text();
 
-        //here i will call read method from CredentialReader class and then check
-        //if DbUser name is not null then try to connect to the Database
-        CredentialReader.readCredential();
-        if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
-            Database db1 = Database.getInstance();
-            System.out.println("Database class is working!");
-            if(Database.isConnection){
-                System.out.println("Connection variable is also working!");
-                stage.setScene(scene1);
-            }else{
-                message_text.setText("Please fill correct information!");
-                stage.setScene(scene);
-                System.out.println("Is this working?");
-            }
-        }else{
-            System.out.println("Main else block working!");
-            message_text.setText("Please fill out all necessary information to connect to the database!");
-            stage.setScene(scene);
-        }
+        //text for scene 1
+        //root pane for scene 1
+        Text text = new Text("Welcome Screen\nScene 1 is working!");
+        BorderPane root_scene1 = new BorderPane();
+        root_scene1.setCenter(text);
+        scene1 = new Scene(root_scene1,600,600);
 
         //Labels for username,password,server location and database name
         Label username_label = new Label("Username:");
@@ -120,17 +107,34 @@ public class LoginForm extends Application {
         BorderPane root = new BorderPane();
         root.setCenter(vBox);
 
-        //text for scene 1
-        //root pane for scene 1
-        Text text = new Text("Scene 1 is working!");
-        BorderPane root_scene1 = new BorderPane();
-        root_scene1.setCenter(text);
-        scene1 = new Scene(root_scene1,600,600);
+
 
         scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
-        stage.setScene(scene);
+
+        //here i will call read method from CredentialReader class and then check
+        //if DbUser name is not null then try to connect to the Database
+        CredentialReader.readCredential();
+        if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
+            Database db1 = Database.getInstance();
+            System.out.println("Database class is working!");
+            if(Database.isConnection){
+                System.out.println("Connection variable is also working!");
+                stage.setScene(scene1);
+            }else{
+                message_text.setText("Please fill correct information!");
+                stage.setScene(scene);
+                System.out.println("Is this working?");
+            }
+        }else{
+            System.out.println("Main else block working!");
+            message_text.setText("Please fill out all necessary information to connect to the database!");
+            stage.setScene(scene);
+        }
+
         stage.show();
+
+
     }
 
     public static void main(String[] args) {

@@ -27,6 +27,7 @@ public class Database {
             isConnection = true;
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Database class error!");
         }
     }
 
