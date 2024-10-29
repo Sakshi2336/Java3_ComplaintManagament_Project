@@ -28,18 +28,21 @@ public class LoginForm extends Application {
         //Text node for showing message that input field is empty
         Text message_text = new Text();
 
-
         //here i will call read method from CredentialReader class and then check
         //if DbUser name is not null then try to connect to the Database
         CredentialReader.readCredential();
         if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
             Database db1 = Database.getInstance();
+            System.out.println("Database class is working!");
             if(Database.isConnection){
+                System.out.println("Connection variable is also working!");
                 stage.setScene(scene1);
             }else{
                 stage.setScene(scene);
+                System.out.println("Is this working?");
             }
         }else{
+            System.out.println("Main else block working!");
             stage.setScene(scene);
             message_text.setText("Please fill out all necessary information to connect to the database!");
         }
@@ -124,7 +127,6 @@ public class LoginForm extends Application {
 
         scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
-        stage.setScene(scene);
         stage.show();
     }
 
