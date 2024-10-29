@@ -25,6 +25,8 @@ public class LoginForm extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        //TODO now run time exception is showing
+
         //Text node for showing message that input field is empty
         Text message_text = new Text();
 
