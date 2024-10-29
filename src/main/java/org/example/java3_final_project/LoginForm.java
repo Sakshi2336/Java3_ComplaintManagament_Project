@@ -39,6 +39,7 @@ public class LoginForm extends Application {
                 System.out.println("Connection variable is also working!");
                 stage.setScene(scene1);
             }else{
+                message_text.setText("Please fill correct information!");
                 stage.setScene(scene);
                 System.out.println("Is this working?");
             }
