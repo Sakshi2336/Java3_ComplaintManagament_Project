@@ -23,7 +23,26 @@ public class LoginForm extends Application {
     //adding another scene to navigate to when connection created
     Scene scene,scene1;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
+
+        //Text node for showing message that input field is empty
+        Text message_text = new Text();
+
+
+        //here i will call read method from CredentialReader class and then check
+        //if DbUser name is not null then try to connect to the Database
+        CredentialReader.readCredential();
+        if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
+            Database db1 = Database.getInstance();
+            if(Database.isConnection){
+                stage.setScene(scene1);
+            }else{
+                stage.setScene(scene);
+            }
+        }else{
+            stage.setScene(scene);
+            message_text.setText("Please fill out all necessary information to connect to the database!");
+        }
 
         //Labels for username,password,server location and database name
         Label username_label = new Label("Username:");
@@ -37,8 +56,6 @@ public class LoginForm extends Application {
         TextField server_textfield = new TextField();
         TextField database_textfield = new TextField();
 
-        //Text node for showing message that input field is empty
-        Text message_text = new Text();
 
         //connection button
         Button save_button = new Button("Save");
@@ -67,10 +84,6 @@ public class LoginForm extends Application {
             if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()) {
                 message_text.setText("Please fill out necessary information");
             }else{
-                //need to check if my text file already contains credentials or not
-                if(CredentialReader.getDbUser() != null){
-                    message_text.setText("it is working");
-                }
                 Database db = Database.getInstance();
                 if(Database.isConnection){
                     stage.setScene(scene1);
