@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
 
 public class LoginForm extends Application {
 
@@ -77,6 +78,8 @@ public class LoginForm extends Application {
                 message_text.setText("Please fill out necessary information");
             }else{
                 Database db = Database.getInstance();
+                Connection connection = db.getConnection();
+
                 if(Database.isConnection){
                     stage.setScene(scene1);
                 }else{

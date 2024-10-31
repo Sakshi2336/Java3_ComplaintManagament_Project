@@ -29,6 +29,22 @@ public class CredentialReader{
         return SERVER;
     }
 
+    public static void setDbName(String dbName) {
+        DB_NAME = dbName;
+    }
+
+    public static void setDbPass(String dbPass) {
+        DB_PASS = dbPass;
+    }
+
+    public static void setDbUser(String dbUser) {
+        DB_USER = dbUser;
+    }
+
+    public static void setSERVER(String SERVER) {
+        CredentialReader.SERVER = SERVER;
+    }
+
     //Creating method that I can call from this class that will read from the file
     public static void readCredential() throws Exception{
 
@@ -50,6 +66,16 @@ public class CredentialReader{
         scanner.close();
 
         System.out.println(getDbUser());
+    }
+
+    
+
+    //method that will update the credentials in connection
+    public static void updateCredentials(String userName,String password,String dbName,String server){
+        CredentialReader.setDbUser(userName);
+        CredentialReader.setDbPass(password);
+        CredentialReader.setDbName(dbName);
+        CredentialReader.setSERVER(server);
     }
 
 }
