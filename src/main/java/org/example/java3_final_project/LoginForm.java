@@ -11,10 +11,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -30,6 +34,7 @@ public class LoginForm extends Application {
 
         //Text node for showing message that input field is empty
         Text message_text = new Text();
+        message_text.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,15));
 
         //text for scene 1
         //root pane for scene 1
@@ -50,6 +55,8 @@ public class LoginForm extends Application {
         TextField server_textfield = new TextField();
         TextField database_textfield = new TextField();
 
+        //file
+        File file = new File("credential.txt");
 
         //connection button
         Button save_button = new Button("Save");
@@ -60,7 +67,7 @@ public class LoginForm extends Application {
                 message_text.setText("Please fill out necessary information");
             }else{
                 try {
-                    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("credential.txt"));
+                    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
                     bufferedWriter.write(username_textfield.getText() + "\n");
                     bufferedWriter.write(passwordField.getText() + "\n");
                     bufferedWriter.write(server_textfield.getText() + "\n");
@@ -106,37 +113,46 @@ public class LoginForm extends Application {
         VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,save_button,connection_button,message_text);
         vBox.setAlignment(Pos.CENTER);
 
-
         //root pane for main scene
         BorderPane root = new BorderPane();
         root.setCenter(vBox);
 
-
-
         scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
 
-//        //here i will call read method from CredentialReader class and then check
-//        //if DbUser name is not null then try to connect to the Database
-        if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
-            Database db1 = Database.getInstance();
-            System.out.println("Database class is working!");
-            if(Database.isConnection){
-                System.out.println("Connection variable is also working!");
-                stage.setScene(scene1);
-            }else{
-                message_text.setText("Please fill correct information!");
-                stage.setScene(scene);
-                System.out.println("Is this working?");
-            }
-        }else{
-            System.out.println("Main else block working!");
-            message_text.setText("Please fill out all necessary information to connect to the database!");
-            stage.setScene(scene);
-        }
+
+
+        //check that file is already exists and then try to connect
+        checkExistFile(stage,scene,scene1,message_text,file);
         
         stage.show();
 
+
+    }
+
+
+    private void checkExistFile(Stage stage, Scene LoginForm, Scene WelcomePage, Text message, File file) throws Exception {
+        if(file.exists()){
+            CredentialReader.readCredential();
+            if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
+                Database db1 = Database.getInstance();
+                System.out.println("Database class is working!");
+                if(Database.isConnection){
+                    System.out.println("Connection variable is also working!");
+                    stage.setScene(WelcomePage);
+                }else{
+                    message.setText("Please fill correct information!");
+                    stage.setScene(LoginForm);
+                    System.out.println("Is this working?");
+                }
+            }else{
+                System.out.println("Main else block working!");
+                message.setText("Please fill out all necessary information to connect to the database!");
+                stage.setScene(LoginForm);
+            }
+        }else{
+            System.out.println("File does not exits!");
+        }
 
     }
 
