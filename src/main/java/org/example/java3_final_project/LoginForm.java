@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 
+
 public class LoginForm extends Application {
 
     //adding another scene to navigate to when connection created
@@ -69,6 +70,8 @@ public class LoginForm extends Application {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+
+
             }
         });
 
@@ -78,8 +81,6 @@ public class LoginForm extends Application {
                 message_text.setText("Please fill out necessary information");
             }else{
                 Database db = Database.getInstance();
-                //Connection connection = db.getConnection();
-                db.updateCredentials(username_textfield.getText(),passwordField.getText(),database_textfield.getText(),server_textfield.getText());
                 if(Database.isConnection){
                     stage.setScene(scene1);
                 }else{
@@ -139,6 +140,8 @@ public class LoginForm extends Application {
 
 
     }
+
+
 
     public static void main(String[] args) {
         launch();

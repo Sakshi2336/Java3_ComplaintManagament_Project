@@ -43,12 +43,4 @@ public class Database {
         return connection;
     }
 
-    //method that will update the credentials in connection
-    public void updateCredentials(String userName,String password,String dbName,String server){
-        CredentialReader.setDbUser(userName);
-        CredentialReader.setDbPass(password);
-        CredentialReader.setDbName(dbName);
-        CredentialReader.setSERVER(server);
-    }
-
 }

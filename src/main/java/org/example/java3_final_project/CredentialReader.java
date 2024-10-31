@@ -65,8 +65,6 @@ public class CredentialReader{
             DB_NAME = scanner.nextLine();
         }
         scanner.close();
-
-        System.out.println(getDbUser());
     }
 
 
