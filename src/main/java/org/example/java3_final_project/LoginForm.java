@@ -116,9 +116,8 @@ public class LoginForm extends Application {
         scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
 
-        //here i will call read method from CredentialReader class and then check
-        //if DbUser name is not null then try to connect to the Database
-        CredentialReader.readCredential();
+//        //here i will call read method from CredentialReader class and then check
+//        //if DbUser name is not null then try to connect to the Database
         if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
             Database db1 = Database.getInstance();
             System.out.println("Database class is working!");
@@ -135,7 +134,7 @@ public class LoginForm extends Application {
             message_text.setText("Please fill out all necessary information to connect to the database!");
             stage.setScene(scene);
         }
-
+        
         stage.show();
 
 
