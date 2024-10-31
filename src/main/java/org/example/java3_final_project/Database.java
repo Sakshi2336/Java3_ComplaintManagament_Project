@@ -38,4 +38,9 @@ public class Database {
         return instance;
     }
 
+    //getConnection method so that I can access connection in login form and update variables
+    public Connection getConnection(){
+        return connection;
+    }
+
 }
