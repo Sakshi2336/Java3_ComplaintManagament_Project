@@ -1,6 +1,7 @@
 package org.example.java3_final_project;
 
 import java.io.File;
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class CredentialReader{
@@ -68,14 +69,6 @@ public class CredentialReader{
         System.out.println(getDbUser());
     }
 
-    
 
-    //method that will update the credentials in connection
-    public static void updateCredentials(String userName,String password,String dbName,String server){
-        CredentialReader.setDbUser(userName);
-        CredentialReader.setDbPass(password);
-        CredentialReader.setDbName(dbName);
-        CredentialReader.setSERVER(server);
-    }
 
 }

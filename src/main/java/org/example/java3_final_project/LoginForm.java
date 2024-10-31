@@ -78,8 +78,8 @@ public class LoginForm extends Application {
                 message_text.setText("Please fill out necessary information");
             }else{
                 Database db = Database.getInstance();
-                Connection connection = db.getConnection();
-
+                //Connection connection = db.getConnection();
+                db.updateCredentials(username_textfield.getText(),passwordField.getText(),database_textfield.getText(),server_textfield.getText());
                 if(Database.isConnection){
                     stage.setScene(scene1);
                 }else{
@@ -144,3 +144,5 @@ public class LoginForm extends Application {
         launch();
     }
 }
+
+
