@@ -2,6 +2,7 @@ package org.example.java3_final_project;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -40,19 +41,19 @@ public class LoginForm extends Application {
         //scene 1 - welcome page
         Text welcome_text = new Text("Welcome to the Apartment Complaint Management System");
         Text description_text = new Text("Welcome to the Apartment Complaint Management System (ACMS), \n" +
-                "\t your essential tool for efficiently handling tenant complaints.\n" +
+                "\tyour essential tool for efficiently handling tenant complaints.\n" +
                 "Designed specifically for apartment managers, this application streamlines\n" +
                 "the process of logging, tracking, and resolving complaints, ensuring that\n" +
                 "\t  \t every issue is addressed in a timely manner.");
-        Text end_text = new Text("Join us in transforming the way you manage apartment complaints. " +
-                "Your first step towards streamlined operations begin here!");
+        Text end_text = new Text("Join us in transforming the way you manage apartment complaints.\n" +
+                "\tYour first step towards streamlined operations begin here!");
         Button start_button = new Button("Let's Get Started!");
 
         //font styling
         // Font styling
         welcome_text.setFont(Font.font("Arial", FontWeight.BOLD, 36));
-        description_text.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
-        end_text.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
+        description_text.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
+        end_text.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
 
         // Set text color using Color object
         welcome_text.setFill(Color.web("#2C3E50"));
@@ -60,10 +61,11 @@ public class LoginForm extends Application {
         end_text.setFill(Color.web("#2C3E50"));
 
         //sub layout
-        VBox title_vbox = new VBox(30,welcome_text,description_text,end_text);
+        VBox title_vbox = new VBox(40,welcome_text,description_text,end_text);
         title_vbox.setAlignment(Pos.CENTER);
         HBox button_hbox = new HBox(start_button);
         button_hbox.setAlignment(Pos.CENTER);
+        button_hbox.setPadding(new Insets(50));
 
         //root pane
         BorderPane root_scene1 = new BorderPane();
