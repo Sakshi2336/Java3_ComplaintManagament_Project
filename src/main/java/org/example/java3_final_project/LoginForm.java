@@ -36,11 +36,22 @@ public class LoginForm extends Application {
         Text message_text = new Text();
         message_text.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,15));
 
-        //text for scene 1
-        //root pane for scene 1
-        Text text = new Text("Welcome Screen\nScene 1 is working!");
+        //scene 1 - welcome page
+        Text welcome_text = new Text("Welcome to the Apartment Complaint Management System");
+        Text description_text = new Text("Welcome to the Apartment Complaint Management System (ACMS), " +
+                "your essential tool for efficiently handling tenant complaints. " +
+                "Designed specifically for apartment managers, this application streamlines " +
+                "the process of logging, tracking, and resolving complaints, ensuring that " +
+                "every issue is addressed in a timely manner.");
+        Text end_text = new Text("Join us in transforming the way you manage apartment complaints. " +
+                "Your first step towards streamlined operations begin here!");
+        Button start_button = new Button("Let's Get Started!");
+        VBox title_vbox = new VBox(20,welcome_text,description_text,end_text);
+        HBox button_hbox = new HBox(start_button);
+        button_hbox.setAlignment(Pos.CENTER);
         BorderPane root_scene1 = new BorderPane();
-        root_scene1.setCenter(text);
+        root_scene1.setCenter(title_vbox);
+        root_scene1.setBottom(button_hbox);
         scene1 = new Scene(root_scene1,600,600);
 
         //Labels for username,password,server location and database name
