@@ -175,6 +175,9 @@ public class LoginForm extends Application {
             }
         }else{
             System.out.println("File does not exits!");
+            if(file.createNewFile()){
+                System.out.println("File is created " + file.getName());
+            }
         }
 
     }
