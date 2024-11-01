@@ -1,5 +1,6 @@
 package org.example.java3_final_project;
 
+import javafx.animation.ScaleTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -18,6 +19,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -47,13 +49,25 @@ public class LoginForm extends Application {
                 "\t  \t every issue is addressed in a timely manner.");
         Text end_text = new Text("Join us in transforming the way you manage apartment complaints.\n" +
                 "\tYour first step towards streamlined operations begin here!");
+
+
         Button start_button = new Button("Let's Get Started!");
+        start_button.setFont(Font.font("Arial", FontWeight.NORMAL, 30));
+
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(5), start_button);
+        scaleTransition.setFromX(0.5);
+        scaleTransition.setFromY(0.5);
+        scaleTransition.setToX(1);
+        scaleTransition.setToY(1);
+        scaleTransition.setCycleCount(1);
+
+        scaleTransition.play();
 
         //font styling
         // Font styling
         welcome_text.setFont(Font.font("Arial", FontWeight.BOLD, 36));
-        description_text.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
-        end_text.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
+        description_text.setFont(Font.font("Arial", FontWeight.NORMAL, 25));
+        end_text.setFont(Font.font("Arial", FontWeight.NORMAL, 25));
 
         // Set text color using Color object
         welcome_text.setFill(Color.web("#2C3E50"));
