@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -53,8 +54,13 @@ public class LoginForm extends Application {
         description_text.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
         end_text.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
 
+        // Set text color using Color object
+        welcome_text.setFill(Color.web("#2C3E50"));
+        description_text.setFill(Color.web("#2C3E50"));
+        end_text.setFill(Color.web("#2C3E50"));
+
         //sub layout
-        VBox title_vbox = new VBox(20,welcome_text,description_text,end_text);
+        VBox title_vbox = new VBox(30,welcome_text,description_text,end_text);
         title_vbox.setAlignment(Pos.CENTER);
         HBox button_hbox = new HBox(start_button);
         button_hbox.setAlignment(Pos.CENTER);
@@ -63,7 +69,7 @@ public class LoginForm extends Application {
         BorderPane root_scene1 = new BorderPane();
         root_scene1.setCenter(title_vbox);
         root_scene1.setBottom(button_hbox);
-        scene1 = new Scene(root_scene1,900,600);
+        scene1 = new Scene(root_scene1,1100,600);
 
         //Labels for username,password,server location and database name
         Label username_label = new Label("Username:");
