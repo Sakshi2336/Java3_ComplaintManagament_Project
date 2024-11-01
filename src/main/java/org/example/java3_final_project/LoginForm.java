@@ -48,10 +48,10 @@ public class LoginForm extends Application {
         Button start_button = new Button("Let's Get Started!");
 
         //font styling
-        Font font = Font.font("Arial",FontWeight.MEDIUM,FontPosture.REGULAR,15);
-        welcome_text.setFont(font);
-        description_text.setFont(font);
-        end_text.setFont(font);
+        // Font styling
+        welcome_text.setFont(Font.font("Arial", FontWeight.BOLD, 36));
+        description_text.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
+        end_text.setFont(Font.font("Arial", FontWeight.NORMAL, 16));
 
         //sub layout
         VBox title_vbox = new VBox(20,welcome_text,description_text,end_text);
@@ -63,7 +63,7 @@ public class LoginForm extends Application {
         BorderPane root_scene1 = new BorderPane();
         root_scene1.setCenter(title_vbox);
         root_scene1.setBottom(button_hbox);
-        scene1 = new Scene(root_scene1,700,600);
+        scene1 = new Scene(root_scene1,900,600);
 
         //Labels for username,password,server location and database name
         Label username_label = new Label("Username:");
@@ -145,9 +145,9 @@ public class LoginForm extends Application {
 
 
         //check that file is already exists and then try to connect
-        checkExistFile(stage,scene,scene1,message_text,file);
+        //checkExistFile(stage,scene,scene1,message_text,file);
 
-        //stage.setScene(scene1);
+        stage.setScene(scene1);
         stage.show();
 
 
@@ -182,6 +182,7 @@ public class LoginForm extends Application {
         }
 
     }
+
 
 
     //there will be method that will try to connect and if it connects then we will close the connection and create file and write to it and connect it to the database
