@@ -178,6 +178,7 @@ public class LoginForm extends Application {
             if(file.createNewFile()){
                 System.out.println("File is created " + file.getName());
             }
+            stage.setScene(LoginForm);
         }
 
     }
