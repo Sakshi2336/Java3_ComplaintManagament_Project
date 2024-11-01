@@ -38,21 +38,32 @@ public class LoginForm extends Application {
 
         //scene 1 - welcome page
         Text welcome_text = new Text("Welcome to the Apartment Complaint Management System");
-        Text description_text = new Text("Welcome to the Apartment Complaint Management System (ACMS), " +
-                "your essential tool for efficiently handling tenant complaints. " +
-                "Designed specifically for apartment managers, this application streamlines " +
-                "the process of logging, tracking, and resolving complaints, ensuring that " +
-                "every issue is addressed in a timely manner.");
+        Text description_text = new Text("Welcome to the Apartment Complaint Management System (ACMS), \n" +
+                "\t your essential tool for efficiently handling tenant complaints.\n" +
+                "Designed specifically for apartment managers, this application streamlines\n" +
+                "the process of logging, tracking, and resolving complaints, ensuring that\n" +
+                "\t  \t every issue is addressed in a timely manner.");
         Text end_text = new Text("Join us in transforming the way you manage apartment complaints. " +
                 "Your first step towards streamlined operations begin here!");
         Button start_button = new Button("Let's Get Started!");
+
+        //font styling
+        Font font = Font.font("Arial",FontWeight.MEDIUM,FontPosture.REGULAR,15);
+        welcome_text.setFont(font);
+        description_text.setFont(font);
+        end_text.setFont(font);
+
+        //sub layout
         VBox title_vbox = new VBox(20,welcome_text,description_text,end_text);
+        title_vbox.setAlignment(Pos.CENTER);
         HBox button_hbox = new HBox(start_button);
         button_hbox.setAlignment(Pos.CENTER);
+
+        //root pane
         BorderPane root_scene1 = new BorderPane();
         root_scene1.setCenter(title_vbox);
         root_scene1.setBottom(button_hbox);
-        scene1 = new Scene(root_scene1,600,600);
+        scene1 = new Scene(root_scene1,700,600);
 
         //Labels for username,password,server location and database name
         Label username_label = new Label("Username:");
@@ -135,7 +146,8 @@ public class LoginForm extends Application {
 
         //check that file is already exists and then try to connect
         checkExistFile(stage,scene,scene1,message_text,file);
-        
+
+        stage.setScene(scene1);
         stage.show();
 
 
