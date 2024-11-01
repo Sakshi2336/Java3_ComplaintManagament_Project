@@ -147,7 +147,7 @@ public class LoginForm extends Application {
         //check that file is already exists and then try to connect
         checkExistFile(stage,scene,scene1,message_text,file);
 
-        stage.setScene(scene1);
+        //stage.setScene(scene1);
         stage.show();
 
 
@@ -184,6 +184,7 @@ public class LoginForm extends Application {
     }
 
 
+    //there will be method that will try to connect and if it connects then we will close the connection and create file and write to it and connect it to the database
 
     public static void main(String[] args) {
         launch();
