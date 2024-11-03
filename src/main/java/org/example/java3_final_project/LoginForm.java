@@ -188,35 +188,7 @@ public class LoginForm extends Application {
 
     }
 
-
-    private void checkExistFile(Stage stage, Scene LoginForm, Scene WelcomePage, Text message, File file) throws Exception {
-        if(file.exists()){
-            CredentialReader.readCredential();
-            if((!CredentialReader.getDbUser().isEmpty())&&(!CredentialReader.getDbPass().isEmpty())&&(!CredentialReader.getDbName().isEmpty())&&(!CredentialReader.getSERVER().isEmpty())){
-                Database db1 = Database.getInstance();
-                System.out.println("Database class is working!");
-                if(Database.isConnection){
-                    System.out.println("Connection variable is also working!");
-                    stage.setScene(WelcomePage);
-                }else{
-                    message.setText("Please fill correct information!");
-                    stage.setScene(LoginForm);
-                    System.out.println("Is this working?");
-                }
-            }else{
-                System.out.println("Main else block working!");
-                message.setText("Please fill out all necessary information to connect to the database!");
-                stage.setScene(LoginForm);
-            }
-        }else{
-            System.out.println("File does not exits!");
-            if(file.createNewFile()){
-                System.out.println("File is created " + file.getName());
-            }
-            stage.setScene(LoginForm);
-        }
-
-    }
+    
 
 
     /**
@@ -235,7 +207,6 @@ public class LoginForm extends Application {
             connection.close(); //closing this temporary connection
         }catch (Exception e){
             e.printStackTrace();
-            stage.setScene(scene);
             message_text.setText("Failed to create connection!Try again.");
         }
 
@@ -251,18 +222,11 @@ public class LoginForm extends Application {
                 ex.printStackTrace();
             }
 
+            //after writing to the file i will create Database class with
+            //correct credentials only
+            Database database = Database.getInstance();
+            stage.setScene(scene1);
         }
-    }
-
-    public void writeCredentials(){
-        /*here I do not need to check if file exists or not as buffered writer
-        check it by itself and if it does not exist then it will create for me
-        in current working directory but here the thing is right now i am in
-        org.example directory but when I tried to use buffered writer with file
-        which not exists then it is creating file into root directory*/
-
-
-
     }
 
 
