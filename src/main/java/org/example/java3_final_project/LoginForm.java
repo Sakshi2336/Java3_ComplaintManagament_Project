@@ -33,13 +33,18 @@ public class LoginForm extends Application {
 
     //adding another scene to navigate to when connection created
     Scene scene,scene1;
+    //file
+    File file = new File("credential.txt");
+
+    //Text node for showing message that input field is empty
+    Text message_text = new Text();
+
+    Stage stage;
+
     @Override
     public void start(Stage stage) throws Exception {
 
-
-        //Text node for showing message that input field is empty
-        Text message_text = new Text();
-        message_text.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,15));
+        this.stage = stage;
 
         //scene 1 - welcome page
         Text welcome_text = new Text("Welcome to the Apartment Complaint Management System");
@@ -108,8 +113,7 @@ public class LoginForm extends Application {
         TextField server_textfield = new TextField();
         TextField database_textfield = new TextField();
 
-        //file
-        File file = new File("credential.txt");
+
 
         //connection button
         Button save_button = new Button("Save");
@@ -228,9 +232,35 @@ public class LoginForm extends Application {
                     getConnection("jdbc:mysql://"+server+"/" + dbName +
                                     "?serverTimezone=UTC", userName, password);
             isConnect = true;
+            connection.close(); //closing this temporary connection
         }catch (Exception e){
             e.printStackTrace();
+
         }
+
+        if(isConnect){//if connect is established then I will write into file
+            try {
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+                bufferedWriter.write(userName + "\n");
+                bufferedWriter.write(password + "\n");
+                bufferedWriter.write(server + "\n");
+                bufferedWriter.write(dbName + "\n");
+                bufferedWriter.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public void writeCredentials(){
+        /*here I do not need to check if file exists or not as buffered writer
+        check it by itself and if it does not exist then it will create for me
+        in current working directory but here the thing is right now i am in
+        org.example directory but when I tried to use buffered writer with file
+        which not exists then it is creating file into root directory*/
+
+
+
     }
 
 
