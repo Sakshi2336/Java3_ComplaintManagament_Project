@@ -34,7 +34,7 @@ public class LoginForm extends Application {
     //adding another scene to navigate to when connection created
     Scene scene,scene1;
     //file
-    File file = new File("credential.txt");
+    File file = new File("try.txt");
 
     //Text node for showing message that input field is empty
     Text message_text = new Text();
@@ -145,7 +145,8 @@ public class LoginForm extends Application {
 
         scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
-        stage.setScene(scene);
+        //stage.setScene(scene);
+        checkForFile();
         stage.show();
     }
 
@@ -187,6 +188,17 @@ public class LoginForm extends Application {
             //correct credentials only
             Database database = Database.getInstance();
             stage.setScene(scene1);
+        }
+    }
+
+    //now I need to create method that will directly launch welcome page
+    //if credential.txt file exits
+    public void checkForFile(){
+        if(file.exists()){
+            Database database = Database.getInstance();
+            stage.setScene(scene1);
+        }else{
+            stage.setScene(scene);
         }
     }
 
