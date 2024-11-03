@@ -113,43 +113,12 @@ public class LoginForm extends Application {
         TextField server_textfield = new TextField();
         TextField database_textfield = new TextField();
 
-
-
-        //connection button
-        Button save_button = new Button("Save");
-        save_button.setOnAction(e->{
-
-            //Checking that user fill every fields
-            if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()){
-                message_text.setText("Please fill out necessary information");
-            }else{
-                try {
-                    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-                    bufferedWriter.write(username_textfield.getText() + "\n");
-                    bufferedWriter.write(passwordField.getText() + "\n");
-                    bufferedWriter.write(server_textfield.getText() + "\n");
-                    bufferedWriter.write(database_textfield.getText() + "\n");
-                    bufferedWriter.close();
-                    message_text.setText("Everything is Done!");
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-
-
-            }
-        });
-
         Button connection_button = new Button("Test Connection");
         connection_button.setOnAction(e->{
             if(username_textfield.getText().isEmpty() || passwordField.getText().isEmpty() || server_textfield.getText().isEmpty() || database_textfield.getText().isEmpty()) {
                 message_text.setText("Please fill out necessary information");
             }else{
-                Database db = Database.getInstance();
-                if(Database.isConnection){
-                    stage.setScene(scene1);
-                }else{
-                    message_text.setText("Failed to create the connection to the Database!");
-                }
+                checkConnection(username_textfield.getText(),passwordField.getText(),database_textfield.getText(),server_textfield.getText());
             }
 
         });
@@ -167,7 +136,7 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,save_button,connection_button,message_text);
+        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
         vBox.setAlignment(Pos.CENTER);
 
         //root pane for main scene
@@ -176,19 +145,11 @@ public class LoginForm extends Application {
 
         scene = new Scene(root, 500, 500);
         stage.setTitle("Hello!");
-
-
-
-        //check that file is already exists and then try to connect
-        //checkExistFile(stage,scene,scene1,message_text,file);
-
-        stage.setScene(scene1);
+        stage.setScene(scene);
         stage.show();
-
-
     }
 
-    
+
 
 
     /**
