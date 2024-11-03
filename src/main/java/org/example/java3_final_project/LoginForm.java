@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 
 public class LoginForm extends Application {
@@ -87,6 +88,14 @@ public class LoginForm extends Application {
         root_scene1.setBottom(button_hbox);
         scene1 = new Scene(root_scene1,1100,600);
 
+
+        /**
+         * This is Login page
+         * Here now I will change code like I will first create method that will
+         * first try to connect to the database and if will be successful then only
+         * I will write that information into credential file and make Database
+         * object with correct credentials
+         */
         //Labels for username,password,server location and database name
         Label username_label = new Label("Username:");
         Label password_label = new Label("Password:");
@@ -206,8 +215,24 @@ public class LoginForm extends Application {
     }
 
 
+    /**
+     * there will be method that will try to connect and if it connects then
+     * I will close the connection and create file and write to it and
+     * connect it to the database
+     */
 
-    //there will be method that will try to connect and if it connects then we will close the connection and create file and write to it and connect it to the database
+    public void checkConnection(String userName,String password,String dbName,String server){
+        boolean isConnect = false;
+        try{
+            Connection connection = DriverManager.
+                    getConnection("jdbc:mysql://"+server+"/" + dbName +
+                                    "?serverTimezone=UTC", userName, password);
+            isConnect = true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     public static void main(String[] args) {
         launch();
