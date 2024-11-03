@@ -235,7 +235,8 @@ public class LoginForm extends Application {
             connection.close(); //closing this temporary connection
         }catch (Exception e){
             e.printStackTrace();
-
+            stage.setScene(scene);
+            message_text.setText("Failed to create connection!Try again.");
         }
 
         if(isConnect){//if connect is established then I will write into file
@@ -249,6 +250,7 @@ public class LoginForm extends Application {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+
         }
     }
 
