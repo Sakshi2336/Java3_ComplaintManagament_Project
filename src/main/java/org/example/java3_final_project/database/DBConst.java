@@ -7,6 +7,7 @@ public class DBConst {
     public static final String COMPLAINT_COLUMN_ID = "complaint_id";
     public static final String COMPLAINT_COLUMN_DESCRIPTION = "description";
     public static final String COMPLAINT_COLUMN_SUBMIT_TIME = "submit_time";
+    public static final String COMPLAINT_COLUMN_STATUS = "status";
     public static final String COMPLAINT_COLUMN_USER_ID = "user_id";
     public static final String COMPLAINT_COLUMN_FLAT_ID = "flat_id";
 
@@ -53,6 +54,43 @@ public class DBConst {
 
 
     //Table create statement
+
+    public static final String CREATE_TABLE_COMPLAINT =
+            "CREATE TABLE " + TABLE_COMPLAINT + " (" +
+                    COMPLAINT_COLUMN_ID + " INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                    COMPLAINT_COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
+                    COMPLAINT_COLUMN_SUBMIT_TIME + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+                    COMPLAINT_COLUMN_STATUS + " VARCHAR(50) CHECK (" + COMPLAINT_COLUMN_STATUS + " IN ('open', 'in process', 'resolved')), " +
+                    COMPLAINT_COLUMN_USER_ID + " INT, " +
+                    COMPLAINT_COLUMN_FLAT_ID + " INT, " +
+                    "FOREIGN KEY(" + COMPLAINT_COLUMN_USER_ID + ")" +
+                    "REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID +")," +
+                    "FOREIGN KEY(" + COMPLAINT_COLUMN_FLAT_ID + ")" +
+                    "REFERENCES " + TABLE_FLAT + "(" + FLAT_COLUMN_NUM +"));";
+
+    public static final String CREATE_TABLE_CATEGORY =
+            "CREATE TABLE " + TABLE_CATEGORY + " (" +
+                    CATEGORY_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, " +
+                    CATEGORY_COLUMN_NAME + " VARCHAR(50), " +
+                    "PRIMARY KEY(" + CATEGORY_COLUMN_ID +"));";
+
+
+    public static final String CREATE_TABLE_USER =
+            "CREATE TABLE " + TABLE_USER + " (" +
+                    USER_COLUMN_ID + " INT NOT NULL AUTO_INCREMENT, " +
+                    USER_COLUMN_FIRST_NAME + " VARCHAR(50) NOT NULL, " +
+                    USER_COLUMN_LAST_NAME + " VARCHAR(50) NOT NULL, " +
+                    USER_COLUMN_USER_TYPE_ID + " INT, " +
+                    "PRIMARY KEY(" + USER_COLUMN_ID + "), " +
+                    "FOREIGN KEY (" + USER_COLUMN_USER_TYPE_ID + ")" +
+                    " REFERENCES " + TABLE_USER_TYPE + "(" + USER_TYPE_COLUMN_ID +"));";
+
+
+    public static final String CREATE_TABLE_USER_TYPE =
+            "CREATE TABLE " + TABLE_USER_TYPE + " (" +
+                    USER_TYPE_COLUMN_ID + " INT NOT NULL AUTO_INCREMENT, " +
+                    USER_TYPE_COLUMN_NAME + " VARCHAR(50) NOT NULL, " +
+                    "PRIMARY KEY(" + USER_TYPE_COLUMN_ID +"));";
 
 
 }
