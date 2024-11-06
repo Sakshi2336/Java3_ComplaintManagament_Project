@@ -1,11 +1,9 @@
-package org.example.java3_final_project;
+package org.example.java3_final_project.database;
 
-import javafx.scene.Scene;
+import org.example.java3_final_project.CredentialReader;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
-import static org.example.java3_final_project.CredentialReader.getDbUser;
 
 public class Database {
 

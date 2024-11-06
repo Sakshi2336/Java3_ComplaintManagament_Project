@@ -7,4 +7,6 @@ module org.example.java3_final_project {
 
     opens org.example.java3_final_project to javafx.fxml;
     exports org.example.java3_final_project;
+    exports org.example.java3_final_project.database;
+    opens org.example.java3_final_project.database to javafx.fxml;
 }
