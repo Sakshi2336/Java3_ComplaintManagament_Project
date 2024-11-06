@@ -64,15 +64,25 @@ public class DBConst {
                     COMPLAINT_COLUMN_USER_ID + " INT, " +
                     COMPLAINT_COLUMN_FLAT_ID + " INT, " +
                     "FOREIGN KEY(" + COMPLAINT_COLUMN_USER_ID + ")" +
-                    "REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID +")," +
+                    " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID +")," +
                     "FOREIGN KEY(" + COMPLAINT_COLUMN_FLAT_ID + ")" +
-                    "REFERENCES " + TABLE_FLAT + "(" + FLAT_COLUMN_NUM +"));";
+                    " REFERENCES " + TABLE_FLAT + "(" + FLAT_COLUMN_NUM +"));";
 
     public static final String CREATE_TABLE_CATEGORY =
             "CREATE TABLE " + TABLE_CATEGORY + " (" +
                     CATEGORY_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, " +
                     CATEGORY_COLUMN_NAME + " VARCHAR(50), " +
                     "PRIMARY KEY(" + CATEGORY_COLUMN_ID +"));";
+
+
+    public static final String CREATE_TABLE_COMPLAINT_CATEGORY =
+            "CREATE TABLE " + TABLE_COMPLAINT_CATEGORY + " (" +
+                    COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID + " INT, " +
+                    COMPLAINT_CATEGORY_COLUMN_CATEGORY_ID + " INT, " +
+                    "FOREIGN KEY(" + COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID + ")" +
+                    " REFERENCES " + TABLE_COMPLAINT + "(" + COMPLAINT_COLUMN_ID + ")" +
+                    "FOREIGN KEY(" + COMPLAINT_CATEGORY_COLUMN_CATEGORY_ID + ")" +
+                    " REFERENCES " + TABLE_CATEGORY + "(" + CATEGORY_COLUMN_ID +"));";
 
 
     public static final String CREATE_TABLE_USER =
@@ -91,6 +101,25 @@ public class DBConst {
                     USER_TYPE_COLUMN_ID + " INT NOT NULL AUTO_INCREMENT, " +
                     USER_TYPE_COLUMN_NAME + " VARCHAR(50) NOT NULL, " +
                     "PRIMARY KEY(" + USER_TYPE_COLUMN_ID +"));";
+
+
+    public static final String CREATE_TABLE_FLAT =
+            "CREATE TABLE " + TABLE_FLAT + " (" +
+                    FLAT_COLUMN_NUM + " INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                    FLAT_COLUMN_DESCRIPTION + " VARCHAR(255), " +
+                    FLAT_COLUMN_HALL + " INT NOT NULL, " +
+                    FLAT_COLUMN_BATH + " INT NOT NULL, " +
+                    FLAT_COLUMN_KITCHEN + " INT NOT NULL" + ");";
+
+    public static final String CREATE_TABLE_FLAT_USER =
+            "CREATE TABLE " + TABLE_FLAT_USER + " (" +
+                    FLAT_USER_COLUMN_USER_ID + " INT, " +
+                    FLAT_USER_COLUMN_FLAT_ID + " INT, " +
+                    "FOREIGN KEY(" + FLAT_USER_COLUMN_USER_ID + ")" +
+                    " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID + ")" +
+                    "FOREIGN KEY(" + FLAT_USER_COLUMN_FLAT_ID + ")" +
+                    " REFERENCES " + TABLE_FLAT + "(" + FLAT_COLUMN_NUM +"));";
+
 
 
 }
