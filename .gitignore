@@ -246,3 +246,7 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,intellij,gradle
 credential.txt
 .idea/.name
+
+.idea/misc.xml
+try.txt
+
