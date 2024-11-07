@@ -105,7 +105,7 @@ public class DBConst {
 
     public static final String CREATE_TABLE_FLAT =
             "CREATE TABLE " + TABLE_FLAT + " (" +
-                    FLAT_COLUMN_NUM + " INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
+                    FLAT_COLUMN_NUM + " INT NOT NULL PRIMARY KEY, " +
                     FLAT_COLUMN_DESCRIPTION + " VARCHAR(255), " +
                     FLAT_COLUMN_HALL + " INT NOT NULL, " +
                     FLAT_COLUMN_BATH + " INT NOT NULL, " +
