@@ -80,7 +80,7 @@ public class DBConst {
                     COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID + " INT, " +
                     COMPLAINT_CATEGORY_COLUMN_CATEGORY_ID + " INT, " +
                     "FOREIGN KEY(" + COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID + ")" +
-                    " REFERENCES " + TABLE_COMPLAINT + "(" + COMPLAINT_COLUMN_ID + ")" +
+                    " REFERENCES " + TABLE_COMPLAINT + "(" + COMPLAINT_COLUMN_ID + ")," +
                     "FOREIGN KEY(" + COMPLAINT_CATEGORY_COLUMN_CATEGORY_ID + ")" +
                     " REFERENCES " + TABLE_CATEGORY + "(" + CATEGORY_COLUMN_ID +"));";
 
@@ -116,7 +116,7 @@ public class DBConst {
                     FLAT_USER_COLUMN_USER_ID + " INT, " +
                     FLAT_USER_COLUMN_FLAT_ID + " INT, " +
                     "FOREIGN KEY(" + FLAT_USER_COLUMN_USER_ID + ")" +
-                    " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID + ")" +
+                    " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID + ")," +
                     "FOREIGN KEY(" + FLAT_USER_COLUMN_FLAT_ID + ")" +
                     " REFERENCES " + TABLE_FLAT + "(" + FLAT_COLUMN_NUM +"));";
 
