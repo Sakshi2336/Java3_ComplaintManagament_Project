@@ -1,4 +1,4 @@
-package org.example.java3_final_project;
+package org.example.java3_final_project.MenuPage;
 
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;

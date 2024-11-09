@@ -1,7 +1,6 @@
-package org.example.java3_final_project;
+package org.example.java3_final_project.database;
 
 import java.io.File;
-import java.sql.Connection;
 import java.util.Scanner;
 
 public class CredentialReader{

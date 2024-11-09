@@ -1,4 +1,4 @@
-package org.example.java3_final_project;
+package org.example.java3_final_project.MenuPage;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

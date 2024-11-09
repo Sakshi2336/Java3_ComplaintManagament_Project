@@ -1,7 +1,5 @@
 package org.example.java3_final_project.database;
 
-import org.example.java3_final_project.CredentialReader;
-
 import java.sql.*;
 
 public class Database {

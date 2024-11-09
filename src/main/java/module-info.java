@@ -9,4 +9,6 @@ module org.example.java3_final_project {
     exports org.example.java3_final_project;
     exports org.example.java3_final_project.database;
     opens org.example.java3_final_project.database to javafx.fxml;
+    exports org.example.java3_final_project.MenuPage;
+    opens org.example.java3_final_project.MenuPage to javafx.fxml;
 }
