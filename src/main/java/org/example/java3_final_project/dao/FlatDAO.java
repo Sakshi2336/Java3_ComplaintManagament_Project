@@ -7,5 +7,4 @@ import java.util.ArrayList;
 public interface FlatDAO {
 
     public ArrayList<Flat> getAllFlat();
-    public void deleteFlat(String flatID);
 }

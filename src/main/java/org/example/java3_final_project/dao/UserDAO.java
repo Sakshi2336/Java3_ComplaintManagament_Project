@@ -6,10 +6,14 @@ import java.util.ArrayList;
 
 public interface UserDAO {
 
-    //CRUD for any user
+    //Show all users
     public ArrayList<User> getAllUser();
-    public User getUser(int userID);
-    public void updateUser(User user);
-    public void deleteUser(int userID);
-    public void createUser(User user);
+
+    /**
+     * This method will get user id and I will store it into complaint table as user_id
+     * when user enters name in add complaint form
+     * @param first_name tenant input in add form
+     * @return User with user_id which has that first name
+     */
+    public User getUserID(String first_name);
 }

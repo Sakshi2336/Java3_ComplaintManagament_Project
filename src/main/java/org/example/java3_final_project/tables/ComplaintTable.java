@@ -38,6 +38,11 @@ public class ComplaintTable implements ComplaintDAO {
     }
 
     @Override
+    public void openComplaints(String status) {
+        //TODO need to create method body
+    }
+
+    @Override
     public Complaint getComplaint(int complaintID) {
         String query = "SELECT * FROM " + TABLE_COMPLAINT + " WHERE " +
                 COMPLAINT_COLUMN_ID + " = " + complaintID;
