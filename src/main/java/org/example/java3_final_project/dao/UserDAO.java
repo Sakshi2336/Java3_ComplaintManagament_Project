@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface UserDAO {
 
+    //CRUD for any user
     public ArrayList<User> getAllUser();
     public User getUser(int userID);
     public void updateUser(User user);
