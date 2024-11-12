@@ -15,6 +15,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static javafx.collections.FXCollections.*;
+
 public class addComplaintForm extends Application {
     @Override
     public void start(Stage stage) throws Exception {
@@ -45,8 +47,33 @@ public class addComplaintForm extends Application {
 
         Label flatNumber = new Label("Flat Number:");
         tenantPane.add(flatNumber, 0, 2);
-        TextField flatNumberInput = new TextField();
-        tenantPane.add(flatNumberInput, 1, 2);
+        ObservableList<String> flatNumbers = FXCollections.observableArrayList
+           (  "102",
+                   "104",
+                   "106",
+                   "108",
+                   "110",
+                   "112",
+                   "114",
+                   "116",
+                   "118",
+                   "120",
+                   "122",
+                   "124",
+                   "126",
+                   "128",
+                   "130",
+                   "132",
+                   "134",
+                   "136",
+                   "138",
+                   "140",
+                   "142"
+           )
+
+        ;
+        ComboBox<String> flatNumbersComboBox = new ComboBox<>(flatNumbers);
+        tenantPane.add(flatNumbersComboBox, 1, 2);
 
         Label contactInfo = new Label("Contact Info:");
         tenantPane.add(contactInfo, 0, 3);
@@ -63,7 +90,7 @@ public class addComplaintForm extends Application {
 
         Label complaintCategory = new Label("Complaint Category:");
         complaintPane.add(complaintCategory, 0, 1);
-        ObservableList<String> categories = FXCollections.observableArrayList(
+        ObservableList<String> categories = observableArrayList(
                    "Maintenance",
                         "Noise Issue",
                         "Security",
@@ -90,7 +117,7 @@ public class addComplaintForm extends Application {
 
         Label assignedManager = new Label("Assigned Manager:");
         complaintPane.add(assignedManager, 0, 4);
-        ObservableList<String> managers = FXCollections.observableArrayList(
+        ObservableList<String> managers = observableArrayList(
                 "Manager 1",
                      "Manager 2");
         ComboBox<String> managerComboBox = new ComboBox<>(managers);
