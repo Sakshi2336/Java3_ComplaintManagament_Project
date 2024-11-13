@@ -21,5 +21,4 @@ public interface UserDAO {
     //get manager(user_type) full name
     public ArrayList<String> getManagerFullName();
 
-    public ArrayList<String> getTenantName();
 }

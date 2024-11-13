@@ -13,9 +13,11 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Category;
+import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.Flat;
 import org.example.java3_final_project.pojo.User;
 import org.example.java3_final_project.tables.CategoryTable;
+import org.example.java3_final_project.tables.ComplaintTable;
 import org.example.java3_final_project.tables.FlatTable;
 import org.example.java3_final_project.tables.UserTable;
 
@@ -45,8 +47,8 @@ public class AddComplaintTab extends Tab {
         //Now here I need to check if user entered tenant name is valid or not
         Label tenantName = new Label("Tenant Name:");
         tenantPane.add(tenantName, 0, 1);
-        ComboBox<String> tenant_Combo = new ComboBox<>();
-        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getTenantName()));
+        ComboBox<User> tenant_Combo = new ComboBox<>();
+        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
         tenantPane.add(tenant_Combo, 1, 1);
 
         //Flat number label and combo box where calling getAllFlat method
@@ -106,10 +108,20 @@ public class AddComplaintTab extends Tab {
 
         //message text
         Text message_text = new Text();
+        ComplaintTable complaintTable = new ComplaintTable();
 
         //Buttons and hBox to put these buttons
         HBox buttons = new HBox();
         Button submitButton = new Button("Submit");
+        submitButton.setOnAction(e->{
+            Complaint complaint = new Complaint(
+                    descriptionText.getText(),
+                    statusComboBox.getSelectionModel().getSelectedItem(),
+                    tenant_Combo.getSelectionModel().getSelectedItem().getId(),
+                    comboFlat.getSelectionModel().getSelectedItem().getFlat_num()
+            );
+            complaintTable.createComplaint(complaint);
+        });
         buttons.getChildren().addAll(submitButton,message_text);
 
         root.setTop(tenantPane);
