@@ -5,6 +5,7 @@ import org.example.java3_final_project.dao.ComplaintDAO;
 import org.example.java3_final_project.database.Database;
 import org.example.java3_final_project.pojo.Complaint;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -98,4 +99,6 @@ public class ComplaintTable implements ComplaintDAO {
             e.printStackTrace();
         }
     }
+
+
 }

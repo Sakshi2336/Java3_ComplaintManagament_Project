@@ -6,6 +6,5 @@ import java.util.ArrayList;
 
 public interface ComplaintCategoryDAO {
 
-    //create new complaint-category link
-    public void createComplaintCategory(ComplaintCategory complaintCategory);
+    public int countComplaintByCategory(int category);
 }

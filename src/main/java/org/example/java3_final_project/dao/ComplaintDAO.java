@@ -14,4 +14,5 @@ public interface ComplaintDAO {
     public void updateComplaint(Complaint complaint);
     public void createComplaint(Complaint complaint);
 
+
 }
