@@ -33,6 +33,7 @@ public class AddComplaintTab extends Tab {
         BorderPane root = new BorderPane();
         GridPane tenantPane = new GridPane();
 
+        UserTable userTable = new UserTable();
 
         //First tenant information heading
         Text tenantInfoHeading = new Text("Tenant Info");
@@ -41,10 +42,12 @@ public class AddComplaintTab extends Tab {
 
 
         //Tenant name label and text field
+        //Now here I need to check if user entered tenant name is valid or not
         Label tenantName = new Label("Tenant Name:");
         tenantPane.add(tenantName, 0, 1);
-        TextField tenantNameInput = new TextField();
-        tenantPane.add(tenantNameInput, 1, 1);
+        ComboBox<String> tenant_Combo = new ComboBox<>();
+        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getTenantName()));
+        tenantPane.add(tenant_Combo, 1, 1);
 
         //Flat number label and combo box where calling getAllFlat method
         Label flatNumber = new Label("Flat Number:");
@@ -95,16 +98,19 @@ public class AddComplaintTab extends Tab {
         //Assigned manager label and combo box
         Label assignedManager = new Label("Assigned Manager:");
         complaintPane.add(assignedManager, 0, 4);
-        UserTable userTable = new UserTable();
         ComboBox<String> managerComboBox = new ComboBox<>();
         managerComboBox.setItems(FXCollections.observableArrayList(userTable.getManagerFullName()));
         managerComboBox.setValue("Select Manager");
         complaintPane.add(managerComboBox, 1, 4);
 
+
+        //message text
+        Text message_text = new Text();
+
         //Buttons and hBox to put these buttons
         HBox buttons = new HBox();
         Button submitButton = new Button("Submit");
-        buttons.getChildren().addAll(submitButton);
+        buttons.getChildren().addAll(submitButton,message_text);
 
         root.setTop(tenantPane);
         root.setCenter(complaintPane);
