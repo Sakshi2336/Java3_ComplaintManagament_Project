@@ -36,29 +36,30 @@ public class AddComplaintTab extends Tab {
         GridPane tenantPane = new GridPane();
 
         UserTable userTable = new UserTable();
+        ComplaintTable complaintTable = new ComplaintTable();
+        FlatTable flatTable = new FlatTable();
 
         //First tenant information heading
         Text tenantInfoHeading = new Text("Tenant Info");
         tenantInfoHeading.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,30));
-        tenantPane.add(tenantInfoHeading, 0, 0);
+        tenantPane.add(tenantInfoHeading,15,2);
 
 
         //Tenant name label and text field
         //Now here I need to check if user entered tenant name is valid or not
         Label tenantName = new Label("Tenant Name:");
-        tenantPane.add(tenantName, 0, 1);
+        tenantPane.add(tenantName, 10, 4);
         ComboBox<User> tenant_Combo = new ComboBox<>();
         tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
-        tenantPane.add(tenant_Combo, 1, 1);
+        tenantPane.add(tenant_Combo, 13, 4);
 
         //Flat number label and combo box where calling getAllFlat method
         Label flatNumber = new Label("Flat Number:");
-        FlatTable flatTable = new FlatTable();
         ComboBox<Flat> comboFlat = new ComboBox<>();
         comboFlat.setItems(FXCollections.observableArrayList(flatTable.getAllFlat()));
         comboFlat.getSelectionModel().select(0);
-        tenantPane.add(flatNumber, 0, 2);
-        tenantPane.add(comboFlat, 1, 2);
+        tenantPane.add(flatNumber, 10, 5);
+        tenantPane.add(comboFlat, 13, 5);
 
         //sub grid pane for complaint information
         GridPane complaintPane = new GridPane();
@@ -106,9 +107,7 @@ public class AddComplaintTab extends Tab {
         complaintPane.add(managerComboBox, 1, 4);
 
 
-        //message text
-        Text message_text = new Text();
-        ComplaintTable complaintTable = new ComplaintTable();
+
 
         //Buttons and hBox to put these buttons
         HBox buttons = new HBox();
@@ -122,7 +121,7 @@ public class AddComplaintTab extends Tab {
             );
             complaintTable.createComplaint(complaint);
         });
-        buttons.getChildren().addAll(submitButton,message_text);
+        buttons.getChildren().addAll(submitButton);
 
         root.setTop(tenantPane);
         root.setCenter(complaintPane);
