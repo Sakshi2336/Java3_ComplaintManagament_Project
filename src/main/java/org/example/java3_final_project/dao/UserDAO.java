@@ -18,5 +18,5 @@ public interface UserDAO {
     public User getUserID(String first_name);
 
     //get manager(user_type) full name
-    public ArrayList<User> getManagerFullName();
+    public ArrayList<String> getManagerFullName();
 }

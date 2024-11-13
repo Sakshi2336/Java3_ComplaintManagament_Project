@@ -16,7 +16,7 @@ public class UserTable implements UserDAO {
 
     Database db = Database.getInstance();
 
-    ArrayList<User> managers;
+    ArrayList<String> managers;
     @Override
     public ArrayList<User> getAllUser() {
         return null;
@@ -28,21 +28,20 @@ public class UserTable implements UserDAO {
     }
 
     @Override
-    public ArrayList<User> getManagerFullName() {
-        String query = "SELECT CONCAT("+USER_COLUMN_FIRST_NAME+", ' ', "+USER_COLUMN_LAST_NAME+") AS full_name FROM "+TABLE_USER + "WHERE "+USER_COLUMN_USER_TYPE_ID + "= 1;";
+    public ArrayList<String> getManagerFullName() {
+        String query = "SELECT CONCAT("+USER_COLUMN_FIRST_NAME+", ' ', "+USER_COLUMN_LAST_NAME+") AS full_name FROM "+TABLE_USER + " WHERE "+USER_COLUMN_USER_TYPE_ID+ " = 1;";
         // SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM `user` WHERE user_type_id = 1;
         managers = new ArrayList<>();
         try{
             Statement getCoins = db.getConnection().createStatement();
             ResultSet resultSet = getCoins.executeQuery(query);
 
-            while(resultSet.next()){
-                managers.add(new User(
-                        resultSet.getInt(USER_COLUMN_ID),
-                        resultSet.getString(USER_COLUMN_FIRST_NAME),
-                        resultSet.getString(USER_COLUMN_LAST_NAME),
-                        resultSet.getInt(USER_COLUMN_USER_TYPE_ID)
-                ));
+            while (resultSet.next()) {
+                // Here I want to fetch the 'full_name' instead of first and last names
+                String fullName = resultSet.getString("full_name");
+
+                // Add the User to the list
+                managers.add(fullName);
             }
         }catch(Exception e){
             e.printStackTrace();

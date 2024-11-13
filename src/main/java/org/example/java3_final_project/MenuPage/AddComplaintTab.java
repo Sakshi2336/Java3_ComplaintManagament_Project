@@ -14,8 +14,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Category;
 import org.example.java3_final_project.pojo.Flat;
+import org.example.java3_final_project.pojo.User;
 import org.example.java3_final_project.tables.CategoryTable;
 import org.example.java3_final_project.tables.FlatTable;
+import org.example.java3_final_project.tables.UserTable;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -93,20 +95,16 @@ public class AddComplaintTab extends Tab {
         //Assigned manager label and combo box
         Label assignedManager = new Label("Assigned Manager:");
         complaintPane.add(assignedManager, 0, 4);
-        ObservableList<String> managers = observableArrayList(
-                "Manager 1",
-                "Manager 2");
-        ComboBox<String> managerComboBox = new ComboBox<>(managers);
+        UserTable userTable = new UserTable();
+        ComboBox<String> managerComboBox = new ComboBox<>();
+        managerComboBox.setItems(FXCollections.observableArrayList(userTable.getManagerFullName()));
+        managerComboBox.setValue("Select Manager");
         complaintPane.add(managerComboBox, 1, 4);
 
+        //Buttons and hBox to put these buttons
         HBox buttons = new HBox();
-
         Button submitButton = new Button("Submit");
-//        submitButton.setOnAction(e -> {
-//            Text text = new Text("Form Successfully Submitted!");
-//        });
-        Button cancelButton = new Button("Cancel");
-        buttons.getChildren().addAll(submitButton, cancelButton);
+        buttons.getChildren().addAll(submitButton);
 
         root.setTop(tenantPane);
         root.setCenter(complaintPane);
