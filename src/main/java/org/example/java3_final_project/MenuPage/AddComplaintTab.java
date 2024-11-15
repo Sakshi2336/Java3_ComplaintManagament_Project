@@ -42,7 +42,7 @@ public class AddComplaintTab extends Tab {
         //First tenant information heading
         Text tenantInfoHeading = new Text("Tenant Info");
         tenantInfoHeading.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,30));
-        tenantPane.add(tenantInfoHeading,15,2);
+        tenantPane.add(tenantInfoHeading,0,2);
 
 
         //Tenant name label and text field
