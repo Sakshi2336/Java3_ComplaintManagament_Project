@@ -10,6 +10,7 @@ public class DBConst {
     public static final String COMPLAINT_COLUMN_STATUS = "status";
     public static final String COMPLAINT_COLUMN_USER_ID = "user_id";
     public static final String COMPLAINT_COLUMN_FLAT_ID = "flat_id";
+    public static final String COMPLAINT_COLUMN_MANAGER_ID = "manager_id";
 
     //Category table
     public static final String TABLE_CATEGORY = "category";
@@ -63,10 +64,13 @@ public class DBConst {
                     COMPLAINT_COLUMN_STATUS + " VARCHAR(50) CHECK (" + COMPLAINT_COLUMN_STATUS + " IN ('open', 'in process', 'resolved')), " +
                     COMPLAINT_COLUMN_USER_ID + " INT, " +
                     COMPLAINT_COLUMN_FLAT_ID + " INT, " +
+                    COMPLAINT_COLUMN_MANAGER_ID + " INT, " +
                     "FOREIGN KEY(" + COMPLAINT_COLUMN_USER_ID + ")" +
                     " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID +")," +
                     "FOREIGN KEY(" + COMPLAINT_COLUMN_FLAT_ID + ")" +
-                    " REFERENCES " + TABLE_FLAT + "(" + FLAT_COLUMN_NUM +"));";
+                    " REFERENCES " + TABLE_FLAT + "(" + FLAT_COLUMN_NUM +")," +
+                    "FOREIGN KEY(" + COMPLAINT_COLUMN_MANAGER_ID + ")" +
+                    " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID +"));";
 
     public static final String CREATE_TABLE_CATEGORY =
             "CREATE TABLE " + TABLE_CATEGORY + " (" +
