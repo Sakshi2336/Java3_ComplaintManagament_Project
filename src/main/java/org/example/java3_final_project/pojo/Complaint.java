@@ -7,22 +7,28 @@ public class Complaint {
     private String submit_time;
     private String status;
     private int user_id;
-    private String  flat_num;
+    private int  flat_num;
 
-    public Complaint(int id, String description, String submit_time, String status, int user_id, String flat_num) {
+    private int manager_id;
+
+    public Complaint(int id, String description, String submit_time, String status, int user_id, int flat_num,int manager_id) {
         this.id = id;
         this.description = description;
         this.submit_time = submit_time;
         this.status = status;
         this.user_id = user_id;
         this.flat_num = flat_num;
+        this.manager_id = manager_id;
     }
 
-    public Complaint( String description,String status, int user_id, String flat_num) {
+
+
+    public Complaint(String description, String status, int user_id, int flat_num, int manager_id) {
         this.description = description;
         this.status = status;
         this.user_id = user_id;
         this.flat_num = flat_num;
+        this.manager_id = manager_id;
     }
 
     public Complaint(){
@@ -69,12 +75,20 @@ public class Complaint {
         this.user_id = user_id;
     }
 
-    public String getFlat_num() {
+    public int getFlat_num() {
         return flat_num;
     }
 
-    public void setFlat_num(String flat_num) {
+    public void setFlat_num(int flat_num) {
         this.flat_num = flat_num;
+    }
+
+    public int getManager_id() {
+        return manager_id;
+    }
+
+    public void setManager_id(int manager_id) {
+        this.manager_id = manager_id;
     }
 
     public String toString(){

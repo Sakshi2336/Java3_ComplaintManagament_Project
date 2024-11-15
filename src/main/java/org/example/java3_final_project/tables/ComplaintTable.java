@@ -30,7 +30,8 @@ public class ComplaintTable implements ComplaintDAO {
                         data.getString(COMPLAINT_COLUMN_SUBMIT_TIME),
                         data.getString(COMPLAINT_COLUMN_STATUS),
                         data.getInt(COMPLAINT_COLUMN_USER_ID),
-                        data.getString(COMPLAINT_COLUMN_FLAT_ID)));
+                        data.getInt(COMPLAINT_COLUMN_FLAT_ID),
+                        data.getInt(COMPLAINT_COLUMN_MANAGER_ID)));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -57,7 +58,8 @@ public class ComplaintTable implements ComplaintDAO {
                     data.getString(COMPLAINT_COLUMN_SUBMIT_TIME),
                     data.getString(COMPLAINT_COLUMN_STATUS),
                     data.getInt(COMPLAINT_COLUMN_USER_ID),
-                    data.getString(COMPLAINT_COLUMN_FLAT_ID)));
+                    data.getInt(COMPLAINT_COLUMN_FLAT_ID),
+                    data.getInt(COMPLAINT_COLUMN_MANAGER_ID)));
         } catch (SQLException e) {
             e.printStackTrace();
         }

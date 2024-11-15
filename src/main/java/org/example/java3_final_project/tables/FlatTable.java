@@ -23,7 +23,7 @@ public class FlatTable implements FlatDAO {
             ResultSet resultSet =getFlats.executeQuery(query);
 
             while(resultSet.next()){
-                flats.add(new Flat(resultSet.getString(FLAT_COLUMN_NUM),
+                flats.add(new Flat(resultSet.getInt(FLAT_COLUMN_NUM),
                         resultSet.getString(FLAT_COLUMN_DESCRIPTION),
                         resultSet.getInt(FLAT_COLUMN_HALL),
                         resultSet.getInt(FLAT_COLUMN_BATH),
