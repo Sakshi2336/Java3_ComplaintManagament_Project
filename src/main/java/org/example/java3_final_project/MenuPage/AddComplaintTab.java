@@ -102,7 +102,7 @@ public class AddComplaintTab extends Tab {
         Label assignedManager = new Label("Assigned Manager:");
         complaintPane.add(assignedManager, 0, 4);
         ComboBox<User> managerComboBox = new ComboBox<>();
-        managerComboBox.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
+        managerComboBox.setItems(FXCollections.observableArrayList(userTable.getAllManager()));
         managerComboBox.getSelectionModel().select(0);
         complaintPane.add(managerComboBox, 1, 4);
 

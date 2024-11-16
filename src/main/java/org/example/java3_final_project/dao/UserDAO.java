@@ -10,6 +10,7 @@ public interface UserDAO {
     //Show all users
     public ArrayList<User> getAllUser();
 
+    public ArrayList<User> getAllManager();
 
 
 }

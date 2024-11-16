@@ -8,7 +8,6 @@ public class Complaint {
     private String status;
     private int user_id;
     private int  flat_num;
-
     private int manager_id;
 
     public Complaint(int id, String description, String submit_time, String status, int user_id, int flat_num,int manager_id) {

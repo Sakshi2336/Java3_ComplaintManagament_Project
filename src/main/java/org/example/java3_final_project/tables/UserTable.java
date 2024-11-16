@@ -43,6 +43,27 @@ public class UserTable implements UserDAO {
         return tenants;
     }
 
+    @Override
+    public ArrayList<User> getAllManager() {
+        String query = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_COLUMN_USER_TYPE_ID + " = 1;";
+        managers = new ArrayList<User>();
+        try {
+            Statement getManagers = db.getConnection().createStatement();
+            ResultSet data = getManagers.executeQuery(query);
+
+            while(data.next()) {
+                managers.add(new User(
+                        data.getInt(USER_COLUMN_ID),
+                        data.getString(USER_COLUMN_FIRST_NAME),
+                        data.getString(USER_COLUMN_LAST_NAME),
+                        data.getInt(USER_COLUMN_USER_TYPE_ID)
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return managers;
+    }
 
 
 }
