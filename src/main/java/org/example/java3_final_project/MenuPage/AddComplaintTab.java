@@ -101,9 +101,9 @@ public class AddComplaintTab extends Tab {
         //Assigned manager label and combo box
         Label assignedManager = new Label("Assigned Manager:");
         complaintPane.add(assignedManager, 0, 4);
-        ComboBox<String> managerComboBox = new ComboBox<>();
-        managerComboBox.setItems(FXCollections.observableArrayList(userTable.getManagerFullName()));
-        managerComboBox.setValue("Select Manager");
+        ComboBox<User> managerComboBox = new ComboBox<>();
+        managerComboBox.setItems(FXCollections.observableArrayList(userTable.getAllManager()));
+        managerComboBox.getSelectionModel().select(0);
         complaintPane.add(managerComboBox, 1, 4);
 
 
@@ -117,7 +117,8 @@ public class AddComplaintTab extends Tab {
                     descriptionText.getText(),
                     statusComboBox.getSelectionModel().getSelectedItem(),
                     tenant_Combo.getSelectionModel().getSelectedItem().getId(),
-                    comboFlat.getSelectionModel().getSelectedItem().getFlat_num()
+                    comboFlat.getSelectionModel().getSelectedItem().getFlat_num(),
+                    managerComboBox.getSelectionModel().getSelectedItem().getId()
             );
             complaintTable.createComplaint(complaint);
         });

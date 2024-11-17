@@ -30,7 +30,8 @@ public class ComplaintTable implements ComplaintDAO {
                         data.getString(COMPLAINT_COLUMN_SUBMIT_TIME),
                         data.getString(COMPLAINT_COLUMN_STATUS),
                         data.getInt(COMPLAINT_COLUMN_USER_ID),
-                        data.getString(COMPLAINT_COLUMN_FLAT_ID)));
+                        data.getInt(COMPLAINT_COLUMN_FLAT_ID),
+                        data.getInt(COMPLAINT_COLUMN_MANAGER_ID)));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -57,7 +58,8 @@ public class ComplaintTable implements ComplaintDAO {
                     data.getString(COMPLAINT_COLUMN_SUBMIT_TIME),
                     data.getString(COMPLAINT_COLUMN_STATUS),
                     data.getInt(COMPLAINT_COLUMN_USER_ID),
-                    data.getString(COMPLAINT_COLUMN_FLAT_ID)));
+                    data.getInt(COMPLAINT_COLUMN_FLAT_ID),
+                    data.getInt(COMPLAINT_COLUMN_MANAGER_ID)));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -87,9 +89,10 @@ public class ComplaintTable implements ComplaintDAO {
                 "(" + COMPLAINT_COLUMN_DESCRIPTION + ", " +
                 COMPLAINT_COLUMN_STATUS + "," +
                 COMPLAINT_COLUMN_USER_ID + "," +
-                COMPLAINT_COLUMN_FLAT_ID + ") VALUES ('" +
+                COMPLAINT_COLUMN_FLAT_ID + "," +
+                COMPLAINT_COLUMN_MANAGER_ID + ") VALUES ('" +
                 complaint.getDescription() + "','" +
-                complaint.getStatus() + "','" + complaint.getUser_id() + "','" + complaint.getFlat_num() +
+                complaint.getStatus() + "','" + complaint.getUser_id() + "','" + complaint.getFlat_num() + "','" + complaint.getManager_id() +
                 "')";
         try {
             db.getConnection().createStatement().execute(query);

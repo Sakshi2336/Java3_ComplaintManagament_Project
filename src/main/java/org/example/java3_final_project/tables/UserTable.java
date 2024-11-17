@@ -18,7 +18,7 @@ public class UserTable implements UserDAO {
 
     Database db = Database.getInstance();
 
-    ArrayList<String> managers;
+    ArrayList<User> managers;
 
     ArrayList<User> tenants;
     @Override
@@ -26,8 +26,8 @@ public class UserTable implements UserDAO {
         String query = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_COLUMN_USER_TYPE_ID + " = 2;";
         tenants = new ArrayList<User>();
         try {
-            Statement getConditions = db.getConnection().createStatement();
-            ResultSet data = getConditions.executeQuery(query);
+            Statement getUsers = db.getConnection().createStatement();
+            ResultSet data = getUsers.executeQuery(query);
 
             while(data.next()) {
                 tenants.add(new User(
@@ -44,30 +44,26 @@ public class UserTable implements UserDAO {
     }
 
     @Override
-    public User getUserID(String first_name) {
-        return null;
-    }
+    public ArrayList<User> getAllManager() {
+        String query = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_COLUMN_USER_TYPE_ID + " = 1;";
+        managers = new ArrayList<User>();
+        try {
+            Statement getManagers = db.getConnection().createStatement();
+            ResultSet data = getManagers.executeQuery(query);
 
-    @Override
-    public ArrayList<String> getManagerFullName() {
-        String query = "SELECT CONCAT("+USER_COLUMN_FIRST_NAME+", ' ', "+USER_COLUMN_LAST_NAME+") AS full_name FROM "+TABLE_USER + " WHERE "+USER_COLUMN_USER_TYPE_ID+ " = 1;";
-        // SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM `user` WHERE user_type_id = 1;
-        managers = new ArrayList<>();
-        try{
-            Statement getCoins = db.getConnection().createStatement();
-            ResultSet resultSet = getCoins.executeQuery(query);
-
-            while (resultSet.next()) {
-                // Here I want to fetch the 'full_name' instead of first and last names
-                String fullName = resultSet.getString("full_name");
-
-                // Add the User to the list
-                managers.add(fullName);
+            while(data.next()) {
+                managers.add(new User(
+                        data.getInt(USER_COLUMN_ID),
+                        data.getString(USER_COLUMN_FIRST_NAME),
+                        data.getString(USER_COLUMN_LAST_NAME),
+                        data.getInt(USER_COLUMN_USER_TYPE_ID)
+                ));
             }
-        }catch(Exception e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return managers;
     }
+
 
 }
