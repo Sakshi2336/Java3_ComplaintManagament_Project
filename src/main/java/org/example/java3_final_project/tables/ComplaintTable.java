@@ -1,12 +1,10 @@
 package org.example.java3_final_project.tables;
 
-import org.example.java3_final_project.dao.CategoryDAO;
 import org.example.java3_final_project.dao.ComplaintDAO;
 import org.example.java3_final_project.database.Database;
 import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.DisplayComplaint;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -68,8 +66,9 @@ public class ComplaintTable implements ComplaintDAO {
     }
 
     @Override
-    public void openComplaints(String status) {
+    public void openComplaints() {
         //TODO need to create method body
+
     }
 
     @Override

@@ -8,6 +8,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.DisplayComplaint;
@@ -19,9 +20,11 @@ public class ViewComplaintTab extends Tab {
     public TableView tableView;
     public ComplaintTable complaint;
     public ViewComplaintTab() {
+
         this.setText("View Complaints");
         complaint = new ComplaintTable();
         BorderPane root = new BorderPane();
+        HBox hbox = new HBox();
         tableView = new TableView();
         //Complaint Description
         TableColumn<DisplayComplaint, String> column1 =
@@ -66,24 +69,27 @@ public class ViewComplaintTab extends Tab {
         });
 
 
+        hbox.getChildren().addAll(refreshButton);
+
+
+
 
         tableView.getColumns().addAll(column1, column2, column3, column4,column5,column6);
         tableView.getItems().addAll(complaint.getPrettyComplaints());
         root.setCenter(tableView);
-        root.setBottom(refreshButton);
+        root.setBottom(hbox);
         this.setContent(root);
 
-
-
-
-
-
-
     }
+
     public void refreshTable(){
         ComplaintTable table = new ComplaintTable();
         tableView.getItems().clear();
         tableView.getItems().addAll(table.getPrettyComplaints());
     }
+
+
+
+
 
 }
