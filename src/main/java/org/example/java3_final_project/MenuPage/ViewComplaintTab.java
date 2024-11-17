@@ -10,68 +10,64 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Complaint;
+import org.example.java3_final_project.pojo.DisplayComplaint;
+import org.example.java3_final_project.tables.ComplaintTable;
 
 public class ViewComplaintTab extends Tab {
 
-    private static ViewComplaintTab instance;
 
     public TableView tableView;
-    private ViewComplaintTab() {
+    public ViewComplaintTab() {
         this.setText("View Complaints");
-        Complaint complaint = new Complaint();
+        ComplaintTable complaint = new ComplaintTable();
         BorderPane root = new BorderPane();
         tableView = new TableView();
-        //COIN NAME
-        TableColumn<DisplayItem, String> column1 =
-                new TableColumn<>("Coin Name");
+        //Complaint Description
+        TableColumn<DisplayComplaint, String> column1 =
+                new TableColumn<>("Complaint Description");
 
         column1.setCellValueFactory(
-                e-> new SimpleStringProperty(e.getValue().getName()));
-        //COIN CONDITION
-        TableColumn<DisplayItem, String> column2 =
-                new TableColumn<>("Coin Condition");
+                e-> new SimpleStringProperty(e.getValue().getDescription()));
+        //Complaint Description
+        TableColumn<DisplayComplaint, String> column2 =
+                new TableColumn<>("Complaint Submit Time");
 
         column2.setCellValueFactory(
-                e-> new SimpleStringProperty(e.getValue().getCondition()));
+                e-> new SimpleStringProperty(e.getValue().getSubmit_time()));
 
-        TableColumn<DisplayItem, String> column3 =
-                new TableColumn<>("Coin Year");
+        TableColumn<DisplayComplaint, String> column3 =
+                new TableColumn<>("Complaint Status");
 
         column3.setCellValueFactory(
-                e-> new SimpleStringProperty(e.getValue().getYear()));
+                e-> new SimpleStringProperty(e.getValue().getStatus()));
 
-        TableColumn<DisplayItem, String> column4 =
-                new TableColumn<>("Coin Location");
+        TableColumn<DisplayComplaint, String> column4 =
+                new TableColumn<>("Complaint Tenant Name");
 
         column4.setCellValueFactory(
-                e-> new SimpleStringProperty(e.getValue().getLocation()));
+                e-> new SimpleStringProperty(e.getValue().getTenant_name()));
 
-        tableView.getColumns().addAll(column1, column2, column3, column4);
-        tableView.getItems().addAll(item.getPrettyItems());
+        TableColumn<DisplayComplaint, String> column5 =
+                new TableColumn<>("Complaint Flat Number");
+
+        column5.setCellValueFactory(
+                e-> new SimpleStringProperty(e.getValue().getFlat_num()));
+
+        TableColumn<DisplayComplaint, String> column6 =
+                new TableColumn<>("Complaint Manager Name");
+
+        column6.setCellValueFactory(
+                e-> new SimpleStringProperty(e.getValue().getManager_name()));
+
+        tableView.getColumns().addAll(column1, column2, column3, column4,column5,column6);
+        tableView.getItems().addAll(complaint.getAllComplaint());
         root.setCenter(tableView);
-        Button removeItem = new Button("Remove Item");
-        removeItem.setOnAction(e->{
-            DisplayItem remove = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
-            item.deleteItem(remove.getId());
-            refreshTable();
-            tableView.getItems().clear();;
-            tableView.getItems().addAll(item.getPrettyItems());
-            StatisticsTab.getInstance().generateChart();
-        });
-
-        tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if(newValue != null){
-                    Item selectedItem = item.getItem(((DisplayItem) newValue).getId());
-                    //Item object version of DisplayItem (Selected in table)
-                    UpdateItemPane pane = new UpdateItemPane(selectedItem);
-                    root.setRight(pane);
-                }
-            }
-        });
-        root.setBottom(removeItem);
         this.setContent(root);
+
+
+
+
+
     }
 
 }
