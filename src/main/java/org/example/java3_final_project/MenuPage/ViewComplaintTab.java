@@ -17,9 +17,10 @@ public class ViewComplaintTab extends Tab {
 
 
     public TableView tableView;
+    public ComplaintTable complaint;
     public ViewComplaintTab() {
         this.setText("View Complaints");
-        ComplaintTable complaint = new ComplaintTable();
+        complaint = new ComplaintTable();
         BorderPane root = new BorderPane();
         tableView = new TableView();
         //Complaint Description
@@ -59,15 +60,30 @@ public class ViewComplaintTab extends Tab {
         column6.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getManager_name()));
 
+        Button refreshButton = new Button("Refresh");
+        refreshButton.setOnAction(e -> {
+            refreshTable();
+        });
+
+
+
         tableView.getColumns().addAll(column1, column2, column3, column4,column5,column6);
-        tableView.getItems().addAll(complaint.getAllComplaint());
+        tableView.getItems().addAll(complaint.getPrettyComplaints());
         root.setCenter(tableView);
+        root.setBottom(refreshButton);
         this.setContent(root);
 
 
 
 
 
+
+
+    }
+    public void refreshTable(){
+        ComplaintTable table = new ComplaintTable();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(table.getPrettyComplaints());
     }
 
 }
