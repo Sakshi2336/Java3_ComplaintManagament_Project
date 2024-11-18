@@ -1,0 +1,14 @@
+.label {
+    -fx-font-family: "Fonts/Oleo_Script/OleoScript-Bold.ttf";
+    -fx-background-color: #ffff1a;
+    -fx-font-size: 50px;
+
+}
+
+.tab{
+    -fx-background-color: #33cc33;
+}
+
+.hbox{
+    -fx-background-color: #33cc33;
+}

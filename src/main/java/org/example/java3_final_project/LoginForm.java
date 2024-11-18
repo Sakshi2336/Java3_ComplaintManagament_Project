@@ -18,7 +18,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.java3_final_project.MenuPage.MenuPage;
 import org.example.java3_final_project.database.Database;
 
 import java.io.BufferedWriter;
@@ -94,7 +93,7 @@ public class LoginForm extends Application {
         Button start_button = new Button("Let's Get Started!");
         start_button.setFont(Font.font("Arial", FontWeight.NORMAL, 30));
         start_button.setOnAction(e->{
-            MenuPage menuPage = new MenuPage();
+            MenuPaged menuPage = new MenuPaged();
             try {
                 menuPage.start(stage);
             } catch (IOException ex) {
