@@ -24,7 +24,6 @@ public class MenuPaged extends Application {
 
         Label label = new Label("What do you want to do?");
         label.setFont(Font.font(25));
-        label.setAlignment(Pos.TOP_RIGHT);
 
         TabPane tabpane = new TabPane();
 
