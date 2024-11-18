@@ -18,6 +18,13 @@ public class Complaint {
         this.flat_num = flat_num;
     }
 
+    public Complaint( String description,String status, int user_id, String flat_num) {
+        this.description = description;
+        this.status = status;
+        this.user_id = user_id;
+        this.flat_num = flat_num;
+    }
+
     public Complaint(){
 
     }

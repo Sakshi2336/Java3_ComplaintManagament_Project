@@ -34,17 +34,4 @@ public class FlatTable implements FlatDAO {
         }
         return flats;
     }
-
-    @Override
-    public void deleteFlat(String flatID) {
-        String query  = "DELETE FROM " + TABLE_FLAT + " WHERE " +
-                FLAT_COLUMN_NUM + " = " + flatID;
-        try {
-            db.getConnection().createStatement().execute(query);
-            System.out.println("Deleted record");
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 }

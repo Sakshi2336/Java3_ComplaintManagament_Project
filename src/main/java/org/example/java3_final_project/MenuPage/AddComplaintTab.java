@@ -1,6 +1,5 @@
 package org.example.java3_final_project.MenuPage;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -15,128 +14,122 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import org.example.java3_final_project.pojo.Category;
+import org.example.java3_final_project.pojo.Complaint;
+import org.example.java3_final_project.pojo.Flat;
+import org.example.java3_final_project.pojo.User;
+import org.example.java3_final_project.tables.CategoryTable;
+import org.example.java3_final_project.tables.ComplaintTable;
+import org.example.java3_final_project.tables.FlatTable;
+import org.example.java3_final_project.tables.UserTable;
+
 import static javafx.collections.FXCollections.observableArrayList;
 
 public class AddComplaintTab extends Tab {
     public AddComplaintTab(){
 
-                /**
-                 * @JavaDoc Creating Add Complaint Form
-                 * It includes:
-                 * Tenant Info
-                 * Complaint Details
-                 * Buttons
-                 */
+        //Tab text
+        this.setText("Add complaint");
 
-        this.setText("Add Complaint");
 
+        //Root panes
         BorderPane root = new BorderPane();
+        GridPane tenantPane = new GridPane();
 
-                GridPane tenantPane = new GridPane();
+        UserTable userTable = new UserTable();
+        ComplaintTable complaintTable = new ComplaintTable();
+        FlatTable flatTable = new FlatTable();
 
-
-
-                Text tenantInfoHeading = new Text("Tenant Info");
-                tenantInfoHeading.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,30));
-                tenantPane.add(tenantInfoHeading, 0, 0);
-
-                Label tenantName = new Label("Tenant Name:");
-                tenantPane.add(tenantName, 0, 1);
-                TextField tenantNameInput = new TextField();
-                tenantPane.add(tenantNameInput, 1, 1);
+        //First tenant information heading
+        Text tenantInfoHeading = new Text("Tenant Info");
+        tenantInfoHeading.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,30));
+        tenantPane.add(tenantInfoHeading,0,2);
 
 
-                Label flatNumber = new Label("Flat Number:");
-                tenantPane.add(flatNumber, 0, 2);
-                ObservableList<String> flatNumbers = FXCollections.observableArrayList
-                        (  "102",
-                                "104",
-                                "106",
-                                "108",
-                                "110",
-                                "112",
-                                "114",
-                                "116",
-                                "118",
-                                "120",
-                                "122",
-                                "124",
-                                "126",
-                                "128",
-                                "130",
-                                "132",
-                                "134",
-                                "136",
-                                "138",
-                                "140",
-                                "142"
-                        )
+        //Tenant name label and text field
+        //Now here I need to check if user entered tenant name is valid or not
+        Label tenantName = new Label("Tenant Name:");
+        tenantPane.add(tenantName, 10, 4);
+        ComboBox<User> tenant_Combo = new ComboBox<>();
+        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
+        tenantPane.add(tenant_Combo, 13, 4);
 
-                        ;
-                ComboBox<String> flatNumbersComboBox = new ComboBox<>(flatNumbers);
-                tenantPane.add(flatNumbersComboBox, 1, 2);
+        //Flat number label and combo box where calling getAllFlat method
+        Label flatNumber = new Label("Flat Number:");
+        ComboBox<Flat> comboFlat = new ComboBox<>();
+        comboFlat.setItems(FXCollections.observableArrayList(flatTable.getAllFlat()));
+        comboFlat.getSelectionModel().select(0);
+        tenantPane.add(flatNumber, 10, 5);
+        tenantPane.add(comboFlat, 13, 5);
 
-                Label contactInfo = new Label("Contact Info:");
-                tenantPane.add(contactInfo, 0, 3);
-                TextField contactInfoInput = new TextField();
-                tenantPane.add(contactInfoInput, 1, 3);
+        //sub grid pane for complaint information
+        GridPane complaintPane = new GridPane();
 
-                GridPane complaintPane = new GridPane();
+        //Second heading complaint information
+        Text complaintDetailHeading = new Text("Complaint Details");
+        complaintDetailHeading.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,30));
+        complaintPane.add(complaintDetailHeading, 0, 0);
+
+        //Category label and combo box
+        Label complaintCategory = new Label("Complaint Category:");
+        complaintPane.add(complaintCategory, 0, 1);
+        CategoryTable categoryTable = new CategoryTable();
+        ComboBox<Category> comboCategory = new ComboBox<>();
+        comboCategory.setItems(FXCollections.observableArrayList(categoryTable.getAllCategory()));
+        comboCategory.getSelectionModel().select(0);
+        complaintPane.add(comboCategory, 1, 1);
 
 
-
-                Text complaintDetailHeading = new Text("Complaint Details");
-                complaintDetailHeading.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,30));
-                complaintPane.add(complaintDetailHeading, 0, 0);
-
-                Label complaintCategory = new Label("Complaint Category:");
-                complaintPane.add(complaintCategory, 0, 1);
-                ObservableList<String> categories = observableArrayList(
-                        "Maintenance",
-                        "Noise Issue",
-                        "Security",
-                        "Pest Control",
-                        "Elevator Issue",
-                        "Water Issue",
-                        "Heating Issue",
-                        "Cooling Issue",
-                        "Internet Service",
-                        "Electricity Issue");
-                ComboBox<String> categoriesComboBox = new ComboBox<>(categories);
-                complaintPane.add(categoriesComboBox, 1, 1);
+        //Complaint description
+        Label description = new Label("Description:");
+        complaintPane.add(description, 0, 2);
+        TextArea descriptionText = new TextArea();
+        descriptionText.setWrapText(true);
+        descriptionText.setPrefWidth(250);
+        descriptionText.setPrefHeight(80);
+        complaintPane.add(descriptionText, 1, 2);
 
 
-                Label description = new Label("Description:");
-                complaintPane.add(description, 0, 2);
-                TextArea descriptionText = new TextArea();
-                complaintPane.add(descriptionText, 1, 2);
+        //Status label and combo box
+        Label status = new Label("Status:");
+        complaintPane.add(status, 0, 3);
+        ComboBox<String> statusComboBox = new ComboBox<>();
+        statusComboBox.getItems().addAll("Open","in Process");
+        statusComboBox.setValue("Open");
+        complaintPane.add(statusComboBox, 1, 3);
 
-                Label status = new Label("Status:");
-                complaintPane.add(status, 0, 3);
-                TextField statusInput = new TextField("Open");
-                complaintPane.add(statusInput, 1, 3);
 
-                Label assignedManager = new Label("Assigned Manager:");
-                complaintPane.add(assignedManager, 0, 4);
-                ObservableList<String> managers = observableArrayList(
-                        "Manager 1",
-                        "Manager 2");
-                ComboBox<String> managerComboBox = new ComboBox<>(managers);
-                complaintPane.add(managerComboBox, 1, 4);
+        //Assigned manager label and combo box
+        Label assignedManager = new Label("Assigned Manager:");
+        complaintPane.add(assignedManager, 0, 4);
+        ComboBox<String> managerComboBox = new ComboBox<>();
+        managerComboBox.setItems(FXCollections.observableArrayList(userTable.getManagerFullName()));
+        managerComboBox.setValue("Select Manager");
+        complaintPane.add(managerComboBox, 1, 4);
 
-                HBox buttons = new HBox();
 
-                Button submitButton = new Button("Submit");
-//        submitButton.setOnAction(e -> {
-//            Text text = new Text("Form Successfully Submitted!");
-//        });
-                Button cancelButton = new Button("Cancel");
-                buttons.getChildren().addAll(submitButton, cancelButton);
 
-                root.setTop(tenantPane);
-                root.setCenter(complaintPane);
-                root.setBottom(buttons);
-                buttons.setAlignment(Pos.BOTTOM_CENTER);
-                this.setContent(root);
+
+        //Buttons and hBox to put these buttons
+        HBox buttons = new HBox();
+        Button submitButton = new Button("Submit");
+        submitButton.setOnAction(e->{
+            Complaint complaint = new Complaint(
+                    descriptionText.getText(),
+                    statusComboBox.getSelectionModel().getSelectedItem(),
+                    tenant_Combo.getSelectionModel().getSelectedItem().getId(),
+                    comboFlat.getSelectionModel().getSelectedItem().getFlat_num()
+            );
+            complaintTable.createComplaint(complaint);
+        });
+        buttons.getChildren().addAll(submitButton);
+
+        root.setTop(tenantPane);
+        root.setCenter(complaintPane);
+        root.setBottom(buttons);
+        buttons.setAlignment(Pos.BOTTOM_CENTER);
+
+        this.setContent(root);
+
     }
 }

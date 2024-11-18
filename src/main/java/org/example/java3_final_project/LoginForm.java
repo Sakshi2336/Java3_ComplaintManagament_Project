@@ -18,6 +18,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.java3_final_project.MenuPage.MenuPage;
 import org.example.java3_final_project.database.Database;
 
 import java.io.BufferedWriter;
@@ -92,6 +93,15 @@ public class LoginForm extends Application {
 
         Button start_button = new Button("Let's Get Started!");
         start_button.setFont(Font.font("Arial", FontWeight.NORMAL, 30));
+        start_button.setOnAction(e->{
+            MenuPage menuPage = new MenuPage();
+            try {
+                menuPage.start(stage);
+            } catch (IOException ex) {
+                System.out.println("Start button is not working!");
+                throw new RuntimeException(ex);
+            }
+        });
 
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(5), start_button);
         scaleTransition.setFromX(0.5);

@@ -41,7 +41,7 @@ public class MenuPage extends Application {
         BorderPane bp = new BorderPane();
         bp.setCenter(vbox);
 
-        Scene scene = new Scene(bp, 500, 500);
+        Scene scene = new Scene(bp, 1100, 600);
         stage.setTitle("Menu Page");
         stage.setScene(scene);
         stage.show();

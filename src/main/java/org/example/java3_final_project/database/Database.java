@@ -39,7 +39,7 @@ public class Database {
     public void createTable(String tableName, String tableQuery, Connection connection) throws SQLException {
         Statement createTable;
         DatabaseMetaData md = connection.getMetaData();
-        ResultSet resultSet = md.getTables("spateljava", null, tableName, null);
+        ResultSet resultSet = md.getTables(CredentialReader.getDbName(), null, tableName, null);
         if(resultSet.next()){
             System.out.println(tableName + " table already exists");
         }

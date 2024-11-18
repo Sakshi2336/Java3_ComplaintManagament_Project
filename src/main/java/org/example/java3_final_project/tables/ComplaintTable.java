@@ -5,6 +5,7 @@ import org.example.java3_final_project.dao.ComplaintDAO;
 import org.example.java3_final_project.database.Database;
 import org.example.java3_final_project.pojo.Complaint;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,6 +36,11 @@ public class ComplaintTable implements ComplaintDAO {
             e.printStackTrace();
         }
         return complaints;
+    }
+
+    @Override
+    public void openComplaints(String status) {
+        //TODO need to create method body
     }
 
     @Override
@@ -79,11 +85,10 @@ public class ComplaintTable implements ComplaintDAO {
     public void createComplaint(Complaint complaint) {
         String query = "INSERT INTO " + TABLE_COMPLAINT +
                 "(" + COMPLAINT_COLUMN_DESCRIPTION + ", " +
-                COMPLAINT_COLUMN_SUBMIT_TIME + "," +
                 COMPLAINT_COLUMN_STATUS + "," +
                 COMPLAINT_COLUMN_USER_ID + "," +
                 COMPLAINT_COLUMN_FLAT_ID + ") VALUES ('" +
-                complaint.getDescription() + "','" + complaint.getSubmit_time() + "','" +
+                complaint.getDescription() + "','" +
                 complaint.getStatus() + "','" + complaint.getUser_id() + "','" + complaint.getFlat_num() +
                 "')";
         try {
@@ -94,4 +99,6 @@ public class ComplaintTable implements ComplaintDAO {
             e.printStackTrace();
         }
     }
+
+
 }
