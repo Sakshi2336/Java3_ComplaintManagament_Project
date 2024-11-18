@@ -63,13 +63,17 @@ public class ViewComplaintTab extends Tab {
         column6.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getManager_name()));
 
-        Button refreshButton = new Button("Refresh");
+        Button refreshButton = new Button("Refresh / Back");
         refreshButton.setOnAction(e -> {
             refreshTable();
         });
+        Button openComplaints = new Button("Open Complaints");
+        openComplaints.setOnAction(e -> {
+            seeOpenComplaints();});
 
 
-        hbox.getChildren().addAll(refreshButton);
+
+        hbox.getChildren().addAll(refreshButton,openComplaints);
 
 
 
@@ -87,6 +91,13 @@ public class ViewComplaintTab extends Tab {
         tableView.getItems().clear();
         tableView.getItems().addAll(table.getPrettyComplaints());
     }
+
+    public void seeOpenComplaints(){
+        ComplaintTable table = new ComplaintTable();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(table.openComplaints());
+    }
+
 
 
 
