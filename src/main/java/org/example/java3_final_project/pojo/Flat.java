@@ -2,13 +2,13 @@ package org.example.java3_final_project.pojo;
 
 public class Flat {
 
-    private String flat_num;
+    private int flat_num;
     private String description;
     private int hall;
     private int bath;
     private int kitchen;
 
-    public Flat(String flat_num, String description, int hall, int bath, int kitchen) {
+    public Flat(int flat_num, String description, int hall, int bath, int kitchen) {
         this.flat_num = flat_num;
         this.description = description;
         this.hall = hall;
@@ -16,11 +16,11 @@ public class Flat {
         this.kitchen = kitchen;
     }
 
-    public String getFlat_num() {
+    public int getFlat_num() {
         return flat_num;
     }
 
-    public void setFlat_num(String flat_num) {
+    public void setFlat_num(int flat_num) {
         this.flat_num = flat_num;
     }
 
@@ -57,6 +57,6 @@ public class Flat {
     }
 
     public String toString(){
-        return flat_num;
+        return description;
     }
 }
