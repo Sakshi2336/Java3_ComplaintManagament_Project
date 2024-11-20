@@ -133,6 +133,8 @@ public class AddComplaintTab extends Tab {
                     comboFlat.getSelectionModel().getSelectedItem().getFlat_num(),
                     managerComboBox.getSelectionModel().getSelectedItem().getId()
             );
+            ViewStatisticsTab viewStatisticsTab = new ViewStatisticsTab();
+            viewStatisticsTab.generateChart();
             messageText.setText("Complaint Added!");
             complaintTable.createComplaint(complaint);
             tenant_Combo.setValue(null);
