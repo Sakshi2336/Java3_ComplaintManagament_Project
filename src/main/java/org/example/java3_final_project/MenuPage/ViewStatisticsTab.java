@@ -21,9 +21,10 @@ import java.util.ArrayList;
 
 public class ViewStatisticsTab extends Tab {
 
+    private static ViewStatisticsTab instance;
     private PieChart chart;
 
-    public ViewStatisticsTab() {
+    private ViewStatisticsTab() {
         this.setText("View Statistics");
 
         BorderPane root = new BorderPane();
@@ -56,5 +57,12 @@ public class ViewStatisticsTab extends Tab {
         ObservableList<PieChart.Data> chartData
                 = FXCollections.observableArrayList(data);
         chart.setData(chartData);
+    }
+
+    public static ViewStatisticsTab getInstance() {
+        if(instance == null){
+            instance = new ViewStatisticsTab();
+        }
+        return instance;
     }
 }

@@ -29,7 +29,7 @@ public class MenuPage extends Application {
         Tab addComp = new AddComplaintTab();
 //        addComp.setOnAction(e-> System.out.println("add complaint"));
 
-        Tab viewStat = new ViewStatisticsTab();
+        Tab viewStat = ViewStatisticsTab.getInstance();
 //        viewStat.setOnAction(e-> System.out.println("view statistics"));
 
         tabpane.getTabs().addAll(viewComp, addComp, viewStat);
