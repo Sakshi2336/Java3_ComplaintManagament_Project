@@ -57,6 +57,6 @@ public class Flat {
     }
 
     public String toString(){
-        return description;
+        return " " + flat_num;
     }
 }

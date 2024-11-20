@@ -82,6 +82,15 @@ public class AddComplaintTab extends Tab {
         comboCategory.getSelectionModel().select(0);
         complaintPane.add(comboCategory, 1, 1);
 
+//        ListView<Category> categoryListView = new ListView<>();
+//        categoryListView.setItems(FXCollections.observableArrayList(categoryTable.getAllCategory()));
+//        categoryListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+//        complaintPane.add(categoryListView, 1, 1);
+//
+//        ObservableList<Category> selectedCategories = FXCollections.observableArrayList();
+//        ListView<Category> selectedCategoriesListView = new ListView<>(selectedCategories);
+//        complaintPane.add(selectedCategoriesListView, 2, 2);
+
 
         //Complaint description
         Label description = new Label("Description:");
