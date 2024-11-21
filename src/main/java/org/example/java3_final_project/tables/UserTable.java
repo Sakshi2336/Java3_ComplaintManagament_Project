@@ -5,6 +5,7 @@ import javafx.scene.text.Text;
 import org.example.java3_final_project.dao.UserDAO;
 import org.example.java3_final_project.database.Database;
 import org.example.java3_final_project.pojo.Category;
+import org.example.java3_final_project.pojo.DisplayTenant;
 import org.example.java3_final_project.pojo.User;
 
 import java.sql.ResultSet;
@@ -65,5 +66,29 @@ public class UserTable implements UserDAO {
         return managers;
     }
 
+    @Override
+    public ArrayList<DisplayTenant> getPrettyTenants() {
+        ArrayList<DisplayTenant> tenants = new ArrayList<DisplayTenant>();
+        String query = " SELECT first_name,last_name,flat_num " +
+                "FROM tenant_info " +
+                "ORDER BY flat_num ASC";
 
-}
+        try {
+            Statement getTenants = db.getConnection().createStatement();
+            ResultSet data = getTenants.executeQuery(query);
+            while (data.next()) {
+                tenants.add(new DisplayTenant(data.getString("first_name"),
+                        data.getString("last_name"),
+                        data.getString("flat_num")
+                ));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return tenants;
+    }
+    }
+
+
+

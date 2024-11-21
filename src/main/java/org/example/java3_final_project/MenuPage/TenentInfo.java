@@ -15,13 +15,13 @@ public class TenentInfo extends Tab {
     public TableView tableView;
     public UserTable tenantTable;
 
-    public TenantInfoTab() {
+    public TenentInfo() {
 
-        this.setText("Tenant Info");
+        this.setText("Tenant Information");
 
         tenantTable = new UserTable();
         BorderPane root = new BorderPane();
-        HBox hbox = new HBox();  this.setText("View Complaints");
+        HBox hbox = new HBox();
 
         tableView = new TableView();
 
@@ -46,7 +46,7 @@ public class TenentInfo extends Tab {
                 e -> new SimpleStringProperty(e.getValue().getFlat_num()));
 
         tableView.getColumns().addAll(column1, column2, column3);
-        tableView.getItems().addAll(TenentInfo.getPrettyUsers());
+        tableView.getItems().addAll(tenantTable.getPrettyTenants());
         root.setCenter(tableView);
         root.setBottom(hbox);
         this.setContent(root);
