@@ -22,10 +22,10 @@ public class ViewComplaintTab extends Tab {
     public ComplaintTable complaint;
     public ViewComplaintTab() {
 
-        this.setText("View Complaints");
         complaint = new ComplaintTable();
         BorderPane root = new BorderPane();
-        HBox hbox = new HBox();
+        HBox hbox = new HBox();  this.setText("View Complaints");
+
         tableView = new TableView();
         //Complaint Description
         TableColumn<DisplayComplaint, String> column1 =
