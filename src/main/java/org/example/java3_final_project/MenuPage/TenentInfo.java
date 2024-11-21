@@ -15,5 +15,41 @@ public class TenentInfo extends Tab {
     public TableView tableView;
     public UserTable tenantTable;
 
-    
+    public TenantInfoTab() {
+
+        this.setText("Tenant Info");
+
+        tenantTable = new UserTable();
+        BorderPane root = new BorderPane();
+        HBox hbox = new HBox();  this.setText("View Complaints");
+
+        tableView = new TableView();
+
+        // Tenant First Name
+        TableColumn<DisplayTenant, String> column1 =
+                new TableColumn<>("First Name");
+
+        column1.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getFirst_name()));
+
+        // Tenant Last Name
+        TableColumn<DisplayTenant, String> column2 =
+                new TableColumn<>("Last Name");
+
+        column2.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getLast_name()));
+
+        // Tenant Apartment Number
+        TableColumn<DisplayTenant, String> column3 =
+                new TableColumn<>("Apartment Number");
+        column3.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getFlat_num()));
+
+        tableView.getColumns().addAll(column1, column2, column3);
+        tableView.getItems().addAll(TenentInfo.getPrettyUsers());
+        root.setCenter(tableView);
+        root.setBottom(hbox);
+        this.setContent(root);
+
+}
 }
