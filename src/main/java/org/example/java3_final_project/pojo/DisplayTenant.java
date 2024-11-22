@@ -4,12 +4,16 @@ public class DisplayTenant {
 
     private String first_name;
     private String last_name;
-    private String flat_num;
+    private int flat_num;
 
-    public DisplayTenant(String first_name, String last_name, String flat_num) {
+    public DisplayTenant(String first_name, String last_name, int flat_num) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.flat_num = flat_num;
+    }
+
+    public DisplayTenant(){
+
     }
 
     public String getFirst_name() {
@@ -28,11 +32,15 @@ public class DisplayTenant {
         this.last_name = last_name;
     }
 
-    public String getFlat_num() {
+    public int getFlat_num() {
         return flat_num;
     }
 
-    public void setFlat_num(String flat_num) {
+    public void setFlat_num(int flat_num) {
         this.flat_num = flat_num;
+    }
+
+    public String flat_num_inString(int flat_num){
+        return String.valueOf(flat_num);
     }
 }

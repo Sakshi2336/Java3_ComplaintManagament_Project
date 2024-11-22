@@ -3,6 +3,7 @@ package org.example.java3_final_project.MenuPage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
@@ -21,10 +22,10 @@ public class ViewComplaintTab extends Tab {
     public ComplaintTable complaint;
     public ViewComplaintTab() {
 
-        this.setText("View Complaints");
         complaint = new ComplaintTable();
         BorderPane root = new BorderPane();
-        HBox hbox = new HBox();
+        HBox hbox = new HBox();  this.setText("View Complaints");
+
         tableView = new TableView();
         //Complaint Description
         TableColumn<DisplayComplaint, String> column1 =
@@ -63,7 +64,7 @@ public class ViewComplaintTab extends Tab {
         column6.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getManager_name()));
 
-        Button refreshButton = new Button("Refresh / Back");
+        Button refreshButton = new Button("Refresh");
         refreshButton.setOnAction(e -> {
             refreshTable();
         });
@@ -71,9 +72,16 @@ public class ViewComplaintTab extends Tab {
         openComplaints.setOnAction(e -> {
             seeOpenComplaints();});
 
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> {
+            refreshTable();});
 
 
-        hbox.getChildren().addAll(refreshButton,openComplaints);
+
+        hbox.getChildren().addAll(refreshButton,openComplaints, backButton);
+
+        hbox.setSpacing(10);
+        hbox.setAlignment(Pos.CENTER);
 
 
 

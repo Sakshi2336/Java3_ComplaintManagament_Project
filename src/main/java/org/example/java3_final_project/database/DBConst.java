@@ -54,6 +54,10 @@ public class DBConst {
     public static final String FLAT_USER_COLUMN_FLAT_ID = "flat_id";
 
 
+    //tenant_info table
+    public static final String TABLE_TENANT_INFO = "tenant_info";
+    public static final String TENANT_INFO_COLUMN_FLAT_NUM = "flat_num";
+
     //Table create statement
 
     public static final String CREATE_TABLE_COMPLAINT =
