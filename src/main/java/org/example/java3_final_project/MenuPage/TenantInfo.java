@@ -9,19 +9,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.example.java3_final_project.pojo.DisplayTenant;
-import org.example.java3_final_project.tables.ComplaintTable;
 import org.example.java3_final_project.tables.UserTable;
 
-public class TenentInfo extends Tab {
+public class TenantInfo extends Tab {
 
-    public TableView tableView;
-    public UserTable tenantTable;
+    private TableView tableView;
+    private UserTable userTable;
 
-    public TenentInfo() {
+    public TenantInfo() {
 
         this.setText("Tenant Information");
 
-        tenantTable = new UserTable();
+        userTable = new UserTable();
         BorderPane root = new BorderPane();
         HBox hbox = new HBox();
         DisplayTenant displayTenant = new DisplayTenant();
@@ -45,14 +44,14 @@ public class TenentInfo extends Tab {
         // Tenant Apartment Number
         TableColumn<DisplayTenant, String> column3 =
                 new TableColumn<>("Apartment Number");
-//        column3.setCellValueFactory(
-//                e -> new SimpleStringProperty(e.getValue().getFlat_num());
-
         column3.setCellValueFactory(
-                e -> new SimpleStringProperty(e.getValue().flat_num_inString(displayTenant.getFlat_num())));
+                e -> new SimpleStringProperty(e.getValue().getFlat_num()));
+
+//        column3.setCellValueFactory(
+//                e -> new SimpleStringProperty(e.getValue().flat_num_inString(displayTenant.getFlat_num())));
 
         tableView.getColumns().addAll(column1, column2, column3);
-        tableView.getItems().addAll(tenantTable.getPrettyTenants());
+        tableView.getItems().addAll(userTable.getPrettyTenants());
         root.setCenter(tableView);
 
 
@@ -61,7 +60,7 @@ public class TenentInfo extends Tab {
         removeTenantButton.setOnAction(e -> {
             DisplayTenant selectedTenant = (DisplayTenant) tableView.getSelectionModel().getSelectedItem();
             if (selectedTenant != null) {
-                tenantTable.deleteTenant(selectedTenant.getFlat_num());
+                userTable.deleteTenant(selectedTenant.getFlat_num());
                 refreshTable();
             }
         });
@@ -84,7 +83,7 @@ public class TenentInfo extends Tab {
     // Method to refresh table content
     public void refreshTable() {
         tableView.getItems().clear();
-        tableView.getItems().addAll(tenantTable.getPrettyTenants());
+        tableView.getItems().addAll(userTable.getPrettyTenants());
     }
 
 

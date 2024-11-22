@@ -79,7 +79,7 @@ public class UserTable implements UserDAO {
             while (data.next()) {
                 tenants.add(new DisplayTenant(data.getString("first_name"),
                         data.getString("last_name"),
-                        data.getInt("flat_num")
+                        data.getString("flat_num")
                 ));
             }
         } catch (SQLException e) {
@@ -90,7 +90,7 @@ public class UserTable implements UserDAO {
 
 
     }
-    public void deleteTenant(int id) {
+    public void deleteTenant(String id) {
         String query  = "DELETE FROM " + TABLE_TENANT_INFO + " WHERE " +
                 TENANT_INFO_COLUMN_FLAT_NUM + " = " + id;
         try {
