@@ -51,8 +51,6 @@ public class TenantInfo extends Tab {
         column3.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getFlat_num()));
 
-//        column3.setCellValueFactory(
-//                e -> new SimpleStringProperty(e.getValue().flat_num_inString(displayTenant.getFlat_num())));
 
         tableView.getColumns().addAll(column1, column2, column3);
         tableView.getItems().addAll(userTable.getPrettyTenants());
@@ -63,11 +61,10 @@ public class TenantInfo extends Tab {
         Button removeTenantButton = new Button("Remove Tenant");
         removeTenantButton.setOnAction(e -> {
             DisplayTenant selectedTenant = (DisplayTenant) tableView.getSelectionModel().getSelectedItem();
-            if (selectedTenant != null) {
                 userTable.deleteTenant(selectedTenant.getFlat_num());
                 //flatUserTable.deleteFlatUserByUserId(selectedTenant.);
                 refreshTable();
-            }
+
         });
 
         // Refresh Table Button

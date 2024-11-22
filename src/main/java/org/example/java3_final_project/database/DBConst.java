@@ -26,7 +26,7 @@ public class DBConst {
 
 
     // User Table
-    public static final String TABLE_USER = "user";
+    public static final String TABLE_USER = "users";
     public static final String USER_COLUMN_ID = "user_id";
     public static final String USER_COLUMN_FIRST_NAME = "first_name";
     public static final String USER_COLUMN_LAST_NAME = "last_name";
