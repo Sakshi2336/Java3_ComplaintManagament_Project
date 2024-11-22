@@ -9,18 +9,22 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.example.java3_final_project.pojo.DisplayTenant;
+import org.example.java3_final_project.pojo.FlatUser;
+import org.example.java3_final_project.tables.FlatUserTable;
 import org.example.java3_final_project.tables.UserTable;
 
 public class TenantInfo extends Tab {
 
     private TableView tableView;
     private UserTable userTable;
+    private FlatUserTable flatUserTable;
 
     public TenantInfo() {
 
         this.setText("Tenant Information");
 
         userTable = new UserTable();
+        flatUserTable = new FlatUserTable();
         BorderPane root = new BorderPane();
         HBox hbox = new HBox();
         DisplayTenant displayTenant = new DisplayTenant();
@@ -61,6 +65,7 @@ public class TenantInfo extends Tab {
             DisplayTenant selectedTenant = (DisplayTenant) tableView.getSelectionModel().getSelectedItem();
             if (selectedTenant != null) {
                 userTable.deleteTenant(selectedTenant.getFlat_num());
+                //flatUserTable.deleteFlatUserByUserId(selectedTenant.);
                 refreshTable();
             }
         });

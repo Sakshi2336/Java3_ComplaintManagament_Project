@@ -7,4 +7,5 @@ import java.util.ArrayList;
 
 public interface FlatUserDAO {
 
+    public void deleteFlatUserByUserId(int user_id,String flat_num);
 }
