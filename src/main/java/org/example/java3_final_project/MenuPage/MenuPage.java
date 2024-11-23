@@ -24,13 +24,10 @@ public class MenuPage extends Application {
         TabPane tabpane = new TabPane();
 
         Tab viewComp = new ViewComplaintTab();
-//        viewComp.setOnAction(e-> System.out.println("view complaint"));
 
         Tab addComp = new AddComplaintTab();
-//        addComp.setOnAction(e-> System.out.println("add complaint"));
 
         Tab viewStat = ViewStatisticsTab.getInstance();
-//        viewStat.setOnAction(e-> System.out.println("view statistics"));
 
         Tab tenantInfo = new TenantInfo();
 

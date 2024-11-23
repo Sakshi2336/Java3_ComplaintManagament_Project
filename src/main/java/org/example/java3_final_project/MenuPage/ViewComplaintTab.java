@@ -71,13 +71,8 @@ public class ViewComplaintTab extends Tab {
         openComplaints.setOnAction(e -> {
             seeOpenComplaints();});
 
-        Button backButton = new Button("Back");
-        backButton.setOnAction(e -> {
-            refreshTable();});
 
-
-
-        hbox.getChildren().addAll(refreshButton,openComplaints, backButton);
+        hbox.getChildren().addAll(refreshButton,openComplaints);
 
         hbox.setSpacing(10);
         hbox.setAlignment(Pos.CENTER);
