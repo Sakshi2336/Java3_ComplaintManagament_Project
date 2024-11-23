@@ -121,8 +121,8 @@ public class AddComplaintTab extends Tab {
             );
             complaintTable.createComplaint(complaint);
             complaintCategoryTable.insertQuery(comboCategory.getSelectionModel().getSelectedItem().getId());
-            ViewStatisticsTab.getInstance().generateChart();
             messageText.setText("Complaint Added!");
+            ViewStatisticsTab.getInstance().generateChart();
             tenant_Combo.setValue(null);
             comboFlat.setValue(null);
             comboCategory.setValue(null);
@@ -140,6 +140,10 @@ public class AddComplaintTab extends Tab {
 
         this.setContent(root);
 
+    }
+
+    private void updateTenantComboBox(ComboBox<User> tenant_Combo,UserTable userTable){
+        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
     }
 }
 

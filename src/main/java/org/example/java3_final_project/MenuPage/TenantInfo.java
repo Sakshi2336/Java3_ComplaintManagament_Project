@@ -64,7 +64,6 @@ public class TenantInfo extends Tab {
             System.out.println(selectedTenant.getId());
                 userTable.deleteTenantFromFlatUser(selectedTenant.getId());
                 userTable.deleteTenantFromUsers(selectedTenant.getId());
-                //userTable.deleteTenantInView(selectedTenant.getFlat_num());
                 refreshTable();
 
         });
