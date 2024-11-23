@@ -1,17 +1,18 @@
 package org.example.java3_final_project.MenuPage;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.example.java3_final_project.pojo.DisplayTenant;
 import org.example.java3_final_project.pojo.FlatUser;
+import org.example.java3_final_project.pojo.User;
 import org.example.java3_final_project.tables.FlatUserTable;
 import org.example.java3_final_project.tables.UserTable;
+
+import static org.example.java3_final_project.MenuPage.AddComplaintTab.tenant_Combo;
 
 public class TenantInfo extends Tab {
 
@@ -65,6 +66,7 @@ public class TenantInfo extends Tab {
                 userTable.deleteTenantFromFlatUser(selectedTenant.getId());
                 userTable.deleteTenantFromUsers(selectedTenant.getId());
                 refreshTable();
+                updateTenantComboBox(tenant_Combo,userTable);
 
         });
 
@@ -89,8 +91,12 @@ public class TenantInfo extends Tab {
         tableView.getItems().addAll(userTable.getPrettyTenants());
     }
 
-
-
-
+    public void updateTenantComboBox(ComboBox<User> tenant_Combo, UserTable userTable){
+        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
     }
+
+
+
+
+}
 

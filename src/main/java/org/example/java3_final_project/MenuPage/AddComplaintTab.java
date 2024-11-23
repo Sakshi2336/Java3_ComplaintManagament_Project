@@ -21,6 +21,8 @@ import org.example.java3_final_project.tables.*;
 import static javafx.collections.FXCollections.observableArrayList;
 
 public class AddComplaintTab extends Tab {
+
+    public static ComboBox<User> tenant_Combo = new ComboBox<>();
     public AddComplaintTab(){
 
 
@@ -48,7 +50,7 @@ public class AddComplaintTab extends Tab {
         //Now here I need to check if user entered tenant name is valid or not
         Label tenantName = new Label("Tenant Name:");
         tenantPane.add(tenantName, 10, 4);
-        ComboBox<User> tenant_Combo = new ComboBox<>();
+        tenant_Combo = new ComboBox<>();
         tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
         tenantPane.add(tenant_Combo, 13, 4);
 
@@ -142,9 +144,6 @@ public class AddComplaintTab extends Tab {
 
     }
 
-    private void updateTenantComboBox(ComboBox<User> tenant_Combo,UserTable userTable){
-        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
-    }
 }
 
 
