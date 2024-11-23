@@ -62,37 +62,32 @@ public class ComplaintTable implements ComplaintDAO {
         return complaints;
     }
 
-//    public ArrayList<DisplayComplaint> openComplaints() {
-//        ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
-//        String query = " SELECT complaint.complaint_id, complaint.description," +
-//                "complaint.submit_time,complaint.status,user.first_name" +
-//                " AS tenant_name, flat.flat_num as flat_num,user.first_name " +
-//                "AS manager_name from complaint JOIN flat on complaint.flat_id = flat.flat_num " +
-//                "JOIN user on complaint.manager_id=user.user_id " +
-//                "WHERE complaint.status = 'Open' OR complaint.status = 'open' " +
-//                "ORDER BY complaint.complaint_id ASC";
-//
-//        try {
-//            Statement getItems = db.getConnection().createStatement();
-//            ResultSet data = getItems.executeQuery(query);
-//            while(data.next()) {
-//                complaints.add(new DisplayComplaint(data.getInt("complaint_id"),
-//                        data.getString("description"),
-//                        data.getString("submit_time"),
-//                        data.getString("status"),
-//                        data.getString("tenant_name"),
-//                        data.getString("flat_num"),
-//                        data.getString("manager_name")));
-//            }
-//        } catch (SQLException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        return complaints;
-//
-//
-//
-//    }
+    @Override
+    public ArrayList<DisplayComplaint> openComplaints() {
+        ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
+        String query = " SELECT * FROM " + VIEW_PRETTY_COMPLAINT + " WHERE status = 'open'";
+
+        try {
+            Statement getItems = db.getConnection().createStatement();
+            ResultSet data = getItems.executeQuery(query);
+            while(data.next()) {
+                complaints.add(new DisplayComplaint(data.getInt("complaint_id"),
+                        data.getString("description"),
+                        data.getString("submit_time"),
+                        data.getString("status"),
+                        data.getString("tenant_name"),
+                        data.getString("flat_num"),
+                        data.getString("manager_name")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return complaints;
+
+
+
+    }
 
     @Override
     public Complaint getComplaint(int complaintID) {

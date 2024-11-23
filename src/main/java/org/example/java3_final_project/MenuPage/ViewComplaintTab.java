@@ -103,7 +103,7 @@ public class ViewComplaintTab extends Tab {
     public void seeOpenComplaints(){
         ComplaintTable table = new ComplaintTable();
         tableView.getItems().clear();
-        //tableView.getItems().addAll(table.openComplaints());
+        tableView.getItems().addAll(table.openComplaints());
     }
 
 
