@@ -61,8 +61,10 @@ public class TenantInfo extends Tab {
         Button removeTenantButton = new Button("Remove Tenant");
         removeTenantButton.setOnAction(e -> {
             DisplayTenant selectedTenant = (DisplayTenant) tableView.getSelectionModel().getSelectedItem();
-                userTable.deleteTenant(selectedTenant.getFlat_num());
-                //flatUserTable.deleteFlatUserByUserId(selectedTenant.);
+            System.out.println(selectedTenant.getId());
+                userTable.deleteTenantFromFlatUser(selectedTenant.getId());
+                userTable.deleteTenantFromUsers(selectedTenant.getId());
+                //userTable.deleteTenantInView(selectedTenant.getFlat_num());
                 refreshTable();
 
         });
