@@ -37,14 +37,11 @@ public class ComplaintTable implements ComplaintDAO {
         }
         return complaints;
     }
+
+    @Override
     public ArrayList<DisplayComplaint> getPrettyComplaints(){
         ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
-        String query = " SELECT complaint.complaint_id, complaint.description," +
-                "complaint.submit_time,complaint.status,user.first_name" +
-                " AS tenant_name, flat.flat_num as flat_num,user.first_name " +
-                "AS manager_name from complaint JOIN flat on complaint.flat_id = flat.flat_num " +
-                "JOIN user on complaint.manager_id=user.user_id " +
-        "ORDER BY complaint.complaint_id ASC";
+        String query = " SELECT * FROM " + VIEW_PRETTY_COMPLAINT + ";";
 
         try {
             Statement getItems = db.getConnection().createStatement();

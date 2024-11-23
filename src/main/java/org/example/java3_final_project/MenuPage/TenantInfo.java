@@ -53,7 +53,7 @@ public class TenantInfo extends Tab {
 
 
         tableView.getColumns().addAll(column1, column2, column3);
-        tableView.getItems().addAll(userTable.getPrettyTenants());
+        //tableView.getItems().addAll(userTable.getPrettyTenants());
         root.setCenter(tableView);
 
 
@@ -85,7 +85,7 @@ public class TenantInfo extends Tab {
     // Method to refresh table content
     public void refreshTable() {
         tableView.getItems().clear();
-        tableView.getItems().addAll(userTable.getPrettyTenants());
+        //tableView.getItems().addAll(userTable.getPrettyTenants());
     }
 
 
