@@ -55,7 +55,7 @@ public class DBConst {
 
 
     //tenant_info table
-    public static final String TABLE_TENANT_INFO = "tenant_info";
+    public static final String VIEW_TENANT_INFO = "tenant_info";
     public static final String TENANT_INFO_COLUMN_FLAT_NUM = "flat_num";
 
     public static final String VIEW_PRETTY_COMPLAINT = "pretty_complaint";

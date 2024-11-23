@@ -69,9 +69,8 @@ public class UserTable implements UserDAO {
     @Override
     public ArrayList<DisplayTenant> getPrettyTenants() {
         ArrayList<DisplayTenant> tenants = new ArrayList<DisplayTenant>();
-        String query = " SELECT first_name,last_name,flat_num " +
-                "FROM tenant_info " +
-                "ORDER BY flat_num ASC";
+        String query = " SELECT * FROM " + VIEW_TENANT_INFO +
+                " ORDER BY flat_num ASC ";
 
         try {
             Statement getTenants = db.getConnection().createStatement();
@@ -90,8 +89,9 @@ public class UserTable implements UserDAO {
 
 
     }
+
     public void deleteTenant(String id) {
-        String query  = "DELETE FROM " + TABLE_TENANT_INFO + " WHERE " +
+        String query  = "DELETE FROM " + VIEW_TENANT_INFO + " WHERE " +
                 TENANT_INFO_COLUMN_FLAT_NUM + " = " + id;
         try {
             db.getConnection().createStatement().execute(query);

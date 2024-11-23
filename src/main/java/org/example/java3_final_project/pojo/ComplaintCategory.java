@@ -10,6 +10,7 @@ public class ComplaintCategory {
         this.category_id = category_id;
     }
 
+
     public int getComplaint_id() {
         return complaint_id;
     }

@@ -17,7 +17,6 @@ import org.example.java3_final_project.tables.ComplaintTable;
 
 public class ViewComplaintTab extends Tab {
 
-
     public TableView tableView;
     public ComplaintTable complaint;
     public ViewComplaintTab() {
@@ -35,31 +34,31 @@ public class ViewComplaintTab extends Tab {
                 e-> new SimpleStringProperty(e.getValue().getDescription()));
         //Complaint Description
         TableColumn<DisplayComplaint, String> column2 =
-                new TableColumn<>("Complaint Submit Time");
+                new TableColumn<>("Submit Time");
 
         column2.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getSubmit_time()));
 
         TableColumn<DisplayComplaint, String> column3 =
-                new TableColumn<>("Complaint Status");
+                new TableColumn<>("Status");
 
         column3.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getStatus()));
 
         TableColumn<DisplayComplaint, String> column4 =
-                new TableColumn<>("Complaint Tenant Name");
+                new TableColumn<>("Tenant Name");
 
         column4.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getTenant_name()));
 
         TableColumn<DisplayComplaint, String> column5 =
-                new TableColumn<>("Complaint Flat Number");
+                new TableColumn<>("Flat Number");
 
         column5.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getFlat_num()));
 
         TableColumn<DisplayComplaint, String> column6 =
-                new TableColumn<>("Complaint Manager Name");
+                new TableColumn<>("Assigned Manager");
 
         column6.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getManager_name()));

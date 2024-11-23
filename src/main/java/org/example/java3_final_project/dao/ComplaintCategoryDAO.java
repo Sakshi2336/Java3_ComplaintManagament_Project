@@ -7,4 +7,6 @@ import java.util.ArrayList;
 public interface ComplaintCategoryDAO {
 
     public int countComplaintByCategory(int category);
+
+    public void insertQuery(int id);
 }

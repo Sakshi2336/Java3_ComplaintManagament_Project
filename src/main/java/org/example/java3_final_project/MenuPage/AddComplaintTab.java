@@ -15,14 +15,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import org.example.java3_final_project.pojo.Category;
-import org.example.java3_final_project.pojo.Complaint;
-import org.example.java3_final_project.pojo.Flat;
-import org.example.java3_final_project.pojo.User;
-import org.example.java3_final_project.tables.CategoryTable;
-import org.example.java3_final_project.tables.ComplaintTable;
-import org.example.java3_final_project.tables.FlatTable;
-import org.example.java3_final_project.tables.UserTable;
+import org.example.java3_final_project.pojo.*;
+import org.example.java3_final_project.tables.*;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -42,6 +36,7 @@ public class AddComplaintTab extends Tab {
         UserTable userTable = new UserTable();
         ComplaintTable complaintTable = new ComplaintTable();
         FlatTable flatTable = new FlatTable();
+        ComplaintCategoryTable complaintCategoryTable = new ComplaintCategoryTable();
 
         //First tenant information heading
         Text tenantInfoHeading = new Text("Tenant Info");
@@ -133,9 +128,10 @@ public class AddComplaintTab extends Tab {
                     comboFlat.getSelectionModel().getSelectedItem().getFlat_num(),
                     managerComboBox.getSelectionModel().getSelectedItem().getId()
             );
+            complaintTable.createComplaint(complaint);
+            complaintCategoryTable.insertQuery(comboCategory.getSelectionModel().getSelectedItem().getId());
             ViewStatisticsTab.getInstance().generateChart();
             messageText.setText("Complaint Added!");
-            complaintTable.createComplaint(complaint);
             tenant_Combo.setValue(null);
             comboFlat.setValue(null);
             comboCategory.setValue(null);

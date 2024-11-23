@@ -22,7 +22,7 @@ public class ComplaintCategoryTable implements ComplaintCategoryDAO {
         try {
             PreparedStatement getCount = db.getConnection()
                     .prepareStatement("SELECT * FROM " + TABLE_COMPLAINT_CATEGORY + " WHERE "
-                                    + COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID + " = '" + category + "'", ResultSet.TYPE_SCROLL_SENSITIVE,
+                                    + COMPLAINT_CATEGORY_COLUMN_CATEGORY_ID + " = '" + category + "'", ResultSet.TYPE_SCROLL_SENSITIVE,
                             ResultSet.CONCUR_UPDATABLE);
             ResultSet data = getCount.executeQuery();
             data.last();
@@ -32,5 +32,19 @@ public class ComplaintCategoryTable implements ComplaintCategoryDAO {
             e.printStackTrace();
         }
         return count;
+    }
+
+    @Override
+    public void insertQuery(int id) {
+        String query = "INSERT INTO " + TABLE_COMPLAINT_CATEGORY +
+                "(" + COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID + ", " +
+                COMPLAINT_CATEGORY_COLUMN_CATEGORY_ID +  ") VALUES ( LAST_INSERT_ID(), " + id + ")";
+        try {
+            db.getConnection().createStatement().execute(query);
+            System.out.println("Inserted Record in complaint category table");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
