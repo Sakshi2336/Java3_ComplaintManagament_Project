@@ -10,7 +10,7 @@ public interface ComplaintDAO {
     public ArrayList<Complaint> getAllComplaint();
 
     //show open complaints only
-    public ArrayList<DisplayComplaint> openComplaints();
+    //public ArrayList<DisplayComplaint> openComplaints();
     public Complaint getComplaint(int complaintID);
     public void updateComplaint(Complaint complaint);
     public void createComplaint(Complaint complaint);
