@@ -3,6 +3,7 @@ package org.example.java3_final_project.MenuPage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
@@ -21,10 +22,10 @@ public class ViewComplaintTab extends Tab {
     public ComplaintTable complaint;
     public ViewComplaintTab() {
 
-        this.setText("View Complaints");
         complaint = new ComplaintTable();
         BorderPane root = new BorderPane();
-        HBox hbox = new HBox();
+        HBox hbox = new HBox();  this.setText("View Complaints");
+
         tableView = new TableView();
         //Complaint Description
         TableColumn<DisplayComplaint, String> column1 =
@@ -67,9 +68,20 @@ public class ViewComplaintTab extends Tab {
         refreshButton.setOnAction(e -> {
             refreshTable();
         });
+        Button openComplaints = new Button("Open Complaints");
+        openComplaints.setOnAction(e -> {
+            seeOpenComplaints();});
+
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> {
+            refreshTable();});
 
 
-        hbox.getChildren().addAll(refreshButton);
+
+        hbox.getChildren().addAll(refreshButton,openComplaints, backButton);
+
+        hbox.setSpacing(10);
+        hbox.setAlignment(Pos.CENTER);
 
         tableView.getColumns().addAll(column1, column2, column3, column4,column5,column6);
         tableView.getItems().addAll(complaint.getPrettyComplaints());
@@ -104,6 +116,13 @@ public class ViewComplaintTab extends Tab {
         tableView.getItems().clear();
         tableView.getItems().addAll(table.getPrettyComplaints());
     }
+
+    public void seeOpenComplaints(){
+        ComplaintTable table = new ComplaintTable();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(table.openComplaints());
+    }
+
 
 
 

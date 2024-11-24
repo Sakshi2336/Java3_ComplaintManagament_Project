@@ -14,6 +14,8 @@ public interface UserDAO {
 
     public ArrayList<User> getAllManager();
 
+    public ArrayList<DisplayTenant> getPrettyTenants();
+
 
 
 }

@@ -12,6 +12,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 import org.example.java3_final_project.pojo.Category;
 import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.Flat;
@@ -24,7 +26,6 @@ import org.example.java3_final_project.tables.UserTable;
 import static javafx.collections.FXCollections.observableArrayList;
 
 public class AddComplaintTab extends Tab {
-
     public AddComplaintTab(){
 
 
@@ -142,11 +143,15 @@ public class AddComplaintTab extends Tab {
 
         this.setContent(root);
 
-
-
     }
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
