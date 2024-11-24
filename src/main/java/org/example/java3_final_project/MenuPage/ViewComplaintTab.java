@@ -71,14 +71,27 @@ public class ViewComplaintTab extends Tab {
 
         hbox.getChildren().addAll(refreshButton);
 
-
-
-
         tableView.getColumns().addAll(column1, column2, column3, column4,column5,column6);
         tableView.getItems().addAll(complaint.getPrettyComplaints());
         root.setCenter(tableView);
         root.setBottom(hbox);
         this.setContent(root);
+
+        tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if(newValue != null){
+                    Complaint selectedItem = complaint.getComplaint(((DisplayComplaint) newValue).getId());
+                    UpdateComplaintTab pane = new UpdateComplaintTab(selectedItem);
+                    root.setRight(pane);
+                }
+            }
+        });
+
+
+
+
+
 
     }
 
@@ -87,6 +100,7 @@ public class ViewComplaintTab extends Tab {
         tableView.getItems().clear();
         tableView.getItems().addAll(table.getPrettyComplaints());
     }
+
 
 
 

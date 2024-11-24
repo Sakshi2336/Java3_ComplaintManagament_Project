@@ -32,6 +32,7 @@ public class MenuPage extends Application {
         Tab viewStat = new ViewStatisticsTab();
 //        viewStat.setOnAction(e-> System.out.println("view statistics"));
 
+
         tabpane.getTabs().addAll(viewComp, addComp, viewStat);
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 

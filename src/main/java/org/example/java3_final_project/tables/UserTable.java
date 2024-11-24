@@ -5,6 +5,8 @@ import javafx.scene.text.Text;
 import org.example.java3_final_project.dao.UserDAO;
 import org.example.java3_final_project.database.Database;
 import org.example.java3_final_project.pojo.Category;
+import org.example.java3_final_project.pojo.DisplayComplaint;
+import org.example.java3_final_project.pojo.DisplayTenant;
 import org.example.java3_final_project.pojo.User;
 
 import java.sql.ResultSet;
@@ -66,4 +68,10 @@ public class UserTable implements UserDAO {
     }
 
 
-}
+    }
+
+
+
+
+
+
