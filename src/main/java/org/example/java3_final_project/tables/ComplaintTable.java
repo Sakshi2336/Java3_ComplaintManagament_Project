@@ -14,8 +14,23 @@ import static org.example.java3_final_project.database.DBConst.*;
 
 public class ComplaintTable implements ComplaintDAO {
 
+    public ComplaintTable() {
+        this.complaints = new ArrayList<>(); // Initialize the list
+
+    };
+
+
     Database db = Database.getInstance();
     ArrayList<Complaint> complaints;
+
+    private static ComplaintTable instance;
+
+    public static ComplaintTable getInstance() {
+        if (instance == null) {
+            instance = new ComplaintTable();
+        }
+        return instance;
+    }
     @Override
     public ArrayList<Complaint> getAllComplaint() {
         String query = "SELECT * FROM " + TABLE_COMPLAINT;

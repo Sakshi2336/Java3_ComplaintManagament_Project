@@ -16,6 +16,9 @@ import org.example.java3_final_project.tables.UserTable;
 
 import java.util.ArrayList;
 
+import static org.example.java3_final_project.database.DBConst.*;
+import static org.example.java3_final_project.database.DBConst.COMPLAINT_COLUMN_SUBMIT_TIME;
+
 public class UpdateComplaintTab extends GridPane {
  public int find(ArrayList<?> arrayList, int id) {
   ArrayList<Complaint> searchList = (ArrayList<Complaint>) arrayList;
@@ -99,15 +102,14 @@ public class UpdateComplaintTab extends GridPane {
   // Update button
   Button updateButton = new Button("Update");
   updateButton.setOnAction(e -> {
+   complaint.setId(complaint.getId());
    complaint.setDescription(descriptionText.getText());
-   complaint.setFlat_num(flatComboBox.getSelectionModel().getSelectedItem().getFlat_num());
-   complaint.setUser_id(tenantComboBox.getSelectionModel().getSelectedItem().getId());
+   complaint.setSubmit_time(complaint.getSubmit_time());
    complaint.setStatus(statusComboBox.getSelectionModel().getSelectedItem());
-   complaint.setManager_id(managerComboBox.getSelectionModel().getSelectedItem().getId());
 
 
    // Call updateComplaint method to save changes
-   complaintTable.updateComplaint(complaint);
+
   });
 
   this.add(updateButton, 1, 8);

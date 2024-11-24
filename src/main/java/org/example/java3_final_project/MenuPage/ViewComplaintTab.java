@@ -80,10 +80,14 @@ public class ViewComplaintTab extends Tab {
         tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+
                 if(newValue != null){
                     Complaint selectedItem = complaint.getComplaint(((DisplayComplaint) newValue).getId());
                     UpdateComplaintTab pane = new UpdateComplaintTab(selectedItem);
                     root.setRight(pane);
+                }
+                else{
+                    System.out.println("hi");
                 }
             }
         });
