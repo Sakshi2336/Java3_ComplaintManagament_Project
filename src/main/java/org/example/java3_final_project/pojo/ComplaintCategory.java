@@ -11,6 +11,10 @@ public class ComplaintCategory {
     }
 
 
+    public ComplaintCategory(){
+
+    }
+
     public int getComplaint_id() {
         return complaint_id;
     }

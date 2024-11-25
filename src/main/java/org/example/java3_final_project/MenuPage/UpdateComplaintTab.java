@@ -36,6 +36,7 @@ public class UpdateComplaintTab extends GridPane {
     UserTable userTable = new UserTable();
     FlatTable flatTable = new FlatTable();
     CategoryTable categoryTable = new CategoryTable();
+    ComplaintCategory complaintCategory = new ComplaintCategory();
 
     // Tenant Info
     Text tenantInfoHeading = new Text("Tenant Info");
@@ -54,8 +55,9 @@ public class UpdateComplaintTab extends GridPane {
     // Flat number label and combo box
     Label flatNumber = new Label("Flat Number:");
     ComboBox<Flat> flatComboBox = new ComboBox<>();
-    flatComboBox.setItems(FXCollections.observableArrayList(flatTable.getAllFlat()));
-    flatComboBox.getSelectionModel().select(find(flatTable.getAllFlat(), complaint.getFlat_num())); // Set selected flat
+    ArrayList<Flat> allFlat = flatTable.getAllFlat();
+    flatComboBox.setItems(FXCollections.observableArrayList(allFlat));
+    flatComboBox.getSelectionModel().select(find(allFlat, complaint.getFlat_num())); // this will get me flat_num from the complaint table
     this.add(flatNumber, 0, 2);
     this.add(flatComboBox, 1, 2);
 
@@ -65,10 +67,12 @@ public class UpdateComplaintTab extends GridPane {
     this.add(complaintInfoHeading, 0, 3);
 
     // Category label and combo box
-    Label complaintCategory = new Label("Complaint Category:");
+    Label complaintCategoryLabel = new Label("Complaint Category:");
     ComboBox<Category> categoryComboBox = new ComboBox<>();
-    categoryComboBox.setItems(FXCollections.observableArrayList(categoryTable.getAllCategory()));
-    this.add(complaintCategory, 0, 4);
+    ArrayList<Category> allCategory = categoryTable.getAllCategory();
+    categoryComboBox.setItems(FXCollections.observableArrayList(allCategory));
+    categoryComboBox.getSelectionModel().select(find(allCategory,complaintCategory.getCategory_id()));
+    this.add(complaintCategoryLabel, 0, 4);
     this.add(categoryComboBox, 1, 4);
 
     // Description label and text area
@@ -100,9 +104,8 @@ public class UpdateComplaintTab extends GridPane {
     // Update button
     Button updateButton = new Button("Update");
     updateButton.setOnAction(e -> {
-     complaint.setId(complaint.getId());
+     complaint.setManager_id(managerComboBox.getSelectionModel().getSelectedItem().getId());
      complaint.setDescription(descriptionText.getText());
-     complaint.setSubmit_time(complaint.getSubmit_time());
      complaint.setStatus(statusComboBox.getSelectionModel().getSelectedItem());
 
 
