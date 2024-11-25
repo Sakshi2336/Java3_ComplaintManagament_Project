@@ -47,4 +47,25 @@ public class ComplaintCategoryTable implements ComplaintCategoryDAO {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public int getCategoryByComplaint(int complaint_id){
+        String query = " SELECT " + COMPLAINT_CATEGORY_COLUMN_CATEGORY_ID + " FROM " +
+                TABLE_COMPLAINT_CATEGORY + " WHERE " + COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID +
+                " = " + complaint_id + ";";
+        int category_id = 0;
+
+        try{
+            Statement getCategoryId = db.getConnection().createStatement();
+            ResultSet data = getCategoryId.executeQuery(query);
+
+            if(data.next()){
+                category_id = data.getInt("category_id");
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return category_id;
+    }
 }

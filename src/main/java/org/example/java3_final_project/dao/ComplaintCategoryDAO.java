@@ -9,4 +9,5 @@ public interface ComplaintCategoryDAO {
     public int countComplaintByCategory(int category);
 
     public void insertQuery(int id);
+    public int getCategoryByComplaint(int complaint_id);
 }
