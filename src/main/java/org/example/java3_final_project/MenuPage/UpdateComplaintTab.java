@@ -6,10 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import org.example.java3_final_project.pojo.*;
-import org.example.java3_final_project.tables.CategoryTable;
-import org.example.java3_final_project.tables.ComplaintTable;
-import org.example.java3_final_project.tables.FlatTable;
-import org.example.java3_final_project.tables.UserTable;
+import org.example.java3_final_project.tables.*;
 
 import java.util.ArrayList;
 
@@ -37,6 +34,7 @@ public class UpdateComplaintTab extends GridPane {
     FlatTable flatTable = new FlatTable();
     CategoryTable categoryTable = new CategoryTable();
     ComplaintCategory complaintCategory = new ComplaintCategory();
+     ComplaintCategoryTable complaintCategoryTable = new ComplaintCategoryTable();
 
     // Tenant Info
     Text tenantInfoHeading = new Text("Tenant Info");
@@ -66,12 +64,11 @@ public class UpdateComplaintTab extends GridPane {
 
     // Category label and combo box
     Label complaintCategoryLabel = new Label("Complaint Category:");
-    ComboBox<Category> categoryComboBox = new ComboBox<>();
-    ArrayList<Category> allCategory = categoryTable.getAllCategory();
-    categoryComboBox.setItems(FXCollections.observableArrayList(allCategory));
-    //categoryComboBox.getSelectionModel().select(find(allCategory,complaintCategory.getCategory_id()));
+    TextField categoryTextField = new TextField();
+    categoryTextField.setEditable(false);
+    categoryTextField.setText(categoryTable.getCategory(complaintCategoryTable.getCategoryByComplaint(complaint.getId())));
     this.add(complaintCategoryLabel, 0, 4);
-    this.add(categoryComboBox, 1, 4);
+    this.add(categoryTextField, 1, 4);
 
     // Description label and text area
     Label description = new Label("Description:");

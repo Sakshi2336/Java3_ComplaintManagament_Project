@@ -41,4 +41,21 @@ public class CategoryTable implements CategoryDAO {
         return categories;
     }
 
+    @Override
+    public String getCategory(int id){
+        String query = "SELECT * FROM " + TABLE_CATEGORY +
+                " WHERE " + CATEGORY_COLUMN_ID + " = " + id;
+        String categoryName = null;
+        try{
+            Statement getCategory = db.getConnection().createStatement();
+            ResultSet data = getCategory.executeQuery(query);
+            if(data.next()){
+                categoryName = data.getString("category_name");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return categoryName;
+    }
+
 }

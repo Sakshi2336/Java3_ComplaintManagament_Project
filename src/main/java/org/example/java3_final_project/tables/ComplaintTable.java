@@ -129,13 +129,15 @@ public class ComplaintTable implements ComplaintDAO {
     @Override
     public void updateComplaint(Complaint complaint) {
         String query = "UPDATE " + TABLE_COMPLAINT + " SET " +
-                COMPLAINT_COLUMN_DESCRIPTION + " " + complaint.getDescription() +  "," +
-                COMPLAINT_COLUMN_STATUS + " " + complaint.getStatus() +
-                COMPLAINT_COLUMN_MANAGER_ID + " " + complaint.getManager_id() +
+                COMPLAINT_COLUMN_DESCRIPTION + "= '" + complaint.getDescription() +  "', " +
+                COMPLAINT_COLUMN_STATUS + "= '" + complaint.getStatus() + "', " +
+                COMPLAINT_COLUMN_MANAGER_ID + "= " + complaint.getManager_id() + " " +
                 " WHERE " + COMPLAINT_COLUMN_ID + " = " + complaint.getId();
         try {
             Statement updateItem = db.getConnection().createStatement();
-            updateItem.executeQuery(query);
+            System.out.println(updateItem);
+            updateItem.executeUpdate(query);
+            System.out.println("Record updated!");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
