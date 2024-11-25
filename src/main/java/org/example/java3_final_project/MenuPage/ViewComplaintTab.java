@@ -89,6 +89,7 @@ public class ViewComplaintTab extends Tab {
 
                 if(newValue != null){
                     Complaint selectedItem = complaint.getComplaint(((DisplayComplaint) newValue).getId());
+                    System.out.println(selectedItem.getDescription());
                     UpdateComplaintTab pane = new UpdateComplaintTab(selectedItem);
                     root.setRight(pane);
                 }

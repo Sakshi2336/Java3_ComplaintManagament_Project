@@ -45,21 +45,17 @@ public class UpdateComplaintTab extends GridPane {
 
     // Tenant name label and combo box
     Label tenantName = new Label("Tenant Name:");
-    ComboBox<User> tenantComboBox = new ComboBox<>();
-    ArrayList<User> allUser = userTable.getAllUser();
-    tenantComboBox.setItems(FXCollections.observableArrayList(allUser));
-    tenantComboBox.getSelectionModel().select(find(allUser,complaint.getUser_id())); // this will pass the user_id from the complaint table
+    TextField tenantNameTextField = new TextField();
+    tenantNameTextField.setText(String.valueOf(complaint.getUser_id()));
     this.add(tenantName, 0, 1);
-    this.add(tenantComboBox, 1, 1);
+    this.add(tenantNameTextField, 1, 1);
 
     // Flat number label and combo box
     Label flatNumber = new Label("Flat Number:");
-    ComboBox<Flat> flatComboBox = new ComboBox<>();
-    ArrayList<Flat> allFlat = flatTable.getAllFlat();
-    flatComboBox.setItems(FXCollections.observableArrayList(allFlat));
-    flatComboBox.getSelectionModel().select(find(allFlat, complaint.getFlat_num())); // this will get me flat_num from the complaint table
+    TextField flatNumberTextField = new TextField();
+    flatNumberTextField.setText(String.valueOf(complaint.getFlat_num()));
     this.add(flatNumber, 0, 2);
-    this.add(flatComboBox, 1, 2);
+    this.add(flatNumberTextField, 1, 2);
 
     // Complaint Info
     Text complaintInfoHeading = new Text("Complaint Details");
@@ -71,7 +67,7 @@ public class UpdateComplaintTab extends GridPane {
     ComboBox<Category> categoryComboBox = new ComboBox<>();
     ArrayList<Category> allCategory = categoryTable.getAllCategory();
     categoryComboBox.setItems(FXCollections.observableArrayList(allCategory));
-    categoryComboBox.getSelectionModel().select(find(allCategory,complaintCategory.getCategory_id()));
+    //categoryComboBox.getSelectionModel().select(find(allCategory,complaintCategory.getCategory_id()));
     this.add(complaintCategoryLabel, 0, 4);
     this.add(categoryComboBox, 1, 4);
 
