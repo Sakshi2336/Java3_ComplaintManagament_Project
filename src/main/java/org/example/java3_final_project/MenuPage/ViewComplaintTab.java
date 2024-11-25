@@ -93,7 +93,7 @@ public class ViewComplaintTab extends Tab {
                     root.setRight(pane);
                 }
                 else{
-                    System.out.println("hi");
+                    System.out.println("Listener is having issue");
                 }
             }
         });

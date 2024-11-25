@@ -108,8 +108,8 @@ public class UpdateComplaintTab extends GridPane {
      complaint.setDescription(descriptionText.getText());
      complaint.setStatus(statusComboBox.getSelectionModel().getSelectedItem());
 
-
      // Call updateComplaint method to save changes
+     complaintTable.updateComplaint(complaint);
 
     });
 
