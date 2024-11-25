@@ -46,6 +46,7 @@ public class UpdateComplaintTab extends GridPane {
     // Tenant name label and combo box
     Label tenantName = new Label("Tenant Name:");
     TextField tenantNameTextField = new TextField();
+    tenantNameTextField.setEditable(false);
     tenantNameTextField.setText(String.valueOf(complaint.getUser_id()));
     this.add(tenantName, 0, 1);
     this.add(tenantNameTextField, 1, 1);
@@ -53,6 +54,7 @@ public class UpdateComplaintTab extends GridPane {
     // Flat number label and combo box
     Label flatNumber = new Label("Flat Number:");
     TextField flatNumberTextField = new TextField();
+    flatNumberTextField.setEditable(false);
     flatNumberTextField.setText(String.valueOf(complaint.getFlat_num()));
     this.add(flatNumber, 0, 2);
     this.add(flatNumberTextField, 1, 2);

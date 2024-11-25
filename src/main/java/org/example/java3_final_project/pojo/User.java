@@ -12,6 +12,7 @@ public class User extends DatabaseComplaint{
         this.type = type;
     }
 
+
 //    public int getId() {
 //        return id;
 //    }

@@ -16,6 +16,7 @@ public interface UserDAO {
 
     public ArrayList<DisplayTenant> getPrettyTenants();
 
-
+    public void deleteTenantFromUsers(String id);
+    public void deleteTenantFromFlatUser(String id);
 
 }
