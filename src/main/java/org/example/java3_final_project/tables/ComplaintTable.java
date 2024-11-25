@@ -113,13 +113,13 @@ public class ComplaintTable implements ComplaintDAO {
             Statement getItem = db.getConnection().createStatement();
             ResultSet data = getItem.executeQuery(query);
             data.next();
-            complaints.add(new Complaint(data.getInt(COMPLAINT_COLUMN_ID),
+            complaint = new Complaint(data.getInt(COMPLAINT_COLUMN_ID),
                     data.getString(COMPLAINT_COLUMN_DESCRIPTION),
                     data.getString(COMPLAINT_COLUMN_SUBMIT_TIME),
                     data.getString(COMPLAINT_COLUMN_STATUS),
                     data.getInt(COMPLAINT_COLUMN_USER_ID),
                     data.getInt(COMPLAINT_COLUMN_FLAT_ID),
-                    data.getInt(COMPLAINT_COLUMN_MANAGER_ID)));
+                    data.getInt(COMPLAINT_COLUMN_MANAGER_ID));
         } catch (SQLException e) {
             e.printStackTrace();
         }
