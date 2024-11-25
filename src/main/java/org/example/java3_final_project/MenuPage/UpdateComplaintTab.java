@@ -47,7 +47,7 @@ public class UpdateComplaintTab extends GridPane {
     Label tenantName = new Label("Tenant Name:");
     TextField tenantNameTextField = new TextField();
     tenantNameTextField.setEditable(false);
-    tenantNameTextField.setText(String.valueOf(complaint.getUser_id()));
+    tenantNameTextField.setText(userTable.getUserFirstName(complaint.getUser_id()));
     this.add(tenantName, 0, 1);
     this.add(tenantNameTextField, 1, 1);
 
