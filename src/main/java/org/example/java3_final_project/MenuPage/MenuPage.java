@@ -32,6 +32,7 @@ public class MenuPage extends Application {
         Tab tenantInfo = new TenantInfo();
 
         tabpane.getTabs().addAll(viewComp, addComp, viewStat,tenantInfo);
+
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         HBox hbox = new HBox(label);
