@@ -1,5 +1,3 @@
-/* Menu page css*/
-
 @font-face {
     font-family: "Lobster-Regular.ttf";
     src: url("resources/org/example/java3_final_project/Fonts/Lobster/Lobster-Regular.ttf");
@@ -19,3 +17,8 @@
 .menu-page .tab:hover {
     -fx-background-color: #fff5bb;
 }
+
+.menu-page .tab:selected {
+    -fx-background-color: #6b6b6b;
+}
+
