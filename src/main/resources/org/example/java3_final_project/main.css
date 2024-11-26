@@ -1,8 +1,18 @@
 /* Menu page css*/
 
+.menu-page HBox {
+    -fx-alignment: center;
+}
 
 
-#menuPageRoot .label {
-    -fx-background-color: #006666;
+.menu-page {
 
+    background-color: lightblue;
+}
+#menuPage .tabs {
+    -fx-background-color: yellow;
+    }
+
+Button{
+    fx-background-color: #4CAF50;
 }

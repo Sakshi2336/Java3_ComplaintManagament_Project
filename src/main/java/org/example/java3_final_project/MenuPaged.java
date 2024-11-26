@@ -46,7 +46,7 @@ public class MenuPaged extends Application {
         BorderPane bp = new BorderPane();
         bp.setCenter(vbox);
 
-        bp.setId("menuPageRoot");
+        bp.getStyleClass().add("menu-page");
 
         Scene scene = new Scene(bp, 1100, 600);
 //        System.out.println(this.getClass().getResource("main.css").toExternalForm());
