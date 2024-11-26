@@ -1,27 +1,30 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.example.java3_final_project.pojo.DisplayTenant;
-import org.example.java3_final_project.tables.ComplaintTable;
+import org.example.java3_final_project.pojo.User;
+import org.example.java3_final_project.tables.FlatUserTable;
 import org.example.java3_final_project.tables.UserTable;
 
-public class TenentInfo extends Tab {
+import static org.example.java3_final_project.Tabs.AddComplaintTab.tenant_Combo;
 
-    public TableView tableView;
-    public UserTable tenantTable;
+public class TenantInfo extends Tab {
 
-    public TenentInfo() {
+    private TableView tableView;
+    private UserTable userTable;
+    private FlatUserTable flatUserTable;
+
+    public TenantInfo() {
 
         this.setText("Tenant Information");
 
-        tenantTable = new UserTable();
+        userTable = new UserTable();
+        flatUserTable = new FlatUserTable();
         BorderPane root = new BorderPane();
         HBox hbox = new HBox();
         DisplayTenant displayTenant = new DisplayTenant();
@@ -45,14 +48,12 @@ public class TenentInfo extends Tab {
         // Tenant Apartment Number
         TableColumn<DisplayTenant, String> column3 =
                 new TableColumn<>("Apartment Number");
-//        column3.setCellValueFactory(
-//                e -> new SimpleStringProperty(e.getValue().getFlat_num());
-
         column3.setCellValueFactory(
-                e -> new SimpleStringProperty(e.getValue().flat_num_inString(displayTenant.getFlat_num())));
+                e -> new SimpleStringProperty(e.getValue().getFlat_num()));
+
 
         tableView.getColumns().addAll(column1, column2, column3);
-        tableView.getItems().addAll(tenantTable.getPrettyTenants());
+        tableView.getItems().addAll(userTable.getPrettyTenants());
         root.setCenter(tableView);
 
 
@@ -60,10 +61,12 @@ public class TenentInfo extends Tab {
         Button removeTenantButton = new Button("Remove Tenant");
         removeTenantButton.setOnAction(e -> {
             DisplayTenant selectedTenant = (DisplayTenant) tableView.getSelectionModel().getSelectedItem();
-            if (selectedTenant != null) {
-                tenantTable.deleteTenant(selectedTenant.getFlat_num());
+            System.out.println(selectedTenant.getId());
+                userTable.deleteTenantFromFlatUser(selectedTenant.getId());
+                userTable.deleteTenantFromUsers(selectedTenant.getId());
                 refreshTable();
-            }
+                updateTenantComboBox(tenant_Combo,userTable);
+
         });
 
         // Refresh Table Button
@@ -84,11 +87,15 @@ public class TenentInfo extends Tab {
     // Method to refresh table content
     public void refreshTable() {
         tableView.getItems().clear();
-        tableView.getItems().addAll(tenantTable.getPrettyTenants());
+        tableView.getItems().addAll(userTable.getPrettyTenants());
+    }
+
+    public void updateTenantComboBox(ComboBox<User> tenant_Combo, UserTable userTable){
+        tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
     }
 
 
 
 
-    }
+}
 

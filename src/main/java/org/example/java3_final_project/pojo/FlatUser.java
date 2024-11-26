@@ -10,6 +10,10 @@ public class FlatUser {
         this.user_id = user_id;
     }
 
+    public FlatUser(){
+
+    }
+
     public int getFlat_id() {
         return flat_id;
     }

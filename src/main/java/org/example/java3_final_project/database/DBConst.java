@@ -26,7 +26,7 @@ public class DBConst {
 
 
     // User Table
-    public static final String TABLE_USER = "user";
+    public static final String TABLE_USER = "users";
     public static final String USER_COLUMN_ID = "user_id";
     public static final String USER_COLUMN_FIRST_NAME = "first_name";
     public static final String USER_COLUMN_LAST_NAME = "last_name";
@@ -55,8 +55,10 @@ public class DBConst {
 
 
     //tenant_info table
-    public static final String TABLE_TENANT_INFO = "tenant_info";
+    public static final String VIEW_TENANT_INFO = "tenant_info";
     public static final String TENANT_INFO_COLUMN_FLAT_NUM = "flat_num";
+
+    public static final String VIEW_PRETTY_COMPLAINT = "pretty_complaint";
 
     //Table create statement
 

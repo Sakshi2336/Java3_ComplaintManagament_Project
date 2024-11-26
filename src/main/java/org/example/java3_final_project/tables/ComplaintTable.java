@@ -52,14 +52,11 @@ public class ComplaintTable implements ComplaintDAO {
         }
         return complaints;
     }
+
+    @Override
     public ArrayList<DisplayComplaint> getPrettyComplaints(){
         ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
-        String query = " SELECT complaint.complaint_id, complaint.description," +
-                "complaint.submit_time,complaint.status,user.first_name" +
-                " AS tenant_name, flat.flat_num as flat_num,user.first_name " +
-                "AS manager_name from complaint JOIN flat on complaint.flat_id = flat.flat_num " +
-                "JOIN user on complaint.manager_id=user.user_id " +
-        "ORDER BY complaint.complaint_id ASC";
+        String query = " SELECT * FROM " + VIEW_PRETTY_COMPLAINT + ";";
 
         try {
             Statement getItems = db.getConnection().createStatement();
@@ -83,13 +80,7 @@ public class ComplaintTable implements ComplaintDAO {
     @Override
     public ArrayList<DisplayComplaint> openComplaints() {
         ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
-        String query = " SELECT complaint.complaint_id, complaint.description," +
-                "complaint.submit_time,complaint.status,user.first_name" +
-                " AS tenant_name, flat.flat_num as flat_num,user.first_name " +
-                "AS manager_name from complaint JOIN flat on complaint.flat_id = flat.flat_num " +
-                "JOIN user on complaint.manager_id=user.user_id " +
-                "WHERE complaint.status = 'Open' OR complaint.status = 'open' " +
-                "ORDER BY complaint.complaint_id ASC";
+        String query = " SELECT * FROM " + VIEW_PRETTY_COMPLAINT + " WHERE status = 'open'";
 
         try {
             Statement getItems = db.getConnection().createStatement();
@@ -122,13 +113,13 @@ public class ComplaintTable implements ComplaintDAO {
             Statement getItem = db.getConnection().createStatement();
             ResultSet data = getItem.executeQuery(query);
             data.next();
-            complaints.add(new Complaint(data.getInt(COMPLAINT_COLUMN_ID),
+            complaint = new Complaint(data.getInt(COMPLAINT_COLUMN_ID),
                     data.getString(COMPLAINT_COLUMN_DESCRIPTION),
                     data.getString(COMPLAINT_COLUMN_SUBMIT_TIME),
                     data.getString(COMPLAINT_COLUMN_STATUS),
                     data.getInt(COMPLAINT_COLUMN_USER_ID),
                     data.getInt(COMPLAINT_COLUMN_FLAT_ID),
-                    data.getInt(COMPLAINT_COLUMN_MANAGER_ID)));
+                    data.getInt(COMPLAINT_COLUMN_MANAGER_ID));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -138,14 +129,15 @@ public class ComplaintTable implements ComplaintDAO {
     @Override
     public void updateComplaint(Complaint complaint) {
         String query = "UPDATE " + TABLE_COMPLAINT + " SET " +
-                COMPLAINT_COLUMN_ID + " " + complaint.getId() +  "," +
-                COMPLAINT_COLUMN_DESCRIPTION + " " + complaint.getDescription() +  "," +
-                COMPLAINT_COLUMN_SUBMIT_TIME + " " + complaint.getSubmit_time() + "," +
-                COMPLAINT_COLUMN_STATUS + " " + complaint.getStatus() +
-                " WHERE " + COMPLAINT_COLUMN_SUBMIT_TIME + " = " + complaint.getSubmit_time();
+                COMPLAINT_COLUMN_DESCRIPTION + "= '" + complaint.getDescription() +  "', " +
+                COMPLAINT_COLUMN_STATUS + "= '" + complaint.getStatus() + "', " +
+                COMPLAINT_COLUMN_MANAGER_ID + "= " + complaint.getManager_id() + " " +
+                " WHERE " + COMPLAINT_COLUMN_ID + " = " + complaint.getId();
         try {
             Statement updateItem = db.getConnection().createStatement();
-            updateItem.executeQuery(query);
+            System.out.println(updateItem);
+            updateItem.executeUpdate(query);
+            System.out.println("Record updated!");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

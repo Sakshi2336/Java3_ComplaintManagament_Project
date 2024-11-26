@@ -1,26 +1,25 @@
 package org.example.java3_final_project.pojo;
 
-public class User {
-
-    private int id;
+public class User extends DatabaseComplaint{
     private String first_name;
     private String last_name;
     private int type;
 
     public User(int id, String first_name, String last_name, int type) {
-        this.id = id;
+        super(id);
         this.first_name = first_name;
         this.last_name = last_name;
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getFirst_name() {
         return first_name;

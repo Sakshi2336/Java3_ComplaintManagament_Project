@@ -1,31 +1,22 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import org.example.java3_final_project.pojo.Category;
-import org.example.java3_final_project.pojo.Complaint;
-import org.example.java3_final_project.pojo.Flat;
-import org.example.java3_final_project.pojo.User;
-import org.example.java3_final_project.tables.CategoryTable;
-import org.example.java3_final_project.tables.ComplaintTable;
-import org.example.java3_final_project.tables.FlatTable;
-import org.example.java3_final_project.tables.UserTable;
+import org.example.java3_final_project.pojo.*;
+import org.example.java3_final_project.tables.*;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
 public class AddComplaintTab extends Tab {
+
+    public static ComboBox<User> tenant_Combo = new ComboBox<>();
     public AddComplaintTab(){
 
 
@@ -41,6 +32,7 @@ public class AddComplaintTab extends Tab {
         UserTable userTable = new UserTable();
         ComplaintTable complaintTable = new ComplaintTable();
         FlatTable flatTable = new FlatTable();
+        ComplaintCategoryTable complaintCategoryTable = new ComplaintCategoryTable();
 
         //First tenant information heading
         Text tenantInfoHeading = new Text("Tenant Info");
@@ -52,7 +44,7 @@ public class AddComplaintTab extends Tab {
         //Now here I need to check if user entered tenant name is valid or not
         Label tenantName = new Label("Tenant Name:");
         tenantPane.add(tenantName, 10, 4);
-        ComboBox<User> tenant_Combo = new ComboBox<>();
+        tenant_Combo = new ComboBox<>();
         tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
         tenantPane.add(tenant_Combo, 13, 4);
 
@@ -123,8 +115,10 @@ public class AddComplaintTab extends Tab {
                     comboFlat.getSelectionModel().getSelectedItem().getFlat_num(),
                     managerComboBox.getSelectionModel().getSelectedItem().getId()
             );
-            messageText.setText("Complaint Added!");
             complaintTable.createComplaint(complaint);
+            complaintCategoryTable.insertQuery(comboCategory.getSelectionModel().getSelectedItem().getId());
+            messageText.setText("Complaint Added!");
+            ViewStatisticsTab.getInstance().generateChart();
             tenant_Combo.setValue(null);
             comboFlat.setValue(null);
             comboCategory.setValue(null);
@@ -144,6 +138,7 @@ public class AddComplaintTab extends Tab {
         this.setContent(root);
 
     }
+
 }
 
 

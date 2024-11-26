@@ -1,4 +1,4 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -10,13 +10,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.DisplayComplaint;
 import org.example.java3_final_project.tables.ComplaintTable;
 
 public class ViewComplaintTab extends Tab {
-
 
     public TableView tableView;
     public ComplaintTable complaint;
@@ -35,31 +33,31 @@ public class ViewComplaintTab extends Tab {
                 e-> new SimpleStringProperty(e.getValue().getDescription()));
         //Complaint Description
         TableColumn<DisplayComplaint, String> column2 =
-                new TableColumn<>("Complaint Submit Time");
+                new TableColumn<>("Submit Time");
 
         column2.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getSubmit_time()));
 
         TableColumn<DisplayComplaint, String> column3 =
-                new TableColumn<>("Complaint Status");
+                new TableColumn<>("Status");
 
         column3.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getStatus()));
 
         TableColumn<DisplayComplaint, String> column4 =
-                new TableColumn<>("Complaint Tenant Name");
+                new TableColumn<>("Tenant Name");
 
         column4.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getTenant_name()));
 
         TableColumn<DisplayComplaint, String> column5 =
-                new TableColumn<>("Complaint Flat Number");
+                new TableColumn<>("Flat Number");
 
         column5.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getFlat_num()));
 
         TableColumn<DisplayComplaint, String> column6 =
-                new TableColumn<>("Complaint Manager Name");
+                new TableColumn<>("Assigned Manager");
 
         column6.setCellValueFactory(
                 e-> new SimpleStringProperty(e.getValue().getManager_name()));
@@ -72,13 +70,8 @@ public class ViewComplaintTab extends Tab {
         openComplaints.setOnAction(e -> {
             seeOpenComplaints();});
 
-        Button backButton = new Button("Back");
-        backButton.setOnAction(e -> {
-            refreshTable();});
 
-
-
-        hbox.getChildren().addAll(refreshButton,openComplaints, backButton);
+        hbox.getChildren().addAll(refreshButton,openComplaints);
 
         hbox.setSpacing(10);
         hbox.setAlignment(Pos.CENTER);
@@ -95,11 +88,12 @@ public class ViewComplaintTab extends Tab {
 
                 if(newValue != null){
                     Complaint selectedItem = complaint.getComplaint(((DisplayComplaint) newValue).getId());
+                    System.out.println(selectedItem.getDescription());
                     UpdateComplaintTab pane = new UpdateComplaintTab(selectedItem);
                     root.setRight(pane);
                 }
                 else{
-                    System.out.println("hi");
+                    System.out.println("Listener is having issue");
                 }
             }
         });

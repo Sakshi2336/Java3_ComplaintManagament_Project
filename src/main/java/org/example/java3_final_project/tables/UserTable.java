@@ -45,6 +45,25 @@ public class UserTable implements UserDAO {
         return tenants;
     }
 
+    public String getUserFirstName(int id){
+        String firstName = null;
+        String query = " SELECT " + USER_COLUMN_FIRST_NAME + " FROM " + TABLE_USER +
+                " WHERE " + USER_COLUMN_ID + " = " + id + ";";
+
+        try{
+            Statement getUser = db.getConnection().createStatement();
+            ResultSet data = getUser.executeQuery(query);
+
+            if(data.next()){
+                firstName = data.getString("first_name");
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return firstName;
+    }
+
     @Override
     public ArrayList<User> getAllManager() {
         String query = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_COLUMN_USER_TYPE_ID + " = 1;";
@@ -70,17 +89,18 @@ public class UserTable implements UserDAO {
     @Override
     public ArrayList<DisplayTenant> getPrettyTenants() {
         ArrayList<DisplayTenant> tenants = new ArrayList<DisplayTenant>();
-        String query = " SELECT first_name,last_name,flat_num " +
-                "FROM tenant_info " +
-                "ORDER BY flat_num ASC";
+        String query = " SELECT * FROM " + VIEW_TENANT_INFO +
+                " ORDER BY flat_num ASC ";
 
         try {
             Statement getTenants = db.getConnection().createStatement();
             ResultSet data = getTenants.executeQuery(query);
             while (data.next()) {
-                tenants.add(new DisplayTenant(data.getString("first_name"),
+                tenants.add(new DisplayTenant(
+                        data.getString("user_id"),
+                        data.getString("first_name"),
                         data.getString("last_name"),
-                        data.getInt("flat_num")
+                        data.getString("flat_num")
                 ));
             }
         } catch (SQLException e) {
@@ -91,19 +111,46 @@ public class UserTable implements UserDAO {
 
 
     }
-    public void deleteTenant(int id) {
-        String query  = "DELETE FROM " + TABLE_TENANT_INFO + " WHERE " +
-                TENANT_INFO_COLUMN_FLAT_NUM + " = " + id;
+
+//    public void deleteTenantInView(String id) {
+//        String query  = "DELETE FROM " + VIEW_TENANT_INFO + " WHERE " +
+//                TENANT_INFO_COLUMN_FLAT_NUM + " = " + id;
+//        try {
+//            db.getConnection().createStatement().execute(query);
+//            System.out.println("Deleted record from tenant view");
+//        } catch (SQLException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//    }
+
+    @Override
+    public void deleteTenantFromUsers(String id) {
+        String query  = "DELETE FROM " + TABLE_USER + " WHERE " +
+                USER_COLUMN_ID + " = " + id;
         try {
             db.getConnection().createStatement().execute(query);
-            System.out.println("Deleted record");
+            System.out.println("Deleted record from users table");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
+    @Override
+    public void deleteTenantFromFlatUser(String id) {
+        String query  = "DELETE FROM " + TABLE_FLAT_USER + " WHERE " +
+                FLAT_USER_COLUMN_USER_ID + " = " + id;
+        try {
+            db.getConnection().createStatement().execute(query);
+            System.out.println("Deleted record from flat user");
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
+
+}
 
 
 

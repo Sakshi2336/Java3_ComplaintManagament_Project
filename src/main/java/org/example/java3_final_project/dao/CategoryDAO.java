@@ -7,5 +7,6 @@ import java.util.ArrayList;
 public interface CategoryDAO {
 
     public ArrayList<Category> getAllCategory();
+    public String getCategory(int id);
 
 }

@@ -1,4 +1,4 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 
 import javafx.scene.chart.PieChart;
@@ -7,23 +7,20 @@ import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Category;
 
 import org.example.java3_final_project.tables.CategoryTable;
 
-import org.example.java3_final_project.pojo.ComplaintCategory;
-import org.example.java3_final_project.tables.CategoryTable;
 import org.example.java3_final_project.tables.ComplaintCategoryTable;
-import org.example.java3_final_project.tables.ComplaintTable;
 
 import java.util.ArrayList;
 
 public class ViewStatisticsTab extends Tab {
 
+    private static ViewStatisticsTab instance;
     private PieChart chart;
 
-    public ViewStatisticsTab() {
+    private ViewStatisticsTab() {
         this.setText("View Statistics");
 
         BorderPane root = new BorderPane();
@@ -56,5 +53,12 @@ public class ViewStatisticsTab extends Tab {
         ObservableList<PieChart.Data> chartData
                 = FXCollections.observableArrayList(data);
         chart.setData(chartData);
+    }
+
+    public static ViewStatisticsTab getInstance() {
+        if(instance == null){
+            instance = new ViewStatisticsTab();
+        }
+        return instance;
     }
 }

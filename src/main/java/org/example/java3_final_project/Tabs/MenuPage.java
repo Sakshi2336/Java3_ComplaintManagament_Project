@@ -1,7 +1,6 @@
-package org.example.java3_final_project;
+package org.example.java3_final_project.Tabs;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -11,13 +10,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import org.example.java3_final_project.MenuPage.AddComplaintTab;
-import org.example.java3_final_project.MenuPage.ViewComplaintTab;
-import org.example.java3_final_project.MenuPage.ViewStatisticsTab;
 
 import java.io.IOException;
 
-public class MenuPaged extends Application {
+public class MenuPage extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -30,18 +26,14 @@ public class MenuPaged extends Application {
 
         Tab viewComp = new ViewComplaintTab();
 
-//        viewComp.setOnAction(e-> System.out.println("view complaint"));
-
         Tab addComp = new AddComplaintTab();
-//        addComp.setOnAction(e-> System.out.println("add complaint"));
 
-        Tab viewStat = new ViewStatisticsTab();
-//        viewStat.setOnAction(e-> System.out.println("view statistics"));
+        Tab viewStat = ViewStatisticsTab.getInstance();
+
+        Tab tenantInfo = new TenantInfo();
 
 
-       // Tab tenentInfo = new TenentInfo();
-
-        tabpane.getTabs().addAll(viewComp, addComp, viewStat);
+        tabpane.getTabs().addAll(viewComp, addComp, viewStat,tenantInfo);
 
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
@@ -55,7 +47,7 @@ public class MenuPaged extends Application {
 
         Scene scene = new Scene(bp, 1100, 600);
 //        System.out.println(this.getClass().getResource("main.css").toExternalForm());
-        scene.getStylesheets().add(this.getClass().getResource("main.css").toExternalForm());
+        //scene.getStylesheets().add(this.getClass().getResource("main.css").toExternalForm());
         stage.setTitle("Menu Page");
         stage.setScene(scene);
         stage.show();
