@@ -1,11 +1,10 @@
 package org.example.java3_final_project.tables;
 
-import org.example.java3_final_project.dao.CategoryDAO;
 import org.example.java3_final_project.dao.ComplaintDAO;
 import org.example.java3_final_project.database.Database;
 import org.example.java3_final_project.pojo.Complaint;
+import org.example.java3_final_project.pojo.DisplayComplaint;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,8 +14,23 @@ import static org.example.java3_final_project.database.DBConst.*;
 
 public class ComplaintTable implements ComplaintDAO {
 
+    public ComplaintTable() {
+        this.complaints = new ArrayList<>(); // Initialize the list
+
+    };
+
+
     Database db = Database.getInstance();
     ArrayList<Complaint> complaints;
+
+    private static ComplaintTable instance;
+
+    public static ComplaintTable getInstance() {
+        if (instance == null) {
+            instance = new ComplaintTable();
+        }
+        return instance;
+    }
     @Override
     public ArrayList<Complaint> getAllComplaint() {
         String query = "SELECT * FROM " + TABLE_COMPLAINT;
@@ -38,10 +52,65 @@ public class ComplaintTable implements ComplaintDAO {
         }
         return complaints;
     }
+    public ArrayList<DisplayComplaint> getPrettyComplaints(){
+        ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
+        String query = " SELECT complaint.complaint_id, complaint.description," +
+                "complaint.submit_time,complaint.status,user.first_name" +
+                " AS tenant_name, flat.flat_num as flat_num,user.first_name " +
+                "AS manager_name from complaint JOIN flat on complaint.flat_id = flat.flat_num " +
+                "JOIN user on complaint.manager_id=user.user_id " +
+        "ORDER BY complaint.complaint_id ASC";
+
+        try {
+            Statement getItems = db.getConnection().createStatement();
+            ResultSet data = getItems.executeQuery(query);
+            while(data.next()) {
+                complaints.add(new DisplayComplaint(data.getInt("complaint_id"),
+                        data.getString("description"),
+                        data.getString("submit_time"),
+                        data.getString("status"),
+                        data.getString("tenant_name"),
+                        data.getString("flat_num"),
+                        data.getString("manager_name")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return complaints;
+    }
 
     @Override
-    public void openComplaints(String status) {
-        //TODO need to create method body
+    public ArrayList<DisplayComplaint> openComplaints() {
+        ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
+        String query = " SELECT complaint.complaint_id, complaint.description," +
+                "complaint.submit_time,complaint.status,user.first_name" +
+                " AS tenant_name, flat.flat_num as flat_num,user.first_name " +
+                "AS manager_name from complaint JOIN flat on complaint.flat_id = flat.flat_num " +
+                "JOIN user on complaint.manager_id=user.user_id " +
+                "WHERE complaint.status = 'Open' OR complaint.status = 'open' " +
+                "ORDER BY complaint.complaint_id ASC";
+
+        try {
+            Statement getItems = db.getConnection().createStatement();
+            ResultSet data = getItems.executeQuery(query);
+            while(data.next()) {
+                complaints.add(new DisplayComplaint(data.getInt("complaint_id"),
+                        data.getString("description"),
+                        data.getString("submit_time"),
+                        data.getString("status"),
+                        data.getString("tenant_name"),
+                        data.getString("flat_num"),
+                        data.getString("manager_name")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return complaints;
+
+
+
     }
 
     @Override
@@ -72,8 +141,8 @@ public class ComplaintTable implements ComplaintDAO {
                 COMPLAINT_COLUMN_ID + " " + complaint.getId() +  "," +
                 COMPLAINT_COLUMN_DESCRIPTION + " " + complaint.getDescription() +  "," +
                 COMPLAINT_COLUMN_SUBMIT_TIME + " " + complaint.getSubmit_time() + "," +
-                COMPLAINT_COLUMN_STATUS + " " + complaint.getSubmit_time() +
-                " WHERE " + COMPLAINT_COLUMN_ID + " = " + complaint.getId();
+                COMPLAINT_COLUMN_STATUS + " " + complaint.getStatus() +
+                " WHERE " + COMPLAINT_COLUMN_SUBMIT_TIME + " = " + complaint.getSubmit_time();
         try {
             Statement updateItem = db.getConnection().createStatement();
             updateItem.executeQuery(query);

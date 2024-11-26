@@ -24,6 +24,7 @@ public class MenuPaged extends Application {
 
         Label label = new Label("What do you want to do?");
         label.setFont(Font.font(25));
+        //Font font = Font.loadFont(getClass().getResourceAsStream("/Lobster/Lobster-Regular.ttf"),55);
 
         TabPane tabpane = new TabPane();
 
@@ -37,7 +38,11 @@ public class MenuPaged extends Application {
         Tab viewStat = new ViewStatisticsTab();
 //        viewStat.setOnAction(e-> System.out.println("view statistics"));
 
+
+       // Tab tenentInfo = new TenentInfo();
+
         tabpane.getTabs().addAll(viewComp, addComp, viewStat);
+
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         HBox hbox = new HBox(label);
@@ -54,6 +59,9 @@ public class MenuPaged extends Application {
         stage.setTitle("Menu Page");
         stage.setScene(scene);
         stage.show();
+
+
+
 
     }
 }

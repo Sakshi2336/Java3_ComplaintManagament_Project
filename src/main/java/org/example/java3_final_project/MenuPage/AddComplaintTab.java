@@ -2,16 +2,18 @@ package org.example.java3_final_project.MenuPage;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 import org.example.java3_final_project.pojo.Category;
 import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.Flat;
@@ -24,8 +26,8 @@ import org.example.java3_final_project.tables.UserTable;
 import static javafx.collections.FXCollections.observableArrayList;
 
 public class AddComplaintTab extends Tab {
-
     public AddComplaintTab(){
+
 
         //Tab text
         this.setText("Add complaint");
@@ -34,6 +36,7 @@ public class AddComplaintTab extends Tab {
         //Root panes
         BorderPane root = new BorderPane();
         GridPane tenantPane = new GridPane();
+        Text messageText = new Text();
 
         UserTable userTable = new UserTable();
         ComplaintTable complaintTable = new ComplaintTable();
@@ -110,7 +113,7 @@ public class AddComplaintTab extends Tab {
 
 
         //Buttons and hBox to put these buttons
-        HBox buttons = new HBox();
+        VBox buttons = new VBox();
         Button submitButton = new Button("Submit");
         submitButton.setOnAction(e->{
             Complaint complaint = new Complaint(
@@ -120,15 +123,35 @@ public class AddComplaintTab extends Tab {
                     comboFlat.getSelectionModel().getSelectedItem().getFlat_num(),
                     managerComboBox.getSelectionModel().getSelectedItem().getId()
             );
+            messageText.setText("Complaint Added!");
             complaintTable.createComplaint(complaint);
+            tenant_Combo.setValue(null);
+            comboFlat.setValue(null);
+            comboCategory.setValue(null);
+            descriptionText.setText("");
+            managerComboBox.setValue(null);
+
         });
-        buttons.getChildren().addAll(submitButton);
+        buttons.getChildren().addAll(submitButton,messageText);
+        messageText.setText("");
 
         root.setTop(tenantPane);
         root.setCenter(complaintPane);
         root.setBottom(buttons);
         buttons.setAlignment(Pos.BOTTOM_CENTER);
 
+
         this.setContent(root);
+
     }
 }
+
+
+
+
+
+
+
+
+
+

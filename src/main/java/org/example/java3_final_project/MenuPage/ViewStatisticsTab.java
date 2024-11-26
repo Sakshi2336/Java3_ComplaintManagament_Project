@@ -1,13 +1,17 @@
 package org.example.java3_final_project.MenuPage;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Category;
+
+import org.example.java3_final_project.tables.CategoryTable;
+
 import org.example.java3_final_project.pojo.ComplaintCategory;
 import org.example.java3_final_project.tables.CategoryTable;
 import org.example.java3_final_project.tables.ComplaintCategoryTable;
@@ -18,7 +22,8 @@ import java.util.ArrayList;
 public class ViewStatisticsTab extends Tab {
 
     private PieChart chart;
-    public ViewStatisticsTab(){
+
+    public ViewStatisticsTab() {
         this.setText("View Statistics");
 
         BorderPane root = new BorderPane();
@@ -33,7 +38,9 @@ public class ViewStatisticsTab extends Tab {
         root.setCenter(chart);
         root.setBottom(refresh);
         this.setContent(root);
+
     }
+
 
     public void generateChart(){
         ComplaintCategoryTable complaintCategoryTable = new ComplaintCategoryTable();
