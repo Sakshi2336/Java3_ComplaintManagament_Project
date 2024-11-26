@@ -15,3 +15,7 @@
 .menu-page .tab {
     -fx-background-color: #9dbcbc;
 }
+
+.menu-page .tab:hover {
+    -fx-background-color: #fff5bb;
+}
