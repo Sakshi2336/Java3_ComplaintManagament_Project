@@ -1,7 +1,13 @@
 /* Menu page css*/
 
+@font-face {
+    font-family: "Lobster-Regular.ttf";
+    src: url("resources/org/example/java3_final_project/Fonts/Lobster/Lobster-Regular.ttf");
+}
+
 .menu-page HBox {
     -fx-alignment: center;
+    -fx-font-family: "Lobster-Regular.ttf";
 }
 
 
