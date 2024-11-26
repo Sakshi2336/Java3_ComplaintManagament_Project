@@ -8,17 +8,10 @@
 .menu-page HBox {
     -fx-alignment: center;
     -fx-font-family: "Lobster-Regular.ttf";
+    -fx-background-color: #006666;
+    -fx-text-fill: white;
 }
 
-
-.menu-page {
-
-    background-color: lightblue;
-}
-#menuPage .tabs {
-    -fx-background-color: yellow;
-    }
-
-Button{
-    fx-background-color: #4CAF50;
+.menu-page .tab {
+    -fx-background-color: #9dbcbc;
 }
