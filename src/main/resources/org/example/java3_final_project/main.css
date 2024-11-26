@@ -1,13 +1,16 @@
 @font-face {
-    font-family: "Lobster-Regular.ttf";
-    src: url("resources/org/example/java3_final_project/Fonts/Lobster/Lobster-Regular.ttf");
+    font-family: "OleoScript-Bold.ttf";
+    src: url("src/main/resources/org/example/java3_final_project/Fonts/Oleo_Script/OleoScript-Bold.ttf");
 }
 
 .menu-page HBox {
     -fx-alignment: center;
-    -fx-font-family: "Lobster-Regular.ttf";
     -fx-background-color: #006666;
     -fx-text-fill: white;
+}
+
+.menu-page Label{
+    -fx-font-family: "OleoScript-Bold.ttf";
 }
 
 .menu-page .tab {
