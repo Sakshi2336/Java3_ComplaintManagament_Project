@@ -1,6 +1,7 @@
-@font-face {
-    font-family: "OleoScript-Bold.ttf";
-    src: url("/org/example/java3_final_project/Fonts/Oleo_Script/OleoScript-Bold.ttf");
+
+@font-face{
+            font-family: 'font';
+            src: url('font.ttf');
 }
 
 .menu-page HBox {
@@ -11,6 +12,7 @@
 
 .menu-page Label{
     -fx-font-family: "OleoScript-Bold.ttf";
+    /*Font website : https://www.fontspace.com/category/professional*/
 }
 
 .menu-page .tab {
@@ -27,4 +29,13 @@
 
 .menu-page {
     -fx-background-color: #b7b7b7;
+}
+
+.welcome_page_root{
+    -fx-background-image: url("/org/example/java3_final_project/Images/background.jpeg");
+        -fx-background-size: cover;
+        -fx-background-position: center;
+        -fx-background-repeat: no-repeat;
+        -fx-opacity: 0.9;
+        -fx-font-family:"font";
 }

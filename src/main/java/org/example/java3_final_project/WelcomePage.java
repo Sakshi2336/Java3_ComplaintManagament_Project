@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import org.example.java3_final_project.Tabs.MenuPage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class WelcomePage extends Application {
 
@@ -86,9 +87,11 @@ public class WelcomePage extends Application {
 
         //root pane
         BorderPane welcome_scene_rootPane = new BorderPane();
+        welcome_scene_rootPane.getStyleClass().add("welcome_page_root");
         welcome_scene_rootPane.setCenter(title_vbox);
         welcome_scene_rootPane.setBottom(button_hbox);
         Scene welcome_scene = new Scene(welcome_scene_rootPane,1100,600);
+        welcome_scene.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/org/example/java3_final_project/main.css")).toExternalForm());
         stage.setScene(welcome_scene);
     }
 }
