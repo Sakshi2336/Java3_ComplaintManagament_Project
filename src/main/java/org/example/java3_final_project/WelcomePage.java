@@ -15,7 +15,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.java3_final_project.MenuPage.MenuPage;
+import org.example.java3_final_project.Tabs.MenuPage;
 
 import java.io.IOException;
 

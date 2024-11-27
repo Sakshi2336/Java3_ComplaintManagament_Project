@@ -1,18 +1,13 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import org.example.java3_final_project.pojo.*;
 import org.example.java3_final_project.tables.*;

@@ -1,4 +1,4 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 
 import javafx.scene.chart.PieChart;
@@ -7,15 +7,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Category;
 
 import org.example.java3_final_project.tables.CategoryTable;
 
-import org.example.java3_final_project.pojo.ComplaintCategory;
-import org.example.java3_final_project.tables.CategoryTable;
 import org.example.java3_final_project.tables.ComplaintCategoryTable;
-import org.example.java3_final_project.tables.ComplaintTable;
 
 import java.util.ArrayList;
 

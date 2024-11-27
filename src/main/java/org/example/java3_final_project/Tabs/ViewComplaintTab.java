@@ -1,4 +1,4 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -10,7 +10,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.DisplayComplaint;
 import org.example.java3_final_project.tables.ComplaintTable;

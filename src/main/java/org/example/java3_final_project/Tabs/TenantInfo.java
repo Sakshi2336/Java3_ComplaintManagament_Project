@@ -1,4 +1,4 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -7,12 +7,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.example.java3_final_project.pojo.DisplayTenant;
-import org.example.java3_final_project.pojo.FlatUser;
 import org.example.java3_final_project.pojo.User;
 import org.example.java3_final_project.tables.FlatUserTable;
 import org.example.java3_final_project.tables.UserTable;
 
-import static org.example.java3_final_project.MenuPage.AddComplaintTab.tenant_Combo;
+import static org.example.java3_final_project.Tabs.AddComplaintTab.tenant_Combo;
 
 public class TenantInfo extends Tab {
 

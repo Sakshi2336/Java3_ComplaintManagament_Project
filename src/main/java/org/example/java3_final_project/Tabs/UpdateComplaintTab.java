@@ -1,4 +1,4 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -9,9 +9,6 @@ import org.example.java3_final_project.pojo.*;
 import org.example.java3_final_project.tables.*;
 
 import java.util.ArrayList;
-
-import static org.example.java3_final_project.database.DBConst.*;
-import static org.example.java3_final_project.database.DBConst.COMPLAINT_COLUMN_SUBMIT_TIME;
 
 public class UpdateComplaintTab extends GridPane {
     public int find(ArrayList<?> arrayList, int id) {

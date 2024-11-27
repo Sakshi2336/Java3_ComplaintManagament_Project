@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "OleoScript-Bold.ttf";
+    src: url("src/main/resources/org/example/java3_final_project/Fonts/Oleo_Script/OleoScript-Bold.ttf");
+}
+
+.menu-page HBox {
+    -fx-alignment: center;
+    -fx-background-color: #006666;
+    -fx-text-fill: white;
+}
+
+.menu-page Label{
+    -fx-font-family: "OleoScript-Bold.ttf";
+}
+
+.menu-page .tab {
+    -fx-background-color: #9dbcbc;
+}
+
+.menu-page .tab:hover {
+    -fx-background-color: #fff5bb;
+}
+
+.menu-page .tab:selected {
+    -fx-background-color: #6b6b6b;
+}
+
+.menu-page {
+    -fx-background-color: #b7b7b7;
+}

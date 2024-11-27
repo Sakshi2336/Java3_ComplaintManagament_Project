@@ -1,4 +1,4 @@
-package org.example.java3_final_project.MenuPage;
+package org.example.java3_final_project.Tabs;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -20,6 +20,7 @@ public class MenuPage extends Application {
 
         Label label = new Label("What do you want to do?");
         label.setFont(Font.font(25));
+        //Font font = Font.loadFont(getClass().getResourceAsStream("/Lobster/Lobster-Regular.ttf"),55);
 
         TabPane tabpane = new TabPane();
 
@@ -31,6 +32,7 @@ public class MenuPage extends Application {
 
         Tab tenantInfo = new TenantInfo();
 
+
         tabpane.getTabs().addAll(viewComp, addComp, viewStat,tenantInfo);
 
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
@@ -41,7 +43,11 @@ public class MenuPage extends Application {
         BorderPane bp = new BorderPane();
         bp.setCenter(vbox);
 
+        bp.getStyleClass().add("menu-page");
+
         Scene scene = new Scene(bp, 1100, 600);
+//        System.out.println(this.getClass().getResource("main.css").toExternalForm());
+        //scene.getStylesheets().add(this.getClass().getResource("main.css").toExternalForm());
         stage.setTitle("Menu Page");
         stage.setScene(scene);
         stage.show();

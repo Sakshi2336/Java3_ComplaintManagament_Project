@@ -18,7 +18,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.java3_final_project.MenuPage.MenuPage;
 import org.example.java3_final_project.database.Database;
 
 import java.io.BufferedWriter;
@@ -59,7 +58,6 @@ public class LoginForm extends Application {
 
         //setting primary stage to class member stage
         this.stage = stage;
-
 
         /**
          * login_scene -> Login form which will have
