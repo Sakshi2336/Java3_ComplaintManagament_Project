@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MenuPage extends Application {
     @Override
@@ -46,8 +47,7 @@ public class MenuPage extends Application {
         bp.getStyleClass().add("menu-page");
 
         Scene scene = new Scene(bp, 1100, 600);
-//        System.out.println(this.getClass().getResource("main.css").toExternalForm());
-        //scene.getStylesheets().add(this.getClass().getResource("main.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/org/example/java3_final_project/main.css")).toExternalForm());
         stage.setTitle("Menu Page");
         stage.setScene(scene);
         stage.show();

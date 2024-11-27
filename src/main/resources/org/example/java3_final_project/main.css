@@ -1,6 +1,6 @@
 @font-face {
     font-family: "OleoScript-Bold.ttf";
-    src: url("src/main/resources/org/example/java3_final_project/Fonts/Oleo_Script/OleoScript-Bold.ttf");
+    src: url("/org/example/java3_final_project/Fonts/Oleo_Script/OleoScript-Bold.ttf");
 }
 
 .menu-page HBox {
