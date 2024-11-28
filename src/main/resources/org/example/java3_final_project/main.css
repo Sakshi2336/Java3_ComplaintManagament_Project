@@ -37,7 +37,7 @@
 
 
 .welcome_page_root{
-    -fx-background-image: url("/org/example/java3_final_project/Images/b2.jpg");
+    -fx-background-image: url("/org/example/java3_final_project/Images/background.jpeg");
         -fx-background-size: cover;
         -fx-background-position: center;
         -fx-background-repeat: no-repeat;
@@ -56,6 +56,7 @@
 .description_text {
     -fx-font-family: "Arial";
     -fx-font-size: 3em;
+    -fx-font-weight: bold;
     -fx-line-spacing: 5px;
     -fx-text-alignment: center;
     -fx-padding: 0 20px;
@@ -63,6 +64,7 @@
 
 .end-text{
     -fx-font-size: 3em;
+    -fx-font-weight: bold;
 }
 
 .button {
@@ -70,11 +72,11 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
-    -fx-background-color: #3498db;
+    -fx-background-color: #71D549;
     -fx-background-radius: 30px;
     -fx-padding: 15px 30px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 2, 2);
-    -fx-border-color: #2980b9;
+    -fx-border-color: #71D549;
     -fx-border-radius: 30px;
     -fx-border-width: 2;
     -fx-transition: background-color 0.3s, transform 0.3s ease-in-out;
@@ -84,6 +86,7 @@
 .button:hover {
     -fx-background-color: #2980b9;
     -fx-cursor: hand;
+    -fx-border-color: #2980b9;
 }
 
 /* Button scaling animation */
@@ -93,4 +96,38 @@
 
 .HBox{
     -fx-text-alignment:center;
+}
+
+
+/* Tenant Information Section */
+.tenant-section {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-padding: 15px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-spacing: 10px;
+}
+
+.tenant-section h3 {
+    font-size: 24px;
+    -fx-fill: #2c3e50; /* Dark blue-gray color for heading */
+}
+
+.tenant-section label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2c3e50;
+}
+
+.tenant-section .combo-box {
+    -fx-background-color: #f4f6f6;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 16px;
+}
+
+.tenant-section .combo-box .combo-box-popup {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-border-color: #bdc3c7;
 }

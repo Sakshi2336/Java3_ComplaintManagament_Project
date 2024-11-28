@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.*;
 import org.example.java3_final_project.tables.*;
 
+import java.util.Objects;
+
 import static javafx.collections.FXCollections.observableArrayList;
 
 public class AddComplaintTab extends Tab {
@@ -26,7 +28,10 @@ public class AddComplaintTab extends Tab {
 
         //Root panes
         BorderPane root = new BorderPane();
+
         GridPane tenantPane = new GridPane();
+        tenantPane.getStyleClass().add("tenant-section");
+
         Text messageText = new Text();
 
         UserTable userTable = new UserTable();

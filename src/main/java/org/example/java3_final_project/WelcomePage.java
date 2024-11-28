@@ -42,7 +42,6 @@ public class WelcomePage extends Application {
          */
 
         Text welcome_text = new Text("Welcome to the Apartment Complaint Management System");
-        welcome_text.setFill(Color.web("#5D90E9"));
         welcome_text.getStyleClass().add("welcome_text");
 
 
@@ -52,14 +51,13 @@ public class WelcomePage extends Application {
                 "the process of logging, tracking, and resolving complaints, ensuring that\n" +
                 "\t  \t every issue is addressed in a timely manner.");
         description_text.getStyleClass().add("description_text");
-        description_text.setFill(Color.web("#040071"));
+
 
 
 
         Text end_text = new Text("Join us in transforming the way you manage apartment complaints.\n" +
                 "\tYour first step towards streamlined operations begin here!");
         end_text.getStyleClass().add("end-text");
-        end_text.setFill(Color.web("#5D90E9"));
 
         Button start_button = new Button("Let's Get Started!");
         start_button.setOnAction(e->{
