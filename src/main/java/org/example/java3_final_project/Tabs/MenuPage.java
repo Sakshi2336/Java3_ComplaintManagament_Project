@@ -41,18 +41,18 @@ public class MenuPage extends Application {
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         Button backButton = new Button("Back to Welcome");
-        backButton.setFont(Font.font(18));
+        backButton.setFont(Font.font(10));
         backButton.setOnAction(e -> {
-            WelcomePage welcomePage = new WelcomePage(); // Create an instance of WelcomePage
+            WelcomePage welcomePage = new WelcomePage();
             try {
-                welcomePage.start(stage); // Navigate to the WelcomePage
+                welcomePage.start(stage);
             }catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
         });
 
         HBox hbox = new HBox(10,backButton,label);
-        hbox.setStyle("-fx-padding: 10px; -fx-alignment: center-left;");
+        hbox.setStyle("-fx-padding: 10px;");
         hbox.getStyleClass().add("viewComp");
 
         VBox vbox = new VBox(hbox, tabpane);

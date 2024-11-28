@@ -42,28 +42,26 @@ public class WelcomePage extends Application {
          */
 
         Text welcome_text = new Text("Welcome to the Apartment Complaint Management System");
+        welcome_text.setFill(Color.web("#5D90E9"));
         welcome_text.getStyleClass().add("welcome_text");
+
+
         Text description_text = new Text("Welcome to the Apartment Complaint Management System (ACMS), \n" +
                 "\tyour essential tool for efficiently handling tenant complaints.\n" +
                 "Designed specifically for apartment managers, this application streamlines\n" +
                 "the process of logging, tracking, and resolving complaints, ensuring that\n" +
                 "\t  \t every issue is addressed in a timely manner.");
         description_text.getStyleClass().add("description_text");
+        description_text.setFill(Color.web("#040071"));
+
+
+
         Text end_text = new Text("Join us in transforming the way you manage apartment complaints.\n" +
                 "\tYour first step towards streamlined operations begin here!");
-
-        // Font styling
-        welcome_text.setFont(Font.font("Arial", FontWeight.BOLD, 36));
-        description_text.setFont(Font.font("Arial", FontWeight.NORMAL, 25));
-        end_text.setFont(Font.font("Arial", FontWeight.NORMAL, 25));
-
-        // Set text color using Color object
-        welcome_text.setFill(Color.web("#2C3E50"));
-        description_text.setFill(Color.web("#2C3E50"));
-        end_text.setFill(Color.web("#2C3E50"));
+        end_text.getStyleClass().add("end-text");
+        end_text.setFill(Color.web("#5D90E9"));
 
         Button start_button = new Button("Let's Get Started!");
-        start_button.setFont(Font.font("Arial", FontWeight.NORMAL, 30));
         start_button.setOnAction(e->{
             MenuPage menuPage = new MenuPage();
             try {
