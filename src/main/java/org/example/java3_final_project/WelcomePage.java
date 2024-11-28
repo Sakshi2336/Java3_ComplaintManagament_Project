@@ -40,6 +40,7 @@ public class WelcomePage extends Application {
          */
 
         Text welcome_text = new Text("Welcome to the Apartment Complaint Management System");
+        welcome_text.getStyleClass().add("welcome_text");
         Text description_text = new Text("Welcome to the Apartment Complaint Management System (ACMS), \n" +
                 "\tyour essential tool for efficiently handling tenant complaints.\n" +
                 "Designed specifically for apartment managers, this application streamlines\n" +

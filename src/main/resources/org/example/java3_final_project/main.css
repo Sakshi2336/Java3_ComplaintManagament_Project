@@ -1,8 +1,13 @@
-
+/*
 @font-face{
             font-family: 'font';
             src: url('font.ttf');
+}*/
+
+.root{
+    -fx-background-color:grey;
 }
+
 
 .menu-page HBox {
     -fx-alignment: center;
@@ -11,7 +16,7 @@
 }
 
 .menu-page Label{
-    -fx-font-family: "OleoScript-Bold.ttf";
+    -fx-font-family: "Arial";
     /*Font website : https://www.fontspace.com/category/professional*/
 }
 
@@ -38,4 +43,12 @@
         -fx-background-repeat: no-repeat;
         -fx-opacity: 0.9;
         -fx-font-family:"font";
+}
+
+.menu-page{
+    -fx-font-family: "Arial";
+}
+
+.welcome_text{
+    -fx-font-size:3em;
 }
