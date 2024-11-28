@@ -6,6 +6,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -46,6 +48,7 @@ public class WelcomePage extends Application {
                 "Designed specifically for apartment managers, this application streamlines\n" +
                 "the process of logging, tracking, and resolving complaints, ensuring that\n" +
                 "\t  \t every issue is addressed in a timely manner.");
+        description_text.getStyleClass().add("description_text");
         Text end_text = new Text("Join us in transforming the way you manage apartment complaints.\n" +
                 "\tYour first step towards streamlined operations begin here!");
 
@@ -91,7 +94,7 @@ public class WelcomePage extends Application {
         welcome_scene_rootPane.getStyleClass().add("welcome_page_root");
         welcome_scene_rootPane.setCenter(title_vbox);
         welcome_scene_rootPane.setBottom(button_hbox);
-        Scene welcome_scene = new Scene(welcome_scene_rootPane,1100,600);
+        Scene welcome_scene = new Scene(welcome_scene_rootPane,1500,750);
         welcome_scene.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/org/example/java3_final_project/main.css")).toExternalForm());
         stage.setScene(welcome_scene);
     }

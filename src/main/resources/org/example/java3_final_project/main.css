@@ -4,11 +4,6 @@
             src: url('font.ttf');
 }*/
 
-.root{
-    -fx-background-color:grey;
-}
-
-
 .menu-page HBox {
     -fx-alignment: center;
     -fx-background-color: #006666;
@@ -36,19 +31,59 @@
     -fx-background-color: #b7b7b7;
 }
 
-.welcome_page_root{
-    -fx-background-image: url("/org/example/java3_final_project/Images/background.jpeg");
-        -fx-background-size: cover;
-        -fx-background-position: center;
-        -fx-background-repeat: no-repeat;
-        -fx-opacity: 0.9;
-        -fx-font-family:"font";
-}
-
 .menu-page{
     -fx-font-family: "Arial";
 }
 
-.welcome_text{
-    -fx-font-size:3em;
+
+.welcome_page_root{
+    -fx-background-image: url("/org/example/java3_final_project/Images/b2.jpg");
+        -fx-background-size: cover;
+        -fx-background-position: center;
+        -fx-background-repeat: no-repeat;
+        -fx-opacity: 0.85;
+}
+
+.welcome_text {
+    -fx-font-family: "Arial";
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0.5, 2, 2);
+    -fx-text-alignment: center;
+}
+
+.description_text {
+    -fx-font-family: "Arial";
+    -fx-font-size: 20px;
+    -fx-text-fill: #34495E;
+    -fx-line-spacing: 5px;
+    -fx-text-alignment: center;
+    -fx-padding: 0 20px;
+}
+
+.button {
+    -fx-font-family: "Arial";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #3498db;
+    -fx-background-radius: 30px;
+    -fx-padding: 15px 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 2, 2);
+    -fx-border-color: #2980b9;
+    -fx-border-radius: 30px;
+    -fx-border-width: 2;
+    -fx-transition: background-color 0.3s, transform 0.3s ease-in-out;
+}
+
+/* Hover effect for button */
+.button:hover {
+    -fx-background-color: #2980b9;
+    -fx-cursor: hand;
+}
+
+/* Button scaling animation */
+.button:pressed {
+    -fx-background-color: #1abc9c;
 }
