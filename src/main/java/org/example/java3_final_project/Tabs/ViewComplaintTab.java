@@ -22,7 +22,9 @@ public class ViewComplaintTab extends Tab {
 
         complaint = new ComplaintTable();
         BorderPane root = new BorderPane();
-        HBox hbox = new HBox();  this.setText("View Complaints");
+        root.getStyleClass().add("ViewComplaintRoot");
+        HBox hbox = new HBox();
+        this.setText("View Complaints");
 
         tableView = new TableView();
         //Complaint Description
@@ -72,7 +74,6 @@ public class ViewComplaintTab extends Tab {
 
 
         hbox.getChildren().addAll(refreshButton,openComplaints);
-
         hbox.setSpacing(10);
         hbox.setAlignment(Pos.CENTER);
 

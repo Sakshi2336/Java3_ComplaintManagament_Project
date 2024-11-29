@@ -1,6 +1,7 @@
 package org.example.java3_final_project.Tabs;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,7 +24,6 @@ public class MenuPage extends Application {
 
         Label label = new Label("What do you want to do?");
         label.setFont(Font.font(25));
-        //Font font = Font.loadFont(getClass().getResourceAsStream("/Lobster/Lobster-Regular.ttf"),55);
 
         TabPane tabpane = new TabPane();
 
@@ -35,27 +35,22 @@ public class MenuPage extends Application {
 
         Tab tenantInfo = new TenantInfo();
 
+        Tab goBack = new Tab("Go Back");
 
-        tabpane.getTabs().addAll(viewComp, addComp, viewStat,tenantInfo);
+        tabpane.getTabs().addAll(viewComp, addComp, viewStat,tenantInfo,goBack);
 
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        Button backButton = new Button("Back to Welcome");
-        backButton.setFont(Font.font(10));
-        backButton.setOnAction(e -> {
-            WelcomePage welcomePage = new WelcomePage();
-            try {
-                welcomePage.start(stage);
-            }catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
-        });
+        HBox hbox = new HBox(label);
+        hbox.setAlignment(Pos.CENTER);
+        hbox.getStyleClass().add("mainLabelHBox");
 
-        HBox hbox = new HBox(10,backButton,label);
-        hbox.setStyle("-fx-padding: 10px;");
-        hbox.getStyleClass().add("viewComp");
+        HBox tabPaneHbox = new HBox(tabpane);
+        tabPaneHbox.setAlignment(Pos.CENTER);
+        tabPaneHbox.setStyle("-fx-padding: 20px;");
 
-        VBox vbox = new VBox(hbox, tabpane);
+        VBox vbox = new VBox(20, hbox, tabPaneHbox);
+        vbox.setAlignment(Pos.CENTER);
 
         BorderPane bp = new BorderPane();
         bp.setCenter(vbox);

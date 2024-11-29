@@ -1,13 +1,7 @@
-/*
-@font-face{
-            font-family: 'font';
-            src: url('font.ttf');
-}*/
-
 .menu-page HBox {
     -fx-alignment: center;
-    -fx-background-color: #006666;
-    -fx-text-fill: white;
+    -fx-background-color: #C9ADA7;
+    -fx-text-fill: F2E9E4;
 }
 
 .menu-page Label{
@@ -15,20 +9,36 @@
     /*Font website : https://www.fontspace.com/category/professional*/
 }
 
-.menu-page .tab {
-    -fx-background-color: #9dbcbc;
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;  //tab background opacity
 }
 
-.menu-page .tab:hover {
-    -fx-background-color: #fff5bb;
+.tab-pane{
+    -fx-tab-min-width:270px;
 }
 
-.menu-page .tab:selected {
-    -fx-background-color: #6b6b6b;
+.tab-pane .tab{
+    -fx-background-insets:0 0 0 0;
+}
+
+.tab-pane .tab:selected{
+    -fx-background-color: #3c3c3c;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #4A4E69;
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #C9ADA7;
 }
 
 .menu-page {
-    -fx-background-color: #b7b7b7;
+    -fx-background-color: #C9ADA7;
 }
 
 .menu-page{
@@ -37,11 +47,11 @@
 
 
 .welcome_page_root{
-    -fx-background-image: url("/org/example/java3_final_project/Images/background.jpeg");
+    -fx-background-image: url("/org/example/java3_final_project/Images/b2.jpg");
         -fx-background-size: cover;
         -fx-background-position: center;
         -fx-background-repeat: no-repeat;
-        -fx-opacity: 0.85;
+        -fx-opacity: 1;
 }
 
 .welcome_text {
@@ -130,4 +140,72 @@
     -fx-background-color: #ffffff;
     -fx-border-radius: 5px;
     -fx-border-color: #bdc3c7;
+}
+
+.ViewComplaintRoot{
+    -fx-padding:2em;
+}
+
+.mainLabelHBox{
+    -fx-background-color: #C9ADA7;
+}
+
+.table-view {
+    -fx-border-color: #ddd;
+    -fx-border-width: 1;
+    -fx-background-color: #f9f9f9;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0078D4;  /* A nice blue background for headers */
+    -fx-border-color: #005A8C;
+}
+
+.table-view .table-column-header {
+    -fx-text-fill: white;  /* White text color for column headers */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 15px;
+}
+
+/* Styling for table rows */
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #E8F1FF; /* Light blue background on hover */
+}
+
+/* Alternate row styling for better readability */
+.table-view .table-row-cell:filled:nth-child(odd) {
+    -fx-background-color: #f2f2f2;
+}
+
+.table-view .table-row-cell:filled:nth-child(even) {
+    -fx-background-color: #ffffff;
+}
+
+/* TableCell Text styling */
+.table-view .table-cell {
+    -fx-padding: 10px 15px;
+    -fx-text-fill: #333;  /* Dark text for readability */
+    -fx-font-size: 14px;
+}
+
+/* When cell is selected */
+.table-view .table-cell:selected {
+    -fx-background-color: #4D90FE; /* Blue background for selected cell */
+    -fx-text-fill: white;
+}
+
+/* Table Column header hover effect */
+.table-view .table-column-header:hover {
+    -fx-background-color: #ffffff; /* Darker shade of blue on hover */
 }
