@@ -10,19 +10,22 @@
 }
 
 .tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 0;  //tab background opacity
+    -fx-opacity: 0;  /*tab background opacity*/
 }
 
 .tab-pane{
-    -fx-tab-min-width:270px;
+    -fx-tab-min-width: 250px;
+    -fx-tab-min-height: 66px;
+    -fx-tab-max-height: 66px;
 }
 
 .tab-pane .tab{
-    -fx-background-insets:0 0 0 0;
+    -fx-background-insets:0 10 0 10;
 }
 
 .tab-pane .tab:selected{
     -fx-background-color: #3c3c3c;
+    -fx-border-color:#3c3c3c;
 }
 
 .tab .tab-label {
@@ -47,11 +50,11 @@
 
 
 .welcome_page_root{
-    -fx-background-image: url("/org/example/java3_final_project/Images/b2.jpg");
+    -fx-background-image: url("/org/example/java3_final_project/Images/background.jpeg");
         -fx-background-size: cover;
         -fx-background-position: center;
         -fx-background-repeat: no-repeat;
-        -fx-opacity: 1;
+        -fx-opacity: 0.1;
 }
 
 .welcome_text {
