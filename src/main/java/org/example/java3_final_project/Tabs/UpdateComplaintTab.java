@@ -22,16 +22,18 @@ public class UpdateComplaintTab extends GridPane {
  }
 
  public UpdateComplaintTab(Complaint complaint) {
+
+    this.getStyleClass().add("updateRoot");
     this.setPadding(new Insets(10, 10, 10, 10));
     this.setVgap(10);
     this.setHgap(10);
 
     ComplaintTable complaintTable = new ComplaintTable();
     UserTable userTable = new UserTable();
-    FlatTable flatTable = new FlatTable();
     CategoryTable categoryTable = new CategoryTable();
     ComplaintCategory complaintCategory = new ComplaintCategory();
-     ComplaintCategoryTable complaintCategoryTable = new ComplaintCategoryTable();
+    ComplaintCategoryTable complaintCategoryTable = new ComplaintCategoryTable();
+    Text message_text = new Text();
 
     // Tenant Info
     Text tenantInfoHeading = new Text("Tenant Info");
@@ -102,7 +104,7 @@ public class UpdateComplaintTab extends GridPane {
 
      // Call updateComplaint method to save changes
      complaintTable.updateComplaint(complaint);
-
+     message_text.setText("Complaint updated successfully");
     });
 
     this.add(updateButton, 1, 8);

@@ -210,3 +210,14 @@
     -fx-font-size: 1.5em;
     -fx-font-weight: bold;
 }
+
+
+
+/* Update form CSS Style */
+.updateRoot Text{
+    -fx-font-size: 2em;
+}
+
+.label{
+    -fx-font-size:1.6em;
+}

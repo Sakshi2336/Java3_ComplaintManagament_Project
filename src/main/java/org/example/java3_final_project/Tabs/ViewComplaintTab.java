@@ -102,7 +102,7 @@ public class ViewComplaintTab extends Tab {
         //Sub layout children
         button_hBox.getChildren().addAll(refreshButton,openComplaints);
         button_hBox.setSpacing(40);
-        button_hBox.setPadding(new Insets(20,20,20,20));
+        button_hBox.setPadding(new Insets(5,5,5,5));
 
         //Root pane children
         root.setCenter(tableView);
@@ -117,7 +117,6 @@ public class ViewComplaintTab extends Tab {
 
                 if(newValue != null){
                     Complaint selectedItem = complaint.getComplaint(((DisplayComplaint) newValue).getId());
-                    System.out.println(selectedItem.getDescription());
                     UpdateComplaintTab pane = new UpdateComplaintTab(selectedItem);
                     root.setRight(pane);
                 }
