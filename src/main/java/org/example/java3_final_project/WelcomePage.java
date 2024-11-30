@@ -46,7 +46,7 @@ public class WelcomePage extends Application {
 
 
         //Description text which will provide some basic information about application and css class for this text is = description_text
-        Text description_text = new Text("Welcome to the Apartment Complaint Management System (ACMS), \n" +
+        Text description_text = new Text("Apartment Complaint Management System (ACMS), \n" +
                 "\tyour essential tool for efficiently handling tenant complaints.\n" +
                 "Designed specifically for apartment managers, this application streamlines\n" +
                 "the process of logging, tracking, and resolving complaints, ensuring that\n" +
@@ -72,6 +72,8 @@ public class WelcomePage extends Application {
             }
         });
 
+        start_button.setTranslateY(300);
+
 
         //Scale transition for start button
         ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(5), start_button);
@@ -84,16 +86,11 @@ public class WelcomePage extends Application {
 
         //Image to put in background
         Image background_image_class = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/java3_final_project/Images/b3.jpg")));
-        // Define the size of the area that a BackgroundImage should fill relative
-        // to the Region it is styling. There are several properties who's values
-        // take precedence over the others. In particular there are 4 key properties,
-        // width, height, contain, and cover.
-        BackgroundSize backgroundSize = new BackgroundSize(1500, 750, true, true, false, true);
-        BackgroundImage backgroundImage = new BackgroundImage(background_image_class,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                backgroundSize);
+        ImageView background_imageview = new ImageView(background_image_class);
+        background_imageview.getStyleClass().add("imageview");
+        background_imageview.setOpacity(0.5);
+        background_imageview.setFitWidth(1550);
+        background_imageview.setFitHeight(800);
 
         //Sub layout:
         // -VBox that has 3 text objects
@@ -104,12 +101,13 @@ public class WelcomePage extends Application {
         button_hbox.setAlignment(Pos.CENTER);
         button_hbox.setPadding(new Insets(50));
 
+        //StackPane for putting image as background
+        StackPane stackPane = new StackPane(background_imageview,title_vbox,button_hbox);
+
         //Root pane - BorderPane
         BorderPane welcome_scene_rootPane = new BorderPane();
-        welcome_scene_rootPane.setBackground(new Background(backgroundImage));
         welcome_scene_rootPane.getStyleClass().add("welcome_page_root");
-        welcome_scene_rootPane.setCenter(title_vbox);
-        welcome_scene_rootPane.setBottom(button_hbox);
+        welcome_scene_rootPane.setCenter(stackPane);
         Scene welcome_scene = new Scene(welcome_scene_rootPane,1500,750);
         welcome_scene.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/org/example/java3_final_project/main.css")).toExternalForm());
         stage.setScene(welcome_scene);

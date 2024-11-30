@@ -1,39 +1,31 @@
-/*Welcome Page Css Styles*/
-
-/*
-.welcome_page_root{
-    -fx-background-image: url("/org/example/java3_final_project/Images/b3.jpg");
-        -fx-background-size: cover;
-        -fx-background-position: center;
-        -fx-background-repeat: no-repeat;
-        -fx-opacity: 0.85;
-}*/
-
-.welcome_text {
+*{
     -fx-font-family: "Arial";
+}
+
+/*Welcome Page Css Styles*/
+.welcome_text {
     -fx-font-size: 4em;
     -fx-font-weight: bold;
-    -fx-text-fill: #5D90E9;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0.5, 2, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
     -fx-text-alignment: center;
 }
 
 .description_text {
-    -fx-font-family: "Arial";
     -fx-font-size: 3em;
     -fx-font-weight: bold;
     -fx-line-spacing: 5px;
     -fx-text-alignment: center;
-    -fx-padding: 0 20px;
+    -fx-padding: 0 20px; /*top right bottom left*/
 }
 
-.end-text{
+.end_text{
     -fx-font-size: 3em;
     -fx-font-weight: bold;
 }
 
+
+/* Button CSS Style */
 .button {
-    -fx-font-family: "Arial";
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
@@ -42,56 +34,57 @@
     -fx-padding: 15px 30px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 2, 2);
     -fx-border-color: #71D549;
-    -fx-border-radius: 30px;
+    -fx-border-radius:30px;
     -fx-border-width: 2;
     -fx-transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 
 /* Hover effect for button */
 .button:hover {
-    -fx-background-color: #2980b9;
+    -fx-background-color: #3c3c3c;
     -fx-cursor: hand;
-    -fx-border-color: #2980b9;
+    -fx-border-color: #3c3c3c;
+    -fx-text-fill: #C9ADA7;
 }
-
-/* Button scaling animation */
-.button:pressed {
-    -fx-background-color: #1abc9c;
-}
-
 
 
 
 
 /* Menu Page CSS Styles */
+
+.menu-page {
+    -fx-background-color: #C9ADA7;
+}
+
+.title{ /*Label class which is title on the Menu Page */
+    -fx-font-size:4em;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
 .menu-page HBox {
     -fx-alignment: center;
     -fx-background-color: #C9ADA7;
-    -fx-text-fill: F2E9E4;
 }
 
-.menu-page Label{
-    -fx-font-family: "Arial";
-    /*Font website : https://www.fontspace.com/category/professional*/
-}
-
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 0;  /*tab background opacity*/
-}
-
+/* Tab Pane All CSS Style */
 .tab-pane{
     -fx-tab-min-width: 250px;
     -fx-tab-min-height: 66px;
     -fx-tab-max-height: 66px;
 }
 
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;  /* tab background opacity setting to 0 as don't want to see background of tab pane which is tab-header-area*/
+}
+
 .tab-pane .tab{
-    -fx-background-insets:0 10 0 10;
+    -fx-background-insets:0 10 0 10; /*Padding to top,right,bottom,left*/
+    -fx-cursor: hand;
 }
 
 .tab-pane .tab:selected{
     -fx-background-color: #3c3c3c;
-    -fx-border-color:#3c3c3c;
 }
 
 .tab .tab-label {
@@ -106,28 +99,16 @@
     -fx-text-fill: #C9ADA7;
 }
 
-.menu-page {
-    -fx-background-color: #C9ADA7;
-}
-
-.menu-page{
-    -fx-font-family: "Arial";
-}
-
-
-.HBox{
-    -fx-text-alignment:center;
-}
-
 
 /* Tenant Information Section */
 .tenant-section {
-    -fx-background-color: #ffffff; /* White background */
+    -fx-background-color: #3c3c3c; /* White background */
     -fx-padding: 15px;
     -fx-border-color: #bdc3c7;
     -fx-border-width: 1px;
     -fx-border-radius: 5px;
     -fx-spacing: 10px;
+    -fx-text-fill: #C9ADA7;
 }
 
 .tenant-section h3 {
@@ -157,9 +138,6 @@
     -fx-padding:2em;
 }
 
-.mainLabelHBox{
-    -fx-background-color: #C9ADA7;
-}
 
 .table-view {
     -fx-border-color: #ddd;
