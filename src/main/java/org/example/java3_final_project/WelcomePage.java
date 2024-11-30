@@ -33,7 +33,6 @@ public class WelcomePage extends Application {
          *  - text objects -> for welcome , description and end text
          *  - start button -> to navigate to the main menu page
          *  - scale transition for start button
-         *  - TODO need to change animation on start button
          *  - title_vBox -> to pull all 3 text objects
          *  - button_hBox -> to put start button
          *  - welcome_scene_rootPane -> Borderpane as main root pane
@@ -78,7 +77,7 @@ public class WelcomePage extends Application {
 
         //Image to put in background
         Image background_image_class = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/java3_final_project/Images/b3.jpg")));
-        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
+        BackgroundSize backgroundSize = new BackgroundSize(1500, 750, true, true, false, true);
         BackgroundImage backgroundImage = new BackgroundImage(background_image_class,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
