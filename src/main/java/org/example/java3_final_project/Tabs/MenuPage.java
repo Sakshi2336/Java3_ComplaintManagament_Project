@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.java3_final_project.WelcomePage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -56,6 +57,14 @@ public class MenuPage extends Application {
         tabpane.getTabs().addAll(viewComp, addComp, viewStat,tenantInfo,goBack);
         tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
+        goBack.setOnSelectionChanged(e->{
+            WelcomePage welcomePage = new WelcomePage();
+            try {
+                welcomePage.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         //Sub Layouts
         HBox hbox = new HBox(label);
