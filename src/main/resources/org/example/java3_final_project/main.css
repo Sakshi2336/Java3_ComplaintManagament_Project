@@ -1,61 +1,13 @@
-.menu-page HBox {
-    -fx-alignment: center;
-    -fx-background-color: #C9ADA7;
-    -fx-text-fill: F2E9E4;
-}
+/*Welcome Page Css Styles*/
 
-.menu-page Label{
-    -fx-font-family: "Arial";
-    /*Font website : https://www.fontspace.com/category/professional*/
-}
-
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 0;  /*tab background opacity*/
-}
-
-.tab-pane{
-    -fx-tab-min-width: 250px;
-    -fx-tab-min-height: 66px;
-    -fx-tab-max-height: 66px;
-}
-
-.tab-pane .tab{
-    -fx-background-insets:0 10 0 10;
-}
-
-.tab-pane .tab:selected{
-    -fx-background-color: #3c3c3c;
-    -fx-border-color:#3c3c3c;
-}
-
-.tab .tab-label {
-    -fx-alignment: CENTER;
-    -fx-text-fill: #4A4E69;
-    -fx-font-size: 2em;
-    -fx-font-weight: bold;
-}
-
-.tab:selected .tab-label {
-    -fx-alignment: CENTER;
-    -fx-text-fill: #C9ADA7;
-}
-
-.menu-page {
-    -fx-background-color: #C9ADA7;
-}
-
-.menu-page{
-    -fx-font-family: "Arial";
-}
-
-
+/*
 .welcome_page_root{
-    -fx-background-image: url("/org/example/java3_final_project/Images/background.jpeg");
+    -fx-background-image: url("/org/example/java3_final_project/Images/b3.jpg");
         -fx-background-size: cover;
         -fx-background-position: center;
         -fx-background-repeat: no-repeat;
-        -fx-opacity: 0.1;
-}
+        -fx-opacity: 0.85;
+}*/
 
 .welcome_text {
     -fx-font-family: "Arial";
@@ -106,6 +58,62 @@
 .button:pressed {
     -fx-background-color: #1abc9c;
 }
+
+
+
+
+
+/* Menu Page CSS Styles */
+.menu-page HBox {
+    -fx-alignment: center;
+    -fx-background-color: #C9ADA7;
+    -fx-text-fill: F2E9E4;
+}
+
+.menu-page Label{
+    -fx-font-family: "Arial";
+    /*Font website : https://www.fontspace.com/category/professional*/
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;  /*tab background opacity*/
+}
+
+.tab-pane{
+    -fx-tab-min-width: 250px;
+    -fx-tab-min-height: 66px;
+    -fx-tab-max-height: 66px;
+}
+
+.tab-pane .tab{
+    -fx-background-insets:0 10 0 10;
+}
+
+.tab-pane .tab:selected{
+    -fx-background-color: #3c3c3c;
+    -fx-border-color:#3c3c3c;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #4A4E69;
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #C9ADA7;
+}
+
+.menu-page {
+    -fx-background-color: #C9ADA7;
+}
+
+.menu-page{
+    -fx-font-family: "Arial";
+}
+
 
 .HBox{
     -fx-text-alignment:center;

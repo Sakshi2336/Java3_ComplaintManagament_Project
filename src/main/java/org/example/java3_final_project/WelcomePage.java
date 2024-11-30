@@ -8,9 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -78,6 +76,15 @@ public class WelcomePage extends Application {
         scaleTransition.setCycleCount(1);
         scaleTransition.play();
 
+        //Image to put in background
+        Image background_image_class = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/org/example/java3_final_project/Images/b3.jpg")));
+        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
+        BackgroundImage backgroundImage = new BackgroundImage(background_image_class,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                backgroundSize);
+
         //sub layout
         VBox title_vbox = new VBox(40,welcome_text,description_text,end_text);
         title_vbox.setAlignment(Pos.CENTER);
@@ -87,6 +94,7 @@ public class WelcomePage extends Application {
 
         //root pane
         BorderPane welcome_scene_rootPane = new BorderPane();
+        welcome_scene_rootPane.setBackground(new Background(backgroundImage));
         welcome_scene_rootPane.getStyleClass().add("welcome_page_root");
         welcome_scene_rootPane.setCenter(title_vbox);
         welcome_scene_rootPane.setBottom(button_hbox);
