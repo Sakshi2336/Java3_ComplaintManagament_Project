@@ -1,6 +1,7 @@
 package org.example.java3_final_project.Tabs;
 
 import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -152,6 +153,7 @@ public class AddComplaintTab extends Tab {
 
         root.setTop(tenantPane);
         root.setCenter(complaintPane);
+        BorderPane.setMargin(complaintPane,new Insets(10,0,0,0));
         root.setBottom(buttons_vbox);
         buttons_vbox.setAlignment(Pos.BOTTOM_CENTER);
 

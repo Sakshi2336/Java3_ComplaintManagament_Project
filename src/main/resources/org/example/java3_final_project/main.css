@@ -141,7 +141,9 @@
     -fx-text-fill: #000000;
 }
 
-
+.table-view .table-row-cell:selected{
+     -fx-text-fill: #000000;
+}
 
 
 
@@ -160,7 +162,6 @@
 }
 
 .addCompRoot Text{
-    -fx-font-weight: bold;
     -fx-font-size: 3em;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
 }
@@ -192,6 +193,20 @@
     -fx-border-color: #9A8C98;
 }
 
-.addCompRoot button{
-    -fx-spacing : 5px;
+.addCompRoot VBox{
+    -fx-padding:10px;
+}
+
+
+
+
+
+
+
+/* Statistics CSS Style */
+
+/* CSS for styling the labels of each pie slice */
+.chart-pie-label {
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
 }
