@@ -110,7 +110,7 @@ public class AddComplaintTab extends Tab {
 
 
         //Buttons and hBox to put these buttons
-        VBox buttons = new VBox();
+        VBox buttons_vbox = new VBox();
         Button submitButton = new Button("Submit");
         submitButton.setOnAction(e->{
             Complaint complaint = new Complaint(
@@ -131,13 +131,13 @@ public class AddComplaintTab extends Tab {
             managerComboBox.setValue(null);
 
         });
-        buttons.getChildren().addAll(submitButton,messageText);
+        buttons_vbox.getChildren().addAll(submitButton,messageText);
         messageText.setText("");
 
         root.setTop(tenantPane);
         root.setCenter(complaintPane);
-        root.setBottom(buttons);
-        buttons.setAlignment(Pos.BOTTOM_CENTER);
+        root.setBottom(buttons_vbox);
+        buttons_vbox.setAlignment(Pos.BOTTOM_CENTER);
 
 
         this.setContent(root);

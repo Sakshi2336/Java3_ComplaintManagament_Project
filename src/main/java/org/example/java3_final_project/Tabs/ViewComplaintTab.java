@@ -3,6 +3,7 @@ package org.example.java3_final_project.Tabs;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
@@ -37,7 +38,7 @@ public class ViewComplaintTab extends Tab {
         root.getStyleClass().add("ViewComplaintRoot");
 
         //Sub Layout hBox for buttons
-        HBox hbox = new HBox();
+        HBox button_hBox = new HBox();
 
         //Tables
         complaint = new ComplaintTable();
@@ -99,11 +100,13 @@ public class ViewComplaintTab extends Tab {
             seeOpenComplaints();});
 
         //Sub layout children
-        hbox.getChildren().addAll(refreshButton,openComplaints);
+        button_hBox.getChildren().addAll(refreshButton,openComplaints);
+        button_hBox.setSpacing(40);
+        button_hBox.setPadding(new Insets(20,20,20,20));
 
         //Root pane children
         root.setCenter(tableView);
-        root.setBottom(hbox);
+        root.setBottom(button_hBox);
         this.setContent(root);
 
 

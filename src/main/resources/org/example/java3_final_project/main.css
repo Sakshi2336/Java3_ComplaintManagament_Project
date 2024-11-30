@@ -100,6 +100,58 @@
 }
 
 
+.ViewComplaintRoot{
+    -fx-padding:2em;
+}
+
+
+
+
+
+
+
+
+/*View Complaint class CSS Style*/
+.table-view {
+    -fx-border-color: #C9ADA7;
+    -fx-border-width: 2;
+    -fx-background-color: #C9ADA7;
+    -fx-padding: 14px;
+    -fx-font-size: 20px;
+}
+
+/* TableCell Text styling */
+.table-view .table-cell {
+    -fx-padding: 10px 15px;
+    -fx-font-size: 20px;
+    -fx-border-width: 0 1px 0 0; /* Top, right, bottom, left borders */
+    -fx-border-color: #C9ADA7;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #F4F3EE;
+}
+
+/* Styling for table rows */
+.table-view .table-row-cell {
+    -fx-background-color: #9A8C98;
+    -fx-border-color: #C9ADA7;
+    -fx-border-width:0 0 1 0;
+    -fx-text-fill: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Tenant Information Section */
 .tenant-section {
     -fx-background-color: #3c3c3c; /* White background */
@@ -132,69 +184,4 @@
     -fx-background-color: #ffffff;
     -fx-border-radius: 5px;
     -fx-border-color: #bdc3c7;
-}
-
-.ViewComplaintRoot{
-    -fx-padding:2em;
-}
-
-
-.table-view {
-    -fx-border-color: #ddd;
-    -fx-border-width: 1;
-    -fx-background-color: #f9f9f9;
-    -fx-padding: 10px;
-    -fx-font-size: 14px;
-    -fx-font-family: 'Segoe UI', sans-serif;
-    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 2);
-}
-
-.table-view .column-header-background {
-    -fx-background-color: #0078D4;  /* A nice blue background for headers */
-    -fx-border-color: #005A8C;
-}
-
-.table-view .table-column-header {
-    -fx-text-fill: white;  /* White text color for column headers */
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-padding: 10px 15px;
-}
-
-/* Styling for table rows */
-.table-view .table-row-cell {
-    -fx-background-color: white;
-    -fx-border-color: #ddd;
-    -fx-border-width: 0 0 1 0;
-}
-
-.table-view .table-row-cell:hover {
-    -fx-background-color: #E8F1FF; /* Light blue background on hover */
-}
-
-/* Alternate row styling for better readability */
-.table-view .table-row-cell:filled:nth-child(odd) {
-    -fx-background-color: #f2f2f2;
-}
-
-.table-view .table-row-cell:filled:nth-child(even) {
-    -fx-background-color: #ffffff;
-}
-
-/* TableCell Text styling */
-.table-view .table-cell {
-    -fx-padding: 10px 15px;
-    -fx-text-fill: #333;  /* Dark text for readability */
-    -fx-font-size: 14px;
-}
-
-/* When cell is selected */
-.table-view .table-cell:selected {
-    -fx-background-color: #4D90FE; /* Blue background for selected cell */
-    -fx-text-fill: white;
-}
-
-/* Table Column header hover effect */
-.table-view .table-column-header:hover {
-    -fx-background-color: #ffffff; /* Darker shade of blue on hover */
 }
