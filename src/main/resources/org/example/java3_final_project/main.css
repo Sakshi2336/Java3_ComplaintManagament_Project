@@ -1,6 +1,4 @@
-*{
-    -fx-font-family: "Arial";
-}
+
 
 /*Welcome Page Css Styles*/
 .welcome_text {
@@ -100,9 +98,8 @@
 }
 
 
-.ViewComplaintRoot{
-    -fx-padding:2em;
-}
+
+
 
 
 
@@ -112,6 +109,10 @@
 
 
 /*View Complaint class CSS Style*/
+.ViewComplaintRoot{
+    -fx-padding:2em;
+}
+
 .table-view {
     -fx-border-color: #C9ADA7;
     -fx-border-width: 2;
@@ -153,35 +154,44 @@
 
 
 /* Tenant Information Section */
+.addCompRoot{
+    -fx-padding:2em;
+    -fx-font-size:1.5em;
+}
+
+.addCompRoot Text{
+    -fx-font-weight: bold;
+    -fx-font-size: 3em;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
 .tenant-section {
-    -fx-background-color: #3c3c3c; /* White background */
-    -fx-padding: 15px;
-    -fx-border-color: #bdc3c7;
+    -fx-border-color: black;
     -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-spacing: 10px;
-    -fx-text-fill: #C9ADA7;
+    -fx-padding: 5px;
 }
 
-.tenant-section h3 {
-    font-size: 24px;
-    -fx-fill: #2c3e50; /* Dark blue-gray color for heading */
+.complaint-section{
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-padding:5px;
 }
 
-.tenant-section label {
-    -fx-font-size: 16px;
-    -fx-text-fill: #2c3e50;
-}
-
-.tenant-section .combo-box {
-    -fx-background-color: #f4f6f6;
+.combo-box {
+    -fx-background-color: #9A8C98;
     -fx-border-radius: 5px;
     -fx-padding: 5px;
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
+    -fx-text-fill: #000000;
+    -fx-font-weight : bold;
 }
 
-.tenant-section .combo-box .combo-box-popup {
-    -fx-background-color: #ffffff;
+.combo-box .combo-box-popup {
+    -fx-background-color: #C9ADA7;
     -fx-border-radius: 5px;
-    -fx-border-color: #bdc3c7;
+    -fx-border-color: #9A8C98;
+}
+
+.addCompRoot button{
+    -fx-spacing : 5px;
 }
