@@ -108,5 +108,6 @@ public class UpdateComplaintTab extends GridPane {
     });
 
     this.add(updateButton, 1, 8);
+    this.add(message_text,1,9);
  }
 }

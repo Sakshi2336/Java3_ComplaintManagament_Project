@@ -161,10 +161,15 @@
     -fx-font-size:1.5em;
 }
 
-.addCompRoot Text{
+.tenantHeading{
     -fx-font-size: 3em;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
 }
+
+.compHeading{
+     -fx-font-size: 3em;
+     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+ }
 
 .tenant-section {
     -fx-border-color: black;
@@ -216,8 +221,4 @@
 /* Update form CSS Style */
 .updateRoot Text{
     -fx-font-size: 2em;
-}
-
-.label{
-    -fx-font-size:1.6em;
 }

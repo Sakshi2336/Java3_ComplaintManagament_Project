@@ -58,7 +58,7 @@ public class AddComplaintTab extends Tab {
         //First tenant information heading
         Text tenantInfoHeading = new Text("Tenant Info");
         tenantPane.add(tenantInfoHeading,10,1); //colum,row,col span,row span
-
+        tenantInfoHeading.getStyleClass().add("tenantHeading");
 
         //Tenant name label and text field
         Label tenantName = new Label("Tenant Name:");
@@ -83,7 +83,7 @@ public class AddComplaintTab extends Tab {
 
         //Second heading complaint information
         Text complaintDetailHeading = new Text("Complaint Details");
-        complaintDetailHeading.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR,30));
+        complaintDetailHeading.getStyleClass().add("compHeading");
         complaintPane.add(complaintDetailHeading, 10, 1);
 
         //Category label and combo box
@@ -127,7 +127,7 @@ public class AddComplaintTab extends Tab {
 
 
         //Buttons and hBox to put these buttons
-        VBox buttons_vbox = new VBox();
+        HBox buttons_hbox = new HBox(5);
         Button submitButton = new Button("Submit");
         submitButton.setOnAction(e->{
             Complaint complaint = new Complaint(
@@ -148,14 +148,14 @@ public class AddComplaintTab extends Tab {
             managerComboBox.setValue(null);
 
         });
-        buttons_vbox.getChildren().addAll(submitButton,messageText);
+        buttons_hbox.getChildren().addAll(submitButton,messageText);
         messageText.setText("");
 
         root.setTop(tenantPane);
         root.setCenter(complaintPane);
         BorderPane.setMargin(complaintPane,new Insets(10,0,0,0));
-        root.setBottom(buttons_vbox);
-        buttons_vbox.setAlignment(Pos.BOTTOM_CENTER);
+        root.setBottom(buttons_hbox);
+        buttons_hbox.setAlignment(Pos.BOTTOM_CENTER);
 
 
         this.setContent(root);
