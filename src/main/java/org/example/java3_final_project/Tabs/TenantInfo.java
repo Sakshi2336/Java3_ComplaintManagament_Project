@@ -6,6 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import org.example.java3_final_project.pojo.DisplayTenant;
 import org.example.java3_final_project.pojo.User;
 import org.example.java3_final_project.tables.FlatUserTable;
@@ -27,7 +29,8 @@ public class TenantInfo extends Tab {
         flatUserTable = new FlatUserTable();
         BorderPane root = new BorderPane();
         HBox hbox = new HBox();
-        DisplayTenant displayTenant = new DisplayTenant();
+        Text messageText = new Text();
+        messageText.setFont(Font.font(20));
 
         tableView = new TableView();
 
@@ -61,12 +64,15 @@ public class TenantInfo extends Tab {
         Button removeTenantButton = new Button("Remove Tenant");
         removeTenantButton.setOnAction(e -> {
             DisplayTenant selectedTenant = (DisplayTenant) tableView.getSelectionModel().getSelectedItem();
-            System.out.println(selectedTenant.getId());
+            if(selectedTenant == null){
+                messageText.setText("Please first select tenant.");
+            }else {
                 userTable.deleteTenantFromFlatUser(selectedTenant.getId());
                 userTable.deleteTenantFromUsers(selectedTenant.getId());
+                messageText.setText("Tenant Removed Successfully");
                 refreshTable();
-                updateTenantComboBox(tenant_Combo,userTable);
-
+                updateTenantComboBox(tenant_Combo, userTable);
+            }
         });
 
         // Refresh Table Button
@@ -74,7 +80,7 @@ public class TenantInfo extends Tab {
         refreshButton.setOnAction(e -> refreshTable());
 
         // HBox for buttons
-        hbox.getChildren().addAll(removeTenantButton, refreshButton);
+        hbox.getChildren().addAll(removeTenantButton, refreshButton,messageText);
         hbox.setSpacing(10);
         hbox.setAlignment(Pos.CENTER);
 

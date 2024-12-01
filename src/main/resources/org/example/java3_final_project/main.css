@@ -155,7 +155,7 @@
 
 
 
-/* Tenant Information Section */
+/* Add Complaint Page - Tenant Information Section */
 .addCompRoot{
     -fx-padding:2em;
     -fx-font-size:1.5em;
@@ -198,7 +198,7 @@
     -fx-border-color: #9A8C98;
 }
 
-.addCompRoot VBox{
+.addCompRoot HBox{
     -fx-padding:10px;
 }
 
