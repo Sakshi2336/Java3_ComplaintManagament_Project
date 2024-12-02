@@ -1,5 +1,23 @@
 package org.example.java3_final_project.database;
 
+/**
+ * The DBConst class has constant values used in the database operations.
+ * This includes table names, column names, and SQL queries for creating tables.
+ *
+ * This class has information for below tables:
+ *  Complaint
+ *  Category
+ *  Complaint_Category
+ *  User
+ *  User_Type
+ *  Flat
+ *  Flat_User
+ *  Tenant_Info (view)
+ *
+ *
+ * SQL queries for creating these tables are also included in the form of constant strings.
+ *
+ */
 public class DBConst {
 
     //Complaint Table
@@ -54,14 +72,15 @@ public class DBConst {
     public static final String FLAT_USER_COLUMN_FLAT_ID = "flat_id";
 
 
-    //tenant_info table
+    //tenant_info view
     public static final String VIEW_TENANT_INFO = "tenant_info";
-    public static final String TENANT_INFO_COLUMN_FLAT_NUM = "flat_num";
-
     public static final String VIEW_PRETTY_COMPLAINT = "pretty_complaint";
+
+
 
     //Table create statement
 
+    // SQL query to create the Complaint table
     public static final String CREATE_TABLE_COMPLAINT =
             "CREATE TABLE " + TABLE_COMPLAINT + " (" +
                     COMPLAINT_COLUMN_ID + " INT NOT NULL AUTO_INCREMENT PRIMARY KEY, " +
@@ -78,6 +97,7 @@ public class DBConst {
                     "FOREIGN KEY(" + COMPLAINT_COLUMN_MANAGER_ID + ")" +
                     " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID +"));";
 
+    // SQL query to create the Category table
     public static final String CREATE_TABLE_CATEGORY =
             "CREATE TABLE " + TABLE_CATEGORY + " (" +
                     CATEGORY_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, " +
@@ -85,6 +105,7 @@ public class DBConst {
                     "PRIMARY KEY(" + CATEGORY_COLUMN_ID +"));";
 
 
+    // SQL query to create the Complaint_Category table
     public static final String CREATE_TABLE_COMPLAINT_CATEGORY =
             "CREATE TABLE " + TABLE_COMPLAINT_CATEGORY + " (" +
                     COMPLAINT_CATEGORY_COLUMN_COMPLAINT_ID + " INT, " +
@@ -95,6 +116,7 @@ public class DBConst {
                     " REFERENCES " + TABLE_CATEGORY + "(" + CATEGORY_COLUMN_ID +"));";
 
 
+    // SQL query to create the users table
     public static final String CREATE_TABLE_USER =
             "CREATE TABLE " + TABLE_USER + " (" +
                     USER_COLUMN_ID + " INT NOT NULL AUTO_INCREMENT, " +
@@ -106,6 +128,7 @@ public class DBConst {
                     " REFERENCES " + TABLE_USER_TYPE + "(" + USER_TYPE_COLUMN_ID +"));";
 
 
+    // SQL query to create the user_type table
     public static final String CREATE_TABLE_USER_TYPE =
             "CREATE TABLE " + TABLE_USER_TYPE + " (" +
                     USER_TYPE_COLUMN_ID + " INT NOT NULL AUTO_INCREMENT, " +
@@ -113,6 +136,7 @@ public class DBConst {
                     "PRIMARY KEY(" + USER_TYPE_COLUMN_ID +"));";
 
 
+    // SQL query to create the flat table
     public static final String CREATE_TABLE_FLAT =
             "CREATE TABLE " + TABLE_FLAT + " (" +
                     FLAT_COLUMN_NUM + " INT NOT NULL PRIMARY KEY, " +
@@ -121,6 +145,7 @@ public class DBConst {
                     FLAT_COLUMN_BATH + " INT NOT NULL, " +
                     FLAT_COLUMN_KITCHEN + " INT NOT NULL" + ");";
 
+    // SQL query to create the flat_user table
     public static final String CREATE_TABLE_FLAT_USER =
             "CREATE TABLE " + TABLE_FLAT_USER + " (" +
                     FLAT_USER_COLUMN_USER_ID + " INT, " +

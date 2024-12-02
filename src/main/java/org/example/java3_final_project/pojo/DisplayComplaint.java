@@ -1,15 +1,36 @@
 package org.example.java3_final_project.pojo;
 
+
+/**
+ * This class is for showing complaint information to user in good way like
+ * actually showing tenant name and manager name instead of
+ * showing user_id or flat_id foreign keys in complaint table
+ * The DisplayComplaint class has 7 class members that is for columns into pretty_complaint view
+ * This class has constructors,getters for pretty_complaint view columns.
+ */
 public class DisplayComplaint {
 
-    private int id;
-    private String description;
-    private String submit_time;
-    private String status;
-    private String tenant_name;
-    private String flat_num;
-    private String manager_name;
 
+    ///class members
+    private int id; //id for complaint
+    private String description; //complaint description
+    private String submit_time; //complaint submit time
+    private String status; //complaint status
+    private String tenant_name; //tenant name who has this complaint
+    private String flat_num; //flat number which has complaint
+    private String manager_name; //Assigned manager
+
+
+    /**
+     * create object of this class with following details
+     * @param id id for complaint
+     * @param description complaint description
+     * @param submit_time complaint submit time
+     * @param status complaint status
+     * @param tenant_name tenant name who has this complaint
+     * @param flat_num flat number which has complaint
+     * @param manager_name Assigned manager
+     */
     public DisplayComplaint(int id, String description, String submit_time, String status, String tenant_name, String flat_num, String manager_name) {
         this.id = id;
         this.description = description;
@@ -20,10 +41,11 @@ public class DisplayComplaint {
         this.manager_name = manager_name;
     }
 
+
+    //getters for class members
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -32,47 +54,25 @@ public class DisplayComplaint {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getSubmit_time() {
         return submit_time;
-    }
-
-    public void setSubmit_time(String submit_time) {
-        this.submit_time = submit_time;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getTenant_name() {
         return tenant_name;
-    }
-
-    public void setTenant_name(String tenant_name) {
-        this.tenant_name = tenant_name;
     }
 
     public String getFlat_num() {
         return flat_num;
     }
 
-    public void setFlat_num(String flat_num) {
-        this.flat_num = flat_num;
-    }
-
     public String getManager_name() {
         return manager_name;
     }
 
-    public void setManager_name(String manager_name) {
-        this.manager_name = manager_name;
-    }
+
 }
