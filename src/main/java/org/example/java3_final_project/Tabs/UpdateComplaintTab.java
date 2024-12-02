@@ -43,9 +43,6 @@ public class UpdateComplaintTab extends GridPane {
      */
  public UpdateComplaintTab(Complaint complaint) {
 
-     //Class member ViewComplaintTab class object to call refresh method
-     ViewComplaintTab viewComplaintTab = new ViewComplaintTab();
-
      //Adding class to this class and setting up padding and HGap,VGap
     this.getStyleClass().add("updateRoot");
     this.setPadding(new Insets(10, 10, 10, 10));
@@ -134,7 +131,7 @@ public class UpdateComplaintTab extends GridPane {
 
      //After complaint update successfully updating table view.
      //This is not working.
-     viewComplaintTab.refreshTable();
+     ViewComplaintTab.getInstance().refreshTable();
 
      //showing message to the user after complaint updated successfully.
      message_text.setText("Complaint updated successfully");

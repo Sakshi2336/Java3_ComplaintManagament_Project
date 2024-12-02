@@ -27,11 +27,12 @@ import org.example.java3_final_project.tables.ComplaintTable;
 public class ViewComplaintTab extends Tab {
 
     //class members
+    private static ViewComplaintTab instance;
     private TableView tableView;
     private ComplaintTable complaint;
 
     //Public constructor
-    public ViewComplaintTab() {
+    private ViewComplaintTab() {
 
         //Root Pane - BorderPane
         BorderPane root = new BorderPane();
@@ -140,6 +141,7 @@ public class ViewComplaintTab extends Tab {
         ComplaintTable table = new ComplaintTable();
         tableView.getItems().clear();
         tableView.getItems().addAll(table.getPrettyComplaints());
+        tableView.refresh();
     }
 
 
@@ -157,7 +159,12 @@ public class ViewComplaintTab extends Tab {
 
 
 
-
+    public static ViewComplaintTab getInstance(){
+        if(instance == null){
+            instance = new ViewComplaintTab();
+        }
+        return instance;
+    }
 
 
 

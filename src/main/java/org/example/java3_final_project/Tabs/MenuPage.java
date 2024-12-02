@@ -49,7 +49,7 @@ public class MenuPage extends Application {
         //TabPane and all the tabs
         TabPane tabpane = new TabPane();
 
-        Tab viewComp = new ViewComplaintTab();
+        Tab viewComp = ViewComplaintTab.getInstance();
         Tab addComp = new AddComplaintTab();
         Tab viewStat = ViewStatisticsTab.getInstance();
         Tab tenantInfo = new TenantInfo();
