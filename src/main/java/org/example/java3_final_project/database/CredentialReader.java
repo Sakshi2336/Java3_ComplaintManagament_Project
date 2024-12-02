@@ -3,49 +3,73 @@ package org.example.java3_final_project.database;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * The CredentialReader class is responsible for reading database credentials from a file
+ * and providing static methods to access these credentials.
+ * <p>
+ * This class contains static properties for database name, username, password, and server,
+ * and it provides getter and setter methods for each of these properties. It also includes
+ * a method to read the credentials from a file called "credential.txt".
+ * </p>
+ *
+ * @author Sakshi Patel
+ */
 public class CredentialReader{
 
 
-    //Class properties
+    /**
+     * Class properties
+     * - Database name
+     * - Database Password
+     * - Database Username
+     * - Server name
+     */
     private static String DB_NAME = null;
     private static String DB_PASS = null;
     private static String DB_USER = null;
     private static String SERVER = null;
 
     //getters and setters
+
+    /**
+     * Get database name
+     * @return database name
+     */
     public static String getDbName() {
         return DB_NAME;
     }
 
+
+    /**
+     * Get database password
+     * @return database password
+     */
     public static String getDbPass() {
         return DB_PASS;
     }
 
+
+    /**
+     * Get Database username
+     * @return Database username
+     */
     public static String getDbUser() {
         return DB_USER;
     }
 
+    /**
+     * Get Server name
+     * @return Server name
+     */
     public static String getSERVER() {
         return SERVER;
     }
 
-    public static void setDbName(String dbName) {
-        DB_NAME = dbName;
-    }
 
-    public static void setDbPass(String dbPass) {
-        DB_PASS = dbPass;
-    }
-
-    public static void setDbUser(String dbUser) {
-        DB_USER = dbUser;
-    }
-
-    public static void setSERVER(String SERVER) {
-        CredentialReader.SERVER = SERVER;
-    }
-
-    //Creating method that I can call from this class that will read from the file
+    /**
+     * Read the credentials from file credential.txt
+     * @throws Exception if an error i=occurs from reading the file
+     */
     public static void readCredential() throws Exception{
 
         File file = new File("credential.txt");
