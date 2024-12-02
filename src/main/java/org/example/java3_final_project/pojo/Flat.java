@@ -1,13 +1,27 @@
 package org.example.java3_final_project.pojo;
 
+/**
+ * The Flat class is the table flat from the database and hase 5 class members
+ * which are columns from flat table in the database
+ */
 public class Flat {
 
-    private int flat_num;
-    private String description;
-    private int hall;
-    private int bath;
-    private int kitchen;
+    //class members
+    private int flat_num; //flat number
+    private String description;  //flat short description
+    private int hall; //hall number in the flat
+    private int bath; //bathroom number in the flat
+    private int kitchen; //kitchen in the flat
 
+
+    /**
+     * This will create flat object with following properties
+     * @param flat_num flat number
+     * @param description flat description
+     * @param hall hall number in flat
+     * @param bath bathroom in the flat
+     * @param kitchen kitchen in flat
+     */
     public Flat(int flat_num, String description, int hall, int bath, int kitchen) {
         this.flat_num = flat_num;
         this.description = description;
@@ -16,46 +30,15 @@ public class Flat {
         this.kitchen = kitchen;
     }
 
+    //Getter for flat number
     public int getFlat_num() {
         return flat_num;
     }
 
-    public void setFlat_num(int flat_num) {
-        this.flat_num = flat_num;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getHall() {
-        return hall;
-    }
-
-    public void setHall(int hall) {
-        this.hall = hall;
-    }
-
-    public int getBath() {
-        return bath;
-    }
-
-    public void setBath(int bath) {
-        this.bath = bath;
-    }
-
-    public int getKitchen() {
-        return kitchen;
-    }
-
-    public void setKitchen(int kitchen) {
-        this.kitchen = kitchen;
-    }
-
+    /**
+     * This will give string representation of this Flat object
+     * @return string presentation of Flat object
+     */
     public String toString(){
         return " " + flat_num;
     }
