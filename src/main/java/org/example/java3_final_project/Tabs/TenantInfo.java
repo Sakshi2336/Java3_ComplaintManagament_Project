@@ -130,7 +130,7 @@ public class TenantInfo extends Tab {
      * This method update the tenant combo box which is showing users living in
      * the apartment.
      * @param tenant_Combo -> combo box of tenants
-     * @param userTable -> User Table for calling getAllUser method 
+     * @param userTable -> User Table for calling getAllUser method
      */
     public void updateTenantComboBox(ComboBox<User> tenant_Combo, UserTable userTable){
         tenant_Combo.setItems(FXCollections.observableArrayList(userTable.getAllUser()));
