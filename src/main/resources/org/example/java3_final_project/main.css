@@ -13,6 +13,9 @@
     -fx-font-size:3em;
 }
 
+.LoginPageRoot ImageView:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 0);
+}
 
 .leftVBox{
     -fx-background-color:#4A4E69;

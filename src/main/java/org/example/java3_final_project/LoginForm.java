@@ -44,11 +44,11 @@ public class LoginForm extends Application {
      * message_text -> to show message to user according to their actions
      * stage -> to hold current stage and to access stage in methods
      */
-    Scene login_scene,welcome_scene;
-    File file = new File("credential.txt");
-    Text message_text = new Text();
+    private Scene login_scene,welcome_scene;
+    private File file = new File("credential.txt");
+    private Text message_text = new Text();
     Stage stage;
-    WelcomePage welcomePage = new WelcomePage();
+    private WelcomePage welcomePage = new WelcomePage();
 
 
     /**
@@ -68,7 +68,7 @@ public class LoginForm extends Application {
         //Image and Apartment chain name
         Image apartment_imageClass = new Image(getClass().getResourceAsStream("/org/example/java3_final_project/Images/residential.png"));
         ImageView imageView = new ImageView(apartment_imageClass);
-        imageView.setFitHeight(200);
+        imageView.setFitHeight(280);
         imageView.setFitWidth(200);
         Text apartment_name = new Text("\tWanders Apartments");
         Text line2 = new Text("  Turning Space Into Dreams");
