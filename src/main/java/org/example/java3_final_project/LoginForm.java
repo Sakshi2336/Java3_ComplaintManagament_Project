@@ -110,7 +110,7 @@ public class LoginForm extends Application {
         BorderPane root = new BorderPane();
         root.setCenter(vBox);
 
-        login_scene = new Scene(root, 900, 900);
+        login_scene = new Scene(root, 1500, 750);
         stage.setTitle("Hello!");
         //stage.setScene(scene);
         checkForFile();
