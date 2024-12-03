@@ -244,3 +244,8 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,intellij,gradle
+credential.txt
+<<<<<<< HEAD
+.idea/.name
+.idea/misc.xml
+try.txt
