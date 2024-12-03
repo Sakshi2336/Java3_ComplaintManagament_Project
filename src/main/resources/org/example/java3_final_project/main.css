@@ -1,4 +1,17 @@
+/* Login page CSS Style*/
 
+.LoginPageRoot Label{
+    -fx-font-size:1.5em;
+}
+
+.LoginPageRoot Text{
+    -fx-font-size:3em;
+}
+
+
+.leftVBox{
+    -fx-background-color:blue;
+}
 
 /*Welcome Page Css Styles*/
 .welcome_text {
