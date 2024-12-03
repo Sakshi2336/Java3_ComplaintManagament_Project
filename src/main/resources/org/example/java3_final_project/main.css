@@ -1,3 +1,8 @@
+*{
+    -fx-font-family: "Tahoma";
+}
+
+
 /* Login page CSS Style*/
 
 .LoginPageRoot Label{
@@ -10,7 +15,7 @@
 
 
 .leftVBox{
-    -fx-background-color:blue;
+    -fx-background-color:#4A4E69;
 }
 
 /*Welcome Page Css Styles*/

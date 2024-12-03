@@ -145,13 +145,16 @@ public class LoginForm extends Application {
         VBox vBox = new VBox(50,heading_text,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
         vBox.setAlignment(Pos.CENTER);
 
-        //sub layout hBox for image
+        //sub layout vBox for image
         VBox image_vBox = new VBox(imageView);
-        VBox text_vBox = new VBox(20,apartment_name,line2,line3);
+        image_vBox.setPadding(new Insets(0,0,0,50));
+
+        //Sub Layout hBox for vbox of texts
+        VBox text_vBox = new VBox(30,apartment_name,line2,line3);
         HBox text_hBox = new HBox(text_vBox);
         text_hBox.setAlignment(Pos.CENTER);
 
-        //sub layout VBox for image and title
+        //sub layout VBox for image vBox and text HBox
         VBox left_VBox = new VBox(130,image_vBox,text_hBox);
         left_VBox.setAlignment(Pos.TOP_CENTER);
         left_VBox.setPadding(new Insets(100, 0, 0, 150));
@@ -226,8 +229,18 @@ public class LoginForm extends Application {
         }
     }
 
+
+    /**
+     * This method will apply to translate transition on all texts
+     * @param text Text object on which animation will be applied
+     * @param FromX From X value
+     * @param ToX To X value
+     * @param cycleCount how many times animation will be occurred
+     * @return return translate transition object
+     */
+
     public TranslateTransition animation(Text text,double FromX,double ToX,int cycleCount){
-        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(2), text);
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(4), text);
         translateTransition.setFromX(FromX);
         translateTransition.setToX(ToX);
         translateTransition.setCycleCount(cycleCount);
