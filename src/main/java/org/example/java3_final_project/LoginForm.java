@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -59,6 +61,19 @@ public class LoginForm extends Application {
         //setting primary stage to class member stage
         this.stage = stage;
 
+        //Text heading
+        Text heading_text = new Text("Please Log In into System");
+
+        //Image and Apartment chain name
+        Image apartment_imageClass = new Image(getClass().getResourceAsStream("/org/example/java3_final_project/Images/residential.png"));
+        ImageView imageView = new ImageView(apartment_imageClass);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+        Text apartment_name = new Text("Wanders Apartments");
+        Text line2 = new Text("Turning Space Into Dreams");
+        Text line3 = new Text("Welcome Home!");
+        
+
         /**
          * login_scene -> Login form which will have
          * - labels and text fields for username,password,server name and database name
@@ -103,12 +118,24 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
+        VBox vBox = new VBox(20,heading_text,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
         vBox.setAlignment(Pos.CENTER);
+
+        //sub layout hBox for image
+        VBox image_vBox = new VBox(imageView);
+        VBox text_vBox = new VBox(20,apartment_name,line2,line3);
+        HBox text_hBox = new HBox(text_vBox);
+        text_hBox.setAlignment(Pos.CENTER);
+
+        //sub layout VBox for image and title
+        VBox left_VBox = new VBox(130,image_vBox,text_hBox);
+        left_VBox.setAlignment(Pos.TOP_CENTER);
+        left_VBox.setPadding(new Insets(100, 0, 0, 150));
 
         //root pane for main scene
         BorderPane root = new BorderPane();
         root.setCenter(vBox);
+        root.setLeft(left_VBox);
 
         login_scene = new Scene(root, 1500, 750);
         stage.setTitle("Hello!");
