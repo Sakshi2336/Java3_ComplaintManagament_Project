@@ -1,10 +1,25 @@
 package org.example.java3_final_project.pojo;
 
-public class User extends DatabaseComplaint{
-    private String first_name;
-    private String last_name;
-    private int type;
 
+/**
+ * This User class is representing users table from the database
+ * This class has 3  class members which represent columns from the users table
+ */
+public class User extends DatabaseComplaint{
+
+    //class members
+    private String first_name; //user first name
+    private String last_name; //user last name
+    private int type; //user type like manager or tenant
+
+
+    /**
+     * Constructor for creating this class' object with following properties
+     * @param id user id
+     * @param first_name user first name
+     * @param last_name user last name
+     * @param type user type either manager or tenant
+     */
     public User(int id, String first_name, String last_name, int type) {
         super(id);
         this.first_name = first_name;
@@ -12,15 +27,7 @@ public class User extends DatabaseComplaint{
         this.type = type;
     }
 
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-
+    //getters and setters
     public String getFirst_name() {
         return first_name;
     }
@@ -45,6 +52,10 @@ public class User extends DatabaseComplaint{
         this.type = type;
     }
 
+    /**
+     * This will give string representation of User object
+     * @return string representation of this class' object as full user name
+     */
     @Override
     public String toString() {
         return first_name + " " + last_name;
