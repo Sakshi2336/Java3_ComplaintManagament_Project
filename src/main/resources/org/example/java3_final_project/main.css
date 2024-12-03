@@ -1,4 +1,25 @@
+*{
+    -fx-font-family: "Tahoma";
+}
 
+
+/* Login page CSS Style*/
+
+.LoginPageRoot Label{
+    -fx-font-size:1.5em;
+}
+
+.LoginPageRoot Text{
+    -fx-font-size:3em;
+}
+
+.LoginPageRoot ImageView:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 0);
+}
+
+.leftVBox{
+    -fx-background-color:#4A4E69;
+}
 
 /*Welcome Page Css Styles*/
 .welcome_text {

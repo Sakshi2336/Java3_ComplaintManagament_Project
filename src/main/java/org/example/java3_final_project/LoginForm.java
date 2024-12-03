@@ -1,6 +1,6 @@
 package org.example.java3_final_project;
 
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,6 +28,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Objects;
 
 /**
  * The LoginForm class shows the main application for the
@@ -41,11 +44,11 @@ public class LoginForm extends Application {
      * message_text -> to show message to user according to their actions
      * stage -> to hold current stage and to access stage in methods
      */
-    Scene login_scene,welcome_scene;
-    File file = new File("credential.txt");
-    Text message_text = new Text();
+    private Scene login_scene,welcome_scene;
+    private File file = new File("credential.txt");
+    private Text message_text = new Text();
     Stage stage;
-    WelcomePage welcomePage = new WelcomePage();
+    private WelcomePage welcomePage = new WelcomePage();
 
 
     /**
@@ -58,6 +61,42 @@ public class LoginForm extends Application {
 
         //setting primary stage to class member stage
         this.stage = stage;
+
+        //Text heading
+        Text heading_text = new Text(" Log In Into System");
+
+        //Image and Apartment chain name
+        Image apartment_imageClass = new Image(getClass().getResourceAsStream("/org/example/java3_final_project/Images/residential.png"));
+        ImageView imageView = new ImageView(apartment_imageClass);
+        imageView.setFitHeight(280);
+        imageView.setFitWidth(200);
+        Text apartment_name = new Text("\tWanders Apartments");
+        Text line2 = new Text("  Turning Space Into Dreams");
+        Text line3 = new Text("\tWelcome Home!");
+
+        //Animations
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), imageView);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.setCycleCount(1);
+
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(5), imageView);
+        scaleTransition.setFromX(0.5);
+        scaleTransition.setFromY(0.5);
+        scaleTransition.setToX(1);
+        scaleTransition.setToY(1);
+        scaleTransition.setCycleCount(1);
+
+        ParallelTransition parallelTransition = new ParallelTransition(fadeTransition,scaleTransition);
+        parallelTransition.play();
+
+        TranslateTransition translateTransition1 = animation(apartment_name,100,-100,1);
+        TranslateTransition translateTransitionLine2 = animation(line2,-500,-90,1);
+        TranslateTransition translateTransitionLine3 = animation(line3,100,-80,1);
+
+
+        ParallelTransition parallelTransitionText = new ParallelTransition(translateTransition1,translateTransitionLine2,translateTransitionLine3);
+        parallelTransitionText.play();
 
         /**
          * login_scene -> Login form which will have
@@ -103,15 +142,33 @@ public class LoginForm extends Application {
 
 
         //sub layout vbox
-        VBox vBox = new VBox(20,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
+        VBox vBox = new VBox(50,heading_text,username_hBox,password_hBox,server_hbox,database_hbox,connection_button,message_text);
         vBox.setAlignment(Pos.CENTER);
+
+        //sub layout vBox for image
+        VBox image_vBox = new VBox(imageView);
+        image_vBox.setPadding(new Insets(0,0,0,50));
+
+        //Sub Layout hBox for vbox of texts
+        VBox text_vBox = new VBox(30,apartment_name,line2,line3);
+        HBox text_hBox = new HBox(text_vBox);
+        text_hBox.setAlignment(Pos.CENTER);
+
+        //sub layout VBox for image vBox and text HBox
+        VBox left_VBox = new VBox(130,image_vBox,text_hBox);
+        left_VBox.setAlignment(Pos.TOP_CENTER);
+        left_VBox.setPadding(new Insets(100, 0, 0, 150));
+        left_VBox.getStyleClass().add("leftVBox");
 
         //root pane for main scene
         BorderPane root = new BorderPane();
         root.setCenter(vBox);
+        root.setLeft(left_VBox);
+        root.getStyleClass().add("LoginPageRoot");
 
         login_scene = new Scene(root, 1500, 750);
         stage.setTitle("Hello!");
+        login_scene.getStylesheets().add(Objects.requireNonNull(this.getClass().getResource("/org/example/java3_final_project/main.css")).toExternalForm());
         //stage.setScene(scene);
         checkForFile();
         stage.show();
@@ -170,6 +227,24 @@ public class LoginForm extends Application {
         }else{
             stage.setScene(login_scene);
         }
+    }
+
+
+    /**
+     * This method will apply to translate transition on all texts
+     * @param text Text object on which animation will be applied
+     * @param FromX From X value
+     * @param ToX To X value
+     * @param cycleCount how many times animation will be occurred
+     * @return return translate transition object
+     */
+
+    public TranslateTransition animation(Text text,double FromX,double ToX,int cycleCount){
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(4), text);
+        translateTransition.setFromX(FromX);
+        translateTransition.setToX(ToX);
+        translateTransition.setCycleCount(cycleCount);
+        return translateTransition;
     }
 
 
