@@ -7,9 +7,22 @@ import java.sql.SQLException;
 
 import static org.example.java3_final_project.database.DBConst.*;
 
+
+/**
+ * This class represents the table for managing the relationship between users and flat table in the database.
+ * It implements the FlatUserDAO interface to provide methods for deleting user-flat associations.
+ */
 public class FlatUserTable implements FlatUserDAO {
 
+    //Database class instance for executing queries
     Database db = Database.getInstance();
+
+
+    /**
+     * This method will delete record from FlatUser table based on user id and flat number
+     * @param user_id user id from users table
+     * @param flat_num flat id from flat table
+     */
     @Override
     public void deleteFlatUserByUserId(int user_id, String flat_num) {
         String query = "DELETE FROM " + TABLE_FLAT_USER + " WHERE " +
@@ -20,7 +33,6 @@ public class FlatUserTable implements FlatUserDAO {
             db.getConnection().createStatement().execute(query);
             System.out.println("Deleted record from flat_user table");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

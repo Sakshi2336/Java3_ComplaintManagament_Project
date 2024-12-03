@@ -4,14 +4,18 @@ import org.example.java3_final_project.dao.ComplaintDAO;
 import org.example.java3_final_project.database.Database;
 import org.example.java3_final_project.pojo.Complaint;
 import org.example.java3_final_project.pojo.DisplayComplaint;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import static org.example.java3_final_project.database.DBConst.*;
 
+
+/**
+ * This class represents the table for managing complaint table in the database.
+ * It implements the ComplaintDAO interface to provide methods for fetching, updating,
+ * and inserting complaints.
+ */
 public class ComplaintTable implements ComplaintDAO {
 
     public ComplaintTable() {
@@ -19,18 +23,33 @@ public class ComplaintTable implements ComplaintDAO {
 
     };
 
-
+    //Database class instance for executing queries
     Database db = Database.getInstance();
+
+    //ArrayList for storing complaints
     ArrayList<Complaint> complaints;
 
+
+    //Complaint table private instance
     private static ComplaintTable instance;
 
+    /**
+     * This method will check if complaint table instance is empty then create new one
+     * and if it already exists then return that one
+     * @return complaint table instance
+     */
     public static ComplaintTable getInstance() {
         if (instance == null) {
             instance = new ComplaintTable();
         }
         return instance;
     }
+
+
+    /**
+     * This method will fetch every data from complaint table
+     * @return ArrayList of complaint list
+     */
     @Override
     public ArrayList<Complaint> getAllComplaint() {
         String query = "SELECT * FROM " + TABLE_COMPLAINT;
@@ -53,6 +72,11 @@ public class ComplaintTable implements ComplaintDAO {
         return complaints;
     }
 
+
+    /**
+     * This method will fetch data from pretty_complaint view for showing complaint information to the user
+     * @return ArrayList of type DisplayComplaint , list of pretty complaint
+     */
     @Override
     public ArrayList<DisplayComplaint> getPrettyComplaints(){
         ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
@@ -71,12 +95,15 @@ public class ComplaintTable implements ComplaintDAO {
                         data.getString("manager_name")));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return complaints;
     }
 
+    /**
+     * This method will fetch every data from complaint table which has status to OPEN
+     * @return ArrayList of pretty complaint type of DisplayComplaint
+     */
     @Override
     public ArrayList<DisplayComplaint> openComplaints() {
         ArrayList<DisplayComplaint> complaints = new ArrayList<DisplayComplaint>();
@@ -95,7 +122,6 @@ public class ComplaintTable implements ComplaintDAO {
                         data.getString("manager_name")));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return complaints;
@@ -104,6 +130,12 @@ public class ComplaintTable implements ComplaintDAO {
 
     }
 
+
+    /**
+     * This method will fetch every data of any complaint
+     * @param complaintID by passed complaint id
+     * @return complaint object
+     */
     @Override
     public Complaint getComplaint(int complaintID) {
         String query = "SELECT * FROM " + TABLE_COMPLAINT + " WHERE " +
@@ -126,6 +158,11 @@ public class ComplaintTable implements ComplaintDAO {
         return complaint;
     }
 
+
+    /**
+     * This method will update complaint object
+     * @param complaint object to be updated
+     */
     @Override
     public void updateComplaint(Complaint complaint) {
         String query = "UPDATE " + TABLE_COMPLAINT + " SET " +
@@ -135,15 +172,18 @@ public class ComplaintTable implements ComplaintDAO {
                 " WHERE " + COMPLAINT_COLUMN_ID + " = " + complaint.getId();
         try {
             Statement updateItem = db.getConnection().createStatement();
-            System.out.println(updateItem);
             updateItem.executeUpdate(query);
             System.out.println("Record updated!");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
+
+    /**
+     * This method will insert new record into complaint table
+     * @param complaint object to insert into table
+     */
     @Override
     public void createComplaint(Complaint complaint) {
         String query = "INSERT INTO " + TABLE_COMPLAINT +
@@ -159,7 +199,6 @@ public class ComplaintTable implements ComplaintDAO {
             db.getConnection().createStatement().execute(query);
             System.out.println("Inserted Record");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

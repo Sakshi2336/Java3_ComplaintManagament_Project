@@ -16,13 +16,31 @@ import java.util.ArrayList;
 
 import static org.example.java3_final_project.database.DBConst.*;
 
+
+
+/**
+ * This class represents the table for managing user data in the database.
+ * It implements the UserDAO interface to provide methods for retrieving user records,
+ * as well as managing tenants and managers, and handling user deletions.
+ */
 public class UserTable implements UserDAO {
 
+
+    //Database class instance for executing queries
     Database db = Database.getInstance();
 
+
+    //ArrayList for managers from users table
     ArrayList<User> managers;
 
+
+    //ArrayList for tenants from users table
     ArrayList<User> tenants;
+
+    /**
+     * This method will fetch data from users table
+     * @return ArrayList of all users
+     */
     @Override
     public ArrayList<User> getAllUser() {
         String query = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_COLUMN_USER_TYPE_ID + " = 2;";
@@ -45,6 +63,12 @@ public class UserTable implements UserDAO {
         return tenants;
     }
 
+
+    /**
+     * This method will fetch first name from users table
+     * @param id user id
+     * @return String first name
+     */
     public String getUserFirstName(int id){
         String firstName = null;
         String query = " SELECT " + USER_COLUMN_FIRST_NAME + " FROM " + TABLE_USER +
@@ -64,6 +88,11 @@ public class UserTable implements UserDAO {
         return firstName;
     }
 
+
+    /**
+     * This method fetch managers from users table
+     * @return ArrayList of managers
+     */
     @Override
     public ArrayList<User> getAllManager() {
         String query = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_COLUMN_USER_TYPE_ID + " = 1;";
@@ -86,6 +115,11 @@ public class UserTable implements UserDAO {
         return managers;
     }
 
+
+    /**
+     * This method will fetch data from tenant_info view which has information from users and flat table
+     * @return tenant information with id,first-last name and flat number
+     */
     @Override
     public ArrayList<DisplayTenant> getPrettyTenants() {
         ArrayList<DisplayTenant> tenants = new ArrayList<DisplayTenant>();
@@ -104,7 +138,6 @@ public class UserTable implements UserDAO {
                 ));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return tenants;
@@ -112,18 +145,11 @@ public class UserTable implements UserDAO {
 
     }
 
-//    public void deleteTenantInView(String id) {
-//        String query  = "DELETE FROM " + VIEW_TENANT_INFO + " WHERE " +
-//                TENANT_INFO_COLUMN_FLAT_NUM + " = " + id;
-//        try {
-//            db.getConnection().createStatement().execute(query);
-//            System.out.println("Deleted record from tenant view");
-//        } catch (SQLException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//    }
 
+    /**
+     * This method will delete tenant data from users table based on
+     * @param id user_id
+     */
     @Override
     public void deleteTenantFromUsers(String id) {
         String query  = "DELETE FROM " + TABLE_USER + " WHERE " +
@@ -132,11 +158,15 @@ public class UserTable implements UserDAO {
             db.getConnection().createStatement().execute(query);
             System.out.println("Deleted record from users table");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
+
+    /**
+     * This method will delete associated data into flat_user table
+     * @param id user_id
+     */
     @Override
     public void deleteTenantFromFlatUser(String id) {
         String query  = "DELETE FROM " + TABLE_FLAT_USER + " WHERE " +
@@ -145,7 +175,6 @@ public class UserTable implements UserDAO {
             db.getConnection().createStatement().execute(query);
             System.out.println("Deleted record from flat user");
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
