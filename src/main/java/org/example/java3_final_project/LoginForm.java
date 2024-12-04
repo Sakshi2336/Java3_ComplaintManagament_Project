@@ -44,7 +44,7 @@ public class LoginForm extends Application {
      * message_text -> to show message to user according to their actions
      * stage -> to hold current stage and to access stage in methods
      */
-    private Scene login_scene,welcome_scene;
+    private Scene login_scene;
     private File file = new File("credential.txt");
     private Text message_text = new Text();
     Stage stage;
