@@ -88,8 +88,8 @@ public class TenantInfo extends Tab {
             }else {
                 //deleting user first from FlatUser table
                 userTable.deleteTenantFromFlatUser(selectedTenant.getId());
-                //Then deleting from Users class
-                userTable.deleteTenantFromUsers(selectedTenant.getId());
+                //Then deleting from Users class but cannot do that as user id is in complaint table
+                //userTable.deleteTenantFromUsers(selectedTenant.getId());
                 //showing message to user
                 messageText.setText("Tenant Removed Successfully");
                 //After deleting user refreshing table view
