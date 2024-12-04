@@ -1,0 +1,245 @@
+*{
+    -fx-font-family: "Tahoma";
+}
+
+
+/* Login page CSS Style*/
+
+.LoginPageRoot Label{
+    -fx-font-size:1.5em;
+}
+
+.LoginPageRoot Text{
+    -fx-font-size:3em;
+}
+
+.LoginPageRoot ImageView:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 10, 0.5, 0, 0);
+}
+
+.leftVBox{
+    -fx-background-color:#4A4E69;
+}
+
+/*Welcome Page Css Styles*/
+.welcome_text {
+    -fx-font-size: 4em;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+    -fx-text-alignment: center;
+}
+
+.description_text {
+    -fx-font-size: 3em;
+    -fx-font-weight: bold;
+    -fx-line-spacing: 5px;
+    -fx-text-alignment: center;
+    -fx-padding: 0 20px; /*top right bottom left*/
+}
+
+.end_text{
+    -fx-font-size: 3em;
+    -fx-font-weight: bold;
+}
+
+
+/* Button CSS Style */
+.button {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #71D549;
+    -fx-background-radius: 30px;
+    -fx-padding: 15px 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 2, 2);
+    -fx-border-color: #71D549;
+    -fx-border-radius:30px;
+    -fx-border-width: 2;
+    -fx-transition: background-color 0.3s, transform 0.3s ease-in-out;
+}
+
+/* Hover effect for button */
+.button:hover {
+    -fx-background-color: #3c3c3c;
+    -fx-cursor: hand;
+    -fx-border-color: #3c3c3c;
+    -fx-text-fill: #C9ADA7;
+}
+
+
+
+
+/* Menu Page CSS Styles */
+
+.menu-page {
+    -fx-background-color: #C9ADA7;
+}
+
+.title{ /*Label class which is title on the Menu Page */
+    -fx-font-size:4em;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
+.menu-page HBox {
+    -fx-alignment: center;
+    -fx-background-color: #C9ADA7;
+}
+
+/* Tab Pane All CSS Style */
+.tab-pane{
+    -fx-tab-min-width: 250px;
+    -fx-tab-min-height: 66px;
+    -fx-tab-max-height: 66px;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;  /* tab background opacity setting to 0 as don't want to see background of tab pane which is tab-header-area*/
+}
+
+.tab-pane .tab{
+    -fx-background-insets:0 10 0 10; /*Padding to top,right,bottom,left*/
+    -fx-cursor: hand;
+}
+
+.tab-pane .tab:selected{
+    -fx-background-color: #3c3c3c;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #4A4E69;
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #C9ADA7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*View Complaint class CSS Style*/
+.ViewComplaintRoot{
+    -fx-padding:2em;
+}
+
+.table-view {
+    -fx-border-color: #C9ADA7;
+    -fx-border-width: 2;
+    -fx-background-color: #C9ADA7;
+    -fx-padding: 14px;
+    -fx-font-size: 20px;
+}
+
+/* TableCell Text styling */
+.table-view .table-cell {
+    -fx-padding: 10px 15px;
+    -fx-font-size: 20px;
+    -fx-border-width: 0 1px 0 0; /* Top, right, bottom, left borders */
+    -fx-border-color: #C9ADA7;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #F4F3EE;
+}
+
+/* Styling for table rows */
+.table-view .table-row-cell {
+    -fx-background-color: #9A8C98;
+    -fx-border-color: #C9ADA7;
+    -fx-border-width:0 0 1 0;
+    -fx-text-fill: #000000;
+}
+
+.table-view .table-row-cell:selected{
+     -fx-text-fill: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Add Complaint Page - Tenant Information Section */
+.addCompRoot{
+    -fx-padding:2em;
+    -fx-font-size:1.5em;
+}
+
+.tenantHeading{
+    -fx-font-size: 3em;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
+.compHeading{
+     -fx-font-size: 3em;
+     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+ }
+
+.tenant-section {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+.complaint-section{
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-padding:5px;
+}
+
+.combo-box {
+    -fx-background-color: #9A8C98;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 20px;
+    -fx-text-fill: #000000;
+    -fx-font-weight : bold;
+}
+
+.combo-box .combo-box-popup {
+    -fx-background-color: #C9ADA7;
+    -fx-border-radius: 5px;
+    -fx-border-color: #9A8C98;
+}
+
+.addCompRoot HBox{
+    -fx-padding:10px;
+}
+
+
+
+
+
+
+
+/* Statistics CSS Style */
+
+/* CSS for styling the labels of each pie slice */
+.chart-pie-label {
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}
+
+
+
+/* Update form CSS Style */
+.updateRoot Text{
+    -fx-font-size: 2em;
+}
