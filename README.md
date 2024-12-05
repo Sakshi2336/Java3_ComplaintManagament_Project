@@ -138,8 +138,6 @@ This project is compatible with the following platforms and environments:
 
 ## Licence
 
-## License
-
 This project is licensed under the MIT License.
 
 MIT License
