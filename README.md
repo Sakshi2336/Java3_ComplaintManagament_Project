@@ -94,3 +94,7 @@ You need to run **LoginForm.java** class and once you will enter your username,p
 
        -  Go Back tab will take you back to the Welcome page.
        
+
+## Database Schema
+
+![Database Schema](src/main/resources/org/example/java3_final_project/Images/databaseSchema.png)
